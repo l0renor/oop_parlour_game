@@ -4,4 +4,3 @@ mvn sonar:sonar \
   -Dsonar.host.url=https://sonarcloud.io \
   -Dsonar.login=876ced1b78e93b3118c6dba5057f469d006d5965
 
-Analyze "oop_parlour_game": 876ced1b78e93b3118c6dba5057f469d006d5965
