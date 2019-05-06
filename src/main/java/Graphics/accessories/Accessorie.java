@@ -1,6 +1,6 @@
 package main.java.Graphics.accessories;
 
-public abstract class Accessorie {
+public abstract class Accessorie implements Comparable<Accessorie> {
 
     private int sizeX;
     private int sizeY;
@@ -19,8 +19,6 @@ public abstract class Accessorie {
         this.layer = layer;
         this.pathToBackgground = pathToBackgground;
     }
-
-    public abstract void draw();
 
     public abstract void onClick();
 
@@ -46,6 +44,16 @@ public abstract class Accessorie {
 
     public int getLayer() {
         return layer;
+    }
+
+    /**
+     * Compare based on layer; high to low
+     * @param o other Accessorie to be compared to
+     * @return int to indicate relation between the objects
+     */
+
+    public int compareTo(Accessorie other) {
+        return this.layer - other.layer;
     }
 
 
