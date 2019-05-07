@@ -28,7 +28,7 @@ public class Game implements Runnable {
         }
     }
 
-    public void doTurn(Player player) {
+    private void doTurn(Player player) {
         //TODO, probably use some methods / objects provided by strategy GameMode
     }
 }
