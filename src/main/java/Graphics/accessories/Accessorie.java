@@ -1,4 +1,4 @@
-package main.java.Graphics.accessories;
+package Graphics.accessories;
 
 public abstract class Accessorie implements Comparable<Accessorie> {
 
