@@ -1,4 +1,4 @@
-package Graphics.Board;
+package Graphics.board;
 
 import Graphics.accessories.Accessorie;
 
@@ -23,8 +23,8 @@ public class BoardData {
         return pathToBackgground;
     }
 
-    public List<Accessorie> getAccessories() {
-        return accessories;
+    public List<List<Accessorie>> getAccessoriesByLayer() {
+        return accessoriesByLayer;
     }
 
     public String getGameName() {
@@ -35,19 +35,21 @@ public class BoardData {
         this.gameName = gameName;
     }
 
-    private int numLayers;
+    private int numLayers; //layer 0 is background
     private String pathToBackgground;
     private String gameName;
-    private List<Accessorie> accessories; // sorted by layer?
+    private List<List<Accessorie>> accessoriesByLayer; // sorted by layer?
     //private JavaFx application
 
     public BoardData(double sizeX, double sizeY, int numLayers, String pathToBackgground, String gameName) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.pathToBackgground = pathToBackgground;
-        //@TODO load img;
         this.numLayers = numLayers;
-        this.accessories = new ArrayList<Accessorie>();
+        this.accessoriesByLayer = new ArrayList<List<Accessorie>>();
+        for (int i = 0; i<= numLayers;i++){
+            accessoriesByLayer.add(new ArrayList<Accessorie>());
+        }
         this.gameName = gameName;
     }
 
@@ -58,16 +60,16 @@ public class BoardData {
      * @return boolean  if sucsess
      */
     public boolean addAccessorie(Accessorie a) {
-        //@TODO check overlapp on one layer
+        //@TODO check overlapp on one layer -> is not allowed
         if (a.getLayer() > numLayers) {
-            return false;
+            return false; //@TODO exception?
         } else if (a.getPosX() + a.getSizeX() > sizeX || a.getPosY() + a.getSizeY() > sizeY) {
             return false;
         }
-        return accessories.add(a);
+        return accessoriesByLayer.get(a.getLayer()).add(a); //add accessorie to the right layer
     }
 
-    public int getNumLayers() {
+    public int getNumLayers(){
         return numLayers;
     }
 
