@@ -47,7 +47,7 @@ public class BoardData {
         this.pathToBackgground = pathToBackgground;
         this.numLayers = numLayers;
         this.accessoriesByLayer = new ArrayList<List<Accessorie>>();
-        for (int i = 0; i<= numLayers;i++){
+        for (int i = 0; i <= numLayers;i++){
             accessoriesByLayer.add(new ArrayList<Accessorie>());
         }
         this.gameName = gameName;
