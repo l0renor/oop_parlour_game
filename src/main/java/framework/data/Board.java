@@ -1,11 +1,9 @@
-package Graphics.board;
-
-import Graphics.accessories.Accessorie;
+package framework.data;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardData {
+public class Board {
 
 
     private double sizeX;
@@ -23,7 +21,7 @@ public class BoardData {
         return pathToBackgground;
     }
 
-    public List<List<Accessorie>> getAccessoriesByLayer() {
+    public List<ArrayList<Accessorie>> getAccessoriesByLayer() {
         return accessoriesByLayer;
     }
 
@@ -38,15 +36,15 @@ public class BoardData {
     private int numLayers; //layer 0 is background
     private String pathToBackgground;
     private String gameName;
-    private List<List<Accessorie>> accessoriesByLayer; // sorted by layer?
+    private ArrayList<ArrayList<Accessorie>> accessoriesByLayer; // sorted by layer?
     //private JavaFx application
 
-    public BoardData(double sizeX, double sizeY, int numLayers, String pathToBackgground, String gameName) {
+    public Board(double sizeX, double sizeY, int numLayers, String pathToBackgground, String gameName) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.pathToBackgground = pathToBackgground;
         this.numLayers = numLayers;
-        this.accessoriesByLayer = new ArrayList<List<Accessorie>>();
+        this.accessoriesByLayer = new ArrayList<ArrayList<Accessorie>>();
         for (int i = 0; i <= numLayers;i++){
             accessoriesByLayer.add(new ArrayList<Accessorie>());
         }

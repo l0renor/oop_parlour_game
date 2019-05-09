@@ -1,7 +1,8 @@
-package Graphics.accessories;
+package framework.data;
 
-public abstract class Accessorie implements Comparable<Accessorie> {
+public class Accessorie implements Comparable<Accessorie> {
 
+    //@TODO should this be abstract or not
     private int sizeX;
     private int sizeY;
     private int posX;
@@ -20,7 +21,6 @@ public abstract class Accessorie implements Comparable<Accessorie> {
         this.pathToBackgground = pathToBackgground;
     }
 
-    public abstract void onClick();
 
     public int getSizeX() {
         return sizeX;
