@@ -8,10 +8,14 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.Observable;
 
@@ -46,8 +50,12 @@ public class GraphicsEngine extends Observable {
             root.getChildren().add(canvas);
             currentLayernum++;
         }
-
-        stage.setScene(new Scene(root));
+        BorderPane border = new BorderPane();
+        TextArea ta = new TextArea(board.getInfoText());
+        ta.setEditable(false);
+        border.setTop(root);
+        border.setBottom(ta);
+        stage.setScene(new Scene(border));
         return stage;
     }
 

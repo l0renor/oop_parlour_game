@@ -3,6 +3,7 @@ package framework.data;
 public class Accessorie implements Comparable<Accessorie> {
 
     //@TODO should this be abstract or not
+
     private int sizeX;
     private int sizeY;
     private int posX;

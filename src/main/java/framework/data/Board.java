@@ -8,6 +8,7 @@ public class Board {
 
     private double sizeX;
     private double sizeY;
+    private String infoText;
 
     public double getSizeX() {
         return sizeX;
@@ -39,6 +40,14 @@ public class Board {
     private ArrayList<ArrayList<Accessorie>> accessoriesByLayer; // sorted by layer?
     //private JavaFx application
 
+    public String getInfoText() {
+        return infoText;
+    }
+
+    public void setInfoText(String infoText) {
+        this.infoText = infoText;
+    }
+
     public Board(double sizeX, double sizeY, int numLayers, String pathToBackgground, String gameName) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
@@ -49,6 +58,7 @@ public class Board {
             accessoriesByLayer.add(new ArrayList<Accessorie>());
         }
         this.gameName = gameName;
+        this.infoText = "";
     }
 
     /**
