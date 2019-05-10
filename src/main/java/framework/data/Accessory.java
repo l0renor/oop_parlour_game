@@ -1,8 +1,6 @@
 package framework.data;
 
-public class Accessorie implements Comparable<Accessorie> {
-
-    //@TODO should this be abstract or not
+public abstract class Accessory implements Comparable<Accessory> {
 
     private int sizeX;
     private int sizeY;
@@ -13,7 +11,7 @@ public class Accessorie implements Comparable<Accessorie> {
     private int layer;
     private String pathToBackgground;
 
-    public Accessorie(int sizeX, int sizeY, int posX, int posY, int layer, String pathToBackgground) {
+    public Accessory(int sizeX, int sizeY, int posX, int posY, int layer, String pathToBackgground) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.posX = posX;
@@ -49,11 +47,11 @@ public class Accessorie implements Comparable<Accessorie> {
 
     /**
      * Compare based on layer; high to low
-     * @param o other Accessorie to be compared to
+     * @param o other Accessory to be compared to
      * @return int to indicate relation between the objects
      */
 
-    public int compareTo(Accessorie other) {
+    public int compareTo(Accessory other) {
         return this.layer - other.layer;
     }
 

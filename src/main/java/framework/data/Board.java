@@ -6,23 +6,46 @@ import java.util.List;
 public class Board {
 
 
-    private double sizeX;
-    private double sizeY;
+    private double width;
+    private double height;
     private String infoText;
 
-    public double getSizeX() {
-        return sizeX;
+    /**
+     * the number of layers on the game board; excluding the background
+     */
+    private int numLayers; //layer 0 is background
+    /**
+     * path to the backgroundimage e.g. "file:src/resources/board.png"
+     */
+    private String pathToBackgground;
+    /**
+     * The name of the game; displayed above the canvas
+     */
+    private String gameName;
+
+    private ArrayList<ArrayList<Accessory>> accessoriesByLayer;
+
+    /**
+     * Getter for width of the gameboard/canvas.
+     * @return width of the gameboard/canvas.
+     */
+    public double getWidth() {
+        return width;
     }
 
-    public double getSizeY() {
-        return sizeY;
+    /**
+     * Getter for height of the gameboard/canvas.
+     * @return height of the gameboard/canvas.
+     */
+    public double getHeight() {
+        return height;
     }
 
     public String getPathToBackgground() {
         return pathToBackgground;
     }
 
-    public List<ArrayList<Accessorie>> getAccessoriesByLayer() {
+    public List<ArrayList<Accessory>> getAccessoriesByLayer() {
         return accessoriesByLayer;
     }
 
@@ -34,66 +57,66 @@ public class Board {
         this.gameName = gameName;
     }
 
-    private int numLayers; //layer 0 is background
-    private String pathToBackgground;
-    private String gameName;
-    private ArrayList<ArrayList<Accessorie>> accessoriesByLayer; // sorted by layer?
-    //private JavaFx application
-
+    /**
+     * Getter for the infotext displayed below the gameboard; e.g. for instructions
+     * @return the infotext
+     */
     public String getInfoText() {
         return infoText;
     }
 
+    /**
+     * Setter for infotext displayed below the gameboard; e.g. for instructions
+     * @param infoText the new info text; the old one is deleted
+     */
     public void setInfoText(String infoText) {
         this.infoText = infoText;
     }
 
-    public Board(double sizeX, double sizeY, int numLayers, String pathToBackgground, String gameName) {
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
+    /**
+     * Constructor of a game bord.
+     * @param width of the board
+     * @param height of the board
+     * @param numLayers graphical layers on the board
+     * @param pathToBackgground path to the backgroundimage e.g. "file:src/resources/board.png"
+     * @param gameName name of the game
+     */
+    public Board(double width, double height, int numLayers, String pathToBackgground, String gameName) {
+        this.width = width;
+        this.height = height;
         this.pathToBackgground = pathToBackgground;
         this.numLayers = numLayers;
-        this.accessoriesByLayer = new ArrayList<ArrayList<Accessorie>>();
+        this.accessoriesByLayer = new ArrayList<ArrayList<Accessory>>();
         for (int i = 0; i <= numLayers;i++){
-            accessoriesByLayer.add(new ArrayList<Accessorie>());
+            accessoriesByLayer.add(new ArrayList<Accessory>());
         }
         this.gameName = gameName;
         this.infoText = "";
     }
 
     /**
-     * Adds an accessorie to the gameboard
-     *
+     * Adds an accessorie to the gameboard.     *
      * @param a accessorie to add
      * @return boolean  if sucsess
      */
-    public boolean addAccessorie(Accessorie a) {
+    public boolean addAccessorie(Accessory a) {
         //@TODO check overlapp on one layer -> is not allowed
         if (a.getLayer() > numLayers) {
             return false; //@TODO exception?
-        } else if (a.getPosX() + a.getSizeX() > sizeX || a.getPosY() + a.getSizeY() > sizeY) {
+        } else if (a.getPosX() + a.getSizeX() > width || a.getPosY() + a.getSizeY() > height) {
             return false;
         }
         return accessoriesByLayer.get(a.getLayer()).add(a); //add accessorie to the right layer
     }
 
+    /**
+     * Number of graphical layers on the canvas.
+     * The background is excluded
+     * @return the number of layers
+     */
     public int getNumLayers(){
         return numLayers;
     }
 
-    public void setNumLayers(int numLayers) {
-        this.numLayers = numLayers;
-    }
-
-    /**
-     * Analyses which accessorie was clicked and calls its onclick() function.
-     *
-     * @param x x position of the mouse
-     * @param y y position of the mouse
-     */
-
-    public void handleClick(int x, int y) {
-        //idea check layer by layer(high -> low) if there is a match call onlick of accessorie
-    }
 }
 
