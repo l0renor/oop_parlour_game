@@ -1,13 +1,15 @@
-package framework.data;
+package framework.data.accessories;
+
+import framework.data.accessories.Accessory;
 
 import java.util.Random;
 
 public class CardDeck extends Accessory {
 
-    String pathToBackImage;
-    String[] pathToFrontImage;
-    int numCards;
-    boolean hidden;
+    private String pathToBackImage;
+    private String[] pathToFrontImage;
+    private int numCards;
+    private boolean hidden;
 
     public CardDeck(int sizeX, int sizeY, int posX, int posY, int layer, String[] pathToFrontImage, String pathToBackImage) {
         super(sizeX, sizeY, posX, posY, layer, pathToBackImage);

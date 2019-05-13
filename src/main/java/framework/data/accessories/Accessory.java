@@ -1,4 +1,4 @@
-package framework.data;
+package framework.data.accessories;
 
 public abstract class Accessory implements Comparable<Accessory> {
 

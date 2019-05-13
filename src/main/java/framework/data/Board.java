@@ -1,5 +1,7 @@
 package framework.data;
 
+import framework.data.accessories.Accessory;
+
 import java.util.ArrayList;
 import java.util.List;
 
