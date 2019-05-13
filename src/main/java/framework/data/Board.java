@@ -78,8 +78,10 @@ public class Board {
         this.gameName = gameName;
     }
 
-
-
+    public String getInfoText(){
+        return infoText;
+    }
+    
     /**
      * Setter for infotext displayed below the gameboard; e.g. for instructions
      * @param infoText the new info text; the old one is deleted
