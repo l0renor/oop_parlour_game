@@ -28,7 +28,7 @@ public class GameApplication extends Application {//just ui
         }
         Configuration conf = configuartionClass.newInstance();
         conf.configureBoard();
-        Board board = conf.board;
+        Board board = conf.getBoard();
         GraphicsEngine graphicsEngine = new GraphicsEngine();
         primaryStage = graphicsEngine.drawBoard(board, primaryStage);
         primaryStage.show();
