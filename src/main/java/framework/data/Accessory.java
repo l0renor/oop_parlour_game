@@ -1,30 +1,24 @@
 package framework.data;
 
-
-
-
 public abstract class Accessory implements Comparable<Accessory> {
-
 
     private int sizeX;
     private int sizeY;
     private int posX;
     private int posY;
 
+
     private int layer;
-    private String pathToImage;
+    private String pathToBackgground;
 
-    public Accessory(int sizeX, int sizeY, int posX, int posY, int layer, String pathToImage) {
-
+    public Accessory(int sizeX, int sizeY, int posX, int posY, int layer, String pathToBackgground) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.posX = posX;
         this.posY = posY;
         this.layer = layer;
-        this.pathToImage = pathToImage;
+        this.pathToBackgground = pathToBackgground;
     }
-
-
 
 
     public int getSizeX() {
@@ -43,14 +37,9 @@ public abstract class Accessory implements Comparable<Accessory> {
         return posY;
     }
 
-
-    public String getPathToImage() {
-        return pathToImage;
+    public String getPathToBackgground() {
+        return pathToBackgground;
     }
-
-    public void setPathToImage(String newPath){
-        this.pathToImage = newPath;
-
 
     public int getLayer() {
         return layer;
@@ -58,8 +47,7 @@ public abstract class Accessory implements Comparable<Accessory> {
 
     /**
      * Compare based on layer; high to low
-     * @param other other Accessory to be compared to
-
+     * @param o other Accessory to be compared to
      * @return int to indicate relation between the objects
      */
 
@@ -68,6 +56,4 @@ public abstract class Accessory implements Comparable<Accessory> {
     }
 
 
-
 }
-
