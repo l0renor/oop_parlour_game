@@ -5,17 +5,24 @@ import java.util.List;
 
 public class Board {
 
-    private double sizeX;
-    private double sizeY;
 
-    private int numLayers; //layer 0 is background
-    private String pathToBackground;
-    private String gameName;
-    private ArrayList<ArrayList<Accessory>> accessoriesByLayer; // sorted by layer?
     private double width;
     private double height;
     private String infoText;
-  
+      /**
+     * the number of layers on the game board; excluding the background
+     */
+    private int numLayers; //layer 0 is background
+    /**
+     * path to the backgroundimage e.g. "file:src/resources/board.png"
+     */
+    private String pathToBackground;
+    /**
+     * The name of the game; displayed above the canvas
+     */
+    private String gameName;
+    private ArrayList<ArrayList<Accessory>> accessoriesByLayer;
+
       /**
      * Constructor of a game bord.
      * @param width of the board
@@ -42,13 +49,6 @@ public class Board {
         return sizeX;
     }
 
-    public double getSizeY() {
-        return sizeY;
-    }
-
-    public String getPathToBackground() {
-        return pathToBackground;
-    }
 
     /**
      * Getter for width of the gameboard/canvas.
@@ -66,6 +66,10 @@ public class Board {
         return height;
     }
 
+    public String getPathToBackground() {
+        return pathToBackground;
+    }
+
     public List<ArrayList<Accessory>> getAccessoriesByLayer() {
         return accessoriesByLayer;
     }
@@ -78,10 +82,14 @@ public class Board {
         this.gameName = gameName;
     }
 
-    public String getInfoText(){
+    /**
+     * Getter for the infotext displayed below the gameboard; e.g. for instructions
+     * @return the infotext
+     */
+    public String getInfoText() {
         return infoText;
     }
-    
+
     /**
      * Setter for infotext displayed below the gameboard; e.g. for instructions
      * @param infoText the new info text; the old one is deleted
@@ -89,7 +97,6 @@ public class Board {
     public void setInfoText(String infoText) {
         this.infoText = infoText;
     }
-
 
 
     /**
@@ -107,8 +114,6 @@ public class Board {
         return accessoriesByLayer.get(a.getLayer()).add(a); //add accessorie to the right layer
     }
 
-
-          
     /**
      * Number of graphical layers on the canvas.
      * The background is excluded
@@ -118,9 +123,5 @@ public class Board {
         return numLayers;
     }
 
-    public void setNumLayers(int numLayers) {
-        this.numLayers = numLayers;
-    }
- 
 }
 
