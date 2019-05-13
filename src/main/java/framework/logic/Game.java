@@ -1,4 +1,4 @@
-package framework;
+package framework.logic;
 
 import java.util.ArrayList;
 

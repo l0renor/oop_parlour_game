@@ -1,4 +1,4 @@
-package framework;
+package framework.logic;
 
 /**
  * An abstract base class for the player to be extended by the application programmer.
