@@ -36,7 +36,7 @@ public class GameApplication extends Application {//just ui
 
     private void drawShapes(GraphicsContext gc, List<Accessory> accessories) {
         for (Accessory acc : accessories) {
-            Image accImg = new Image(acc.getPathToBackgground());
+            Image accImg = new Image(acc.getPathToImage());
             gc.drawImage(accImg, acc.getPosX(), acc.getPosY(), acc.getSizeX(), acc.getSizeY());
         }
 

@@ -30,7 +30,7 @@ public class GraphicsEngine extends Observable {
         Group root = new Group();
         Canvas background = new Canvas(board.getWidth(), board.getHeight());
         GraphicsContext gc = background.getGraphicsContext2D();
-        Image backgroundImg = new Image(board.getPathToBackgground());
+        Image backgroundImg = new Image(board.getPathToBackground());
         gc.drawImage(backgroundImg, 0, 0, board.getWidth(), board.getHeight());
         root.getChildren().add(background);
         int currentLayernum = 1;
@@ -65,7 +65,7 @@ public class GraphicsEngine extends Observable {
 
     private void drawShapes(GraphicsContext gc, List<Accessory> accessories) {
         for (Accessory acc : accessories) {
-            Image accImg = new Image(acc.getPathToBackgground());
+            Image accImg = new Image(acc.getPathToImage());
             gc.drawImage(accImg, acc.getPosX(), acc.getPosY(), acc.getSizeX(), acc.getSizeY());
         }
 

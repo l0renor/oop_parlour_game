@@ -9,15 +9,15 @@ public abstract class Accessory implements Comparable<Accessory> {
 
 
     private int layer;
-    private String pathToBackgground;
+    private String pathToImage;
 
-    public Accessory(int sizeX, int sizeY, int posX, int posY, int layer, String pathToBackgground) {
+    public Accessory(int sizeX, int sizeY, int posX, int posY, int layer, String pathToImage) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.posX = posX;
         this.posY = posY;
         this.layer = layer;
-        this.pathToBackgground = pathToBackgground;
+        this.pathToImage = pathToImage;
     }
 
 
@@ -37,8 +37,12 @@ public abstract class Accessory implements Comparable<Accessory> {
         return posY;
     }
 
-    public String getPathToBackgground() {
-        return pathToBackgground;
+    public String getPathToImage() {
+        return pathToImage;
+    }
+
+    public void setPathToImage(String newPath){
+        this.pathToImage = newPath;
     }
 
     public int getLayer() {
