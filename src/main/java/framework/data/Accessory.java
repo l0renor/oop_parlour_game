@@ -1,8 +1,6 @@
 package framework.data;
 
 
-
-
 public abstract class Accessory implements Comparable<Accessory> {
 
 
@@ -23,8 +21,6 @@ public abstract class Accessory implements Comparable<Accessory> {
         this.layer = layer;
         this.pathToImage = pathToImage;
     }
-
-
 
 
     public int getSizeX() {
@@ -50,7 +46,7 @@ public abstract class Accessory implements Comparable<Accessory> {
 
     public void setPathToImage(String newPath){
         this.pathToImage = newPath;
-
+    }
 
     public int getLayer() {
         return layer;
