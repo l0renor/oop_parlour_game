@@ -4,7 +4,7 @@ addons:
     organization: "l0renor-github" # the key of the org you chose at step #3
     branches:
       - master
-      - sprint1_freinold
+      - sprint2_freinold
 script:
   # other script steps might be done before running the actual analysis
   - mvn clean package sonar:sonar
