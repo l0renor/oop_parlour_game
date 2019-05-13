@@ -7,7 +7,6 @@ public abstract class Accessory implements Comparable<Accessory> {
     private int posX;
     private int posY;
 
-
     private int layer;
     private String pathToImage;
 
@@ -51,7 +50,7 @@ public abstract class Accessory implements Comparable<Accessory> {
 
     /**
      * Compare based on layer; high to low
-     * @param o other Accessory to be compared to
+     * @param other other Accessory to be compared to
      * @return int to indicate relation between the objects
      */
 
