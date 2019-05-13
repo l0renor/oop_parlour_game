@@ -24,10 +24,10 @@ public class Board {
      * @param pathToBackgground path to the backgroundimage e.g. "file:src/resources/board.png"
      * @param gameName name of the game
      */
-    public Board(double width, double height, int numLayers, String pathToBackgground, String gameName) {
+    public Board(double width, double height, int numLayers, String pathToBackground, String gameName) {
         this.width = width;
         this.height = height;
-        this.pathToBackgground = pathToBackgground;
+        this.pathToBackground = pathToBackground;
         this.numLayers = numLayers;
         this.accessoriesByLayer = new ArrayList<ArrayList<Accessory>>();
         for (int i = 0; i <= numLayers;i++){
