@@ -1,4 +1,7 @@
-package framework.data;
+package framework.configuration;
+
+import framework.data.Board;
+import framework.data.TestAccessory;
 
 /**
  * Testlayout

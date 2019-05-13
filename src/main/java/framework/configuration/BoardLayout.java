@@ -1,4 +1,6 @@
-package framework.data;
+package framework.configuration;
+
+import framework.data.Board;
 
 /**
  * Interface for classes which define the layout of the board.
