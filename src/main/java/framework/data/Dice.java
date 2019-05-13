@@ -10,6 +10,7 @@ public class Dice extends Accessory {
     public Dice(int sizeX, int sizeY, int posX, int posY, int layer, String[] pathToSides) {
         super(sizeX, sizeY, posX, posY, layer, pathToSides[0]);
         this.numSides = pathToSides.length;
+        this.pathToSides = pathToSides;
     }
 
     /**
