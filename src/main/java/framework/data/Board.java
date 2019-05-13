@@ -21,7 +21,7 @@ public class Board {
      * @param width of the board
      * @param height of the board
      * @param numLayers graphical layers on the board
-     * @param pathToBackgground path to the backgroundimage e.g. "file:src/resources/board.png"
+     * @param pathToBackground path to the backgroundimage e.g. "file:src/resources/board.png"
      * @param gameName name of the game
      */
     public Board(double width, double height, int numLayers, String pathToBackground, String gameName) {
