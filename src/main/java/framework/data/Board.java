@@ -44,12 +44,6 @@ public class Board {
         this.infoText = "";
     }
 
-
-    public double getSizeX() {
-        return sizeX;
-    }
-
-
     /**
      * Getter for width of the gameboard/canvas.
      * @return width of the gameboard/canvas.
