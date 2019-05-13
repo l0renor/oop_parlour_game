@@ -1,7 +1,7 @@
 package framework;
 
 import framework.configuration.Configuration;
-import framework.data.Accessory;
+import framework.data.accessories.Accessory;
 import framework.data.Board;
 import framework.graphics.GraphicsEngine;
 import javafx.application.Application;
@@ -19,14 +19,14 @@ public class GameApplication extends Application {//just ui
 
     @Override
     public void start(Stage primaryStage) throws IllegalAccessException, InstantiationException {
-        Class<Configuration> configuartionClass = null;
+        Class<Configuration> configurationClass = null;
         try {
-            configuartionClass = (Class<Configuration>) Class.forName("framework.configuration.TestConfiguration");
+            configurationClass = (Class<Configuration>) Class.forName("framework.configuration.TestConfiguration");
         } catch (ClassNotFoundException e) {
             //TODO handling 4 real
             e.printStackTrace();
         }
-        Configuration conf = configuartionClass.newInstance();
+        Configuration conf = configurationClass.newInstance();
         conf.configureBoard();
         Board board = conf.getBoard();
         GraphicsEngine graphicsEngine = new GraphicsEngine();

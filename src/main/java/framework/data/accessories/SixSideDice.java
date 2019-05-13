@@ -1,4 +1,4 @@
-package framework.data;
+package framework.data.accessories;
 
 public class SixSideDice extends Dice {
 

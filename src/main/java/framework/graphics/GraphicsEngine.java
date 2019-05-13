@@ -1,6 +1,6 @@
 package framework.graphics;
 
-import framework.data.Accessory;
+import framework.data.accessories.Accessory;
 import framework.data.Board;
 import framework.data.Point;
 import javafx.event.EventHandler;

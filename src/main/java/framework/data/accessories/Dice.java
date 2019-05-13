@@ -1,4 +1,6 @@
-package framework.data;
+package framework.data.accessories;
+
+import framework.data.accessories.Accessory;
 
 import java.util.Random;
 
