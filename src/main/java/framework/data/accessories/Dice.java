@@ -15,20 +15,15 @@ public class Dice extends Accessory {
         this.pathToSides = pathToSides;
     }
 
-    /**
-     * It will roll the dice and change the image according to the side that should be facing up
-     */
-    public void onClick() {
-        int side = this.roll();
-        this.setPathToImage(pathToSides[side]);
-    }
 
     /**
      * Simulates rolling the dice
      * @return random generated number
      */
     public int roll(){
-        return (new Random().nextInt(numSides)) + 1;
+        int side = (new Random().nextInt(numSides)) + 1;
+        this.setPathToImage(pathToSides[side-1]);
+        return side;
     }
 
 }
