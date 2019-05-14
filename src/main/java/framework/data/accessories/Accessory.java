@@ -10,6 +10,15 @@ public abstract class Accessory implements Comparable<Accessory> {
     private int posX;
     private int posY;
     private Action action;
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
     private int layer;
     private String pathToImage;
 

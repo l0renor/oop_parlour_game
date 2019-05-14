@@ -1,6 +1,5 @@
 package framework.data.accessories;
 
-import framework.data.accessories.Accessory;
 import framework.logic.AccessoryType;
 import framework.logic.BasicAccessoryType;
 

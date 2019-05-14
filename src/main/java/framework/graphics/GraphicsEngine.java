@@ -1,9 +1,8 @@
 package framework.graphics;
 
-import framework.data.accessories.Accessory;
 import framework.data.Board;
 import framework.data.Point;
-import javafx.event.EventHandler;
+import framework.data.accessories.Accessory;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -19,8 +18,8 @@ import java.util.Observable;
 
 public class GraphicsEngine extends Observable {
 
-    private static GraphicsEngine ourInstance = new GraphicsEngine();
     private Point lastclick;
+    private static GraphicsEngine ourInstance = new GraphicsEngine();
 
     private GraphicsEngine() {}
 
@@ -37,9 +36,9 @@ public class GraphicsEngine extends Observable {
     public Stage drawBoard(Board board, Stage stage) {
         Group root = new Group();
         Canvas background = new Canvas(board.getWidth(), board.getHeight());
-        GraphicsContext gc = background.getGraphicsContext2D();
+        GraphicsContext graphicsContext = background.getGraphicsContext2D();
         Image backgroundImg = new Image(board.getPathToBackground());
-        gc.drawImage(backgroundImg, 0, 0, board.getWidth(), board.getHeight());
+        graphicsContext.drawImage(backgroundImg, 0, 0, board.getWidth(), board.getHeight());
         root.getChildren().add(background);
         int currentLayernum = 1;
         //@TODO layers are haveoffset
@@ -47,14 +46,9 @@ public class GraphicsEngine extends Observable {
             Canvas canvas = new Canvas(board.getWidth(), board.getHeight());
             if (currentLayernum == board.getNumLayers() + 1) { //only top layer need event handler
                 canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,
-                        new EventHandler<MouseEvent>() {
-                            public void handle(MouseEvent e) {
-                                notifyObservers(new Point(e.getSceneX(),e.getSceneY()));
-                                System.out.println("obersre is notified");
-                                return;
-                            }
-
-
+                        e -> {
+                            notifyObservers(new Point(e.getSceneX(),e.getSceneY()));
+                            System.out.println("Observer was notified");
                         });
             }
             GraphicsContext layerGc = canvas.getGraphicsContext2D();

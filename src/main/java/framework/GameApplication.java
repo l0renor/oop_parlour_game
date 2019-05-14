@@ -21,7 +21,7 @@ public class GameApplication extends Application {//just ui
     public void start(Stage primaryStage) throws IllegalAccessException, InstantiationException {
         Class<Configuration> configurationClass = null;
         try {
-            configurationClass = (Class<Configuration>) Class.forName("framework.configuration.TestConfiguration");
+            configurationClass = (Class<Configuration>) Class.forName("bunny_hop.BunnyConfiguration");
         } catch (ClassNotFoundException e) {
             //TODO handling 4 real
             e.printStackTrace();
