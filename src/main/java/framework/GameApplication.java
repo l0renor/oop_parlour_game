@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
-public class GameApplication extends Application {//just ui
+public class GameApplication extends Application {//    just ui
 
     public static void main(String[] args) {
         launch(args);
@@ -34,6 +34,9 @@ public class GameApplication extends Application {//just ui
         primaryStage.show();
     }
 
+    /*
+    * Is this needed? Same method in GraphicsEngine
+     */
     private void drawShapes(GraphicsContext gc, List<Accessory> accessories) {
         for (Accessory acc : accessories) {
             Image accImg = new Image(acc.getPathToImage());
