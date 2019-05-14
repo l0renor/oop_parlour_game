@@ -29,7 +29,7 @@ public class GameApplication extends Application {//just ui
         Configuration conf = configurationClass.newInstance();
         conf.configureBoard();
         Board board = conf.getBoard();
-        GraphicsEngine graphicsEngine = new GraphicsEngine();
+        GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
         primaryStage = graphicsEngine.drawBoard(board, primaryStage);
         primaryStage.show();
     }
@@ -37,7 +37,7 @@ public class GameApplication extends Application {//just ui
     private void drawShapes(GraphicsContext gc, List<Accessory> accessories) {
         for (Accessory acc : accessories) {
             Image accImg = new Image(acc.getPathToImage());
-            gc.drawImage(accImg, acc.getPosX(), acc.getPosY(), acc.getSizeX(), acc.getSizeY());
+            gc.drawImage(accImg, acc.getPosX(), acc.getPosY(), acc.getWidth(), acc.getHeight());
         }
 
     }

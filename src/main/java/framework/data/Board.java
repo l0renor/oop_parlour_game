@@ -7,21 +7,11 @@ import java.util.List;
 
 public class Board {
 
-
     private double width;
     private double height;
     private String infoText;
-      /**
-     * the number of layers on the game board; excluding the background
-     */
     private int numLayers; //layer 0 is background
-    /**
-     * path to the backgroundimage e.g. "file:src/resources/board.png"
-     */
     private String pathToBackground;
-    /**
-     * The name of the game; displayed above the canvas
-     */
     private String gameName;
     private ArrayList<ArrayList<Accessory>> accessoriesByLayer;
 
@@ -104,7 +94,7 @@ public class Board {
         //@TODO check overlapp on one layer -> is not allowed
         if (a.getLayer() > numLayers) {
             return false; //@TODO exception?
-        } else if (a.getPosX() + a.getSizeX() > width || a.getPosY() + a.getSizeY() > height) {
+        } else if (a.getPosX() + a.getWidth() > width || a.getPosY() + a.getHeight() > height) {
             return false;
         }
         return accessoriesByLayer.get(a.getLayer()).add(a); //add accessorie to the right layer

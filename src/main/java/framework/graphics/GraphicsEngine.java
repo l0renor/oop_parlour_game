@@ -18,7 +18,15 @@ import java.util.List;
 import java.util.Observable;
 
 public class GraphicsEngine extends Observable {
+
+    private static GraphicsEngine ourInstance = new GraphicsEngine();
     private Point lastclick;
+
+    private GraphicsEngine() {}
+
+    public static GraphicsEngine getInstance() {
+        return ourInstance;
+    }
 
     /**
      * Draws the board on the given stage
@@ -66,9 +74,8 @@ public class GraphicsEngine extends Observable {
     private void drawShapes(GraphicsContext gc, List<Accessory> accessories) {
         for (Accessory acc : accessories) {
             Image accImg = new Image(acc.getPathToImage());
-            gc.drawImage(accImg, acc.getPosX(), acc.getPosY(), acc.getSizeX(), acc.getSizeY());
+            gc.drawImage(accImg, acc.getPosX(), acc.getPosY(), acc.getWidth(), acc.getHeight());
         }
-
     }
 
 

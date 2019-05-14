@@ -1,6 +1,8 @@
 package framework.data.accessories;
 
 import framework.data.accessories.Accessory;
+import framework.logic.AccessoryType;
+import framework.logic.BasicAccessoryType;
 
 import java.util.Random;
 
@@ -31,4 +33,7 @@ public class Dice extends Accessory {
         return (new Random().nextInt(numSides)) + 1;
     }
 
+    public AccessoryType getAccessoryType() {
+        return BasicAccessoryType.Dice;
+    }
 }

@@ -1,18 +1,21 @@
 package framework.data.accessories;
 
+import framework.logic.AccessoryType;
+import framework.logic.Action;
+
 public abstract class Accessory implements Comparable<Accessory> {
 
-    private int sizeX;
-    private int sizeY;
+    private int width;
+    private int height;
     private int posX;
     private int posY;
-
+    private Action action;
     private int layer;
     private String pathToImage;
 
-    public Accessory(int sizeX, int sizeY, int posX, int posY, int layer, String pathToImage) {
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
+    public Accessory(int width, int height, int posX, int posY, int layer, String pathToImage) {
+        this.width = width;
+        this.height = height;
         this.posX = posX;
         this.posY = posY;
         this.layer = layer;
@@ -20,12 +23,12 @@ public abstract class Accessory implements Comparable<Accessory> {
     }
 
 
-    public int getSizeX() {
-        return sizeX;
+    public int getWidth() {
+        return width;
     }
 
-    public int getSizeY() {
-        return sizeY;
+    public int getHeight() {
+        return height;
     }
 
     public int getPosX() {
@@ -58,5 +61,13 @@ public abstract class Accessory implements Comparable<Accessory> {
         return this.layer - other.layer;
     }
 
+    public abstract AccessoryType getAccessoryType();
 
+    public void setAction(Action action) {
+        this.action = action;
+    }
+
+    public void doAction() {
+        this.action.action(this);
+    }
 }

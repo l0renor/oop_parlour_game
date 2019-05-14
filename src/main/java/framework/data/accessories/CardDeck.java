@@ -1,6 +1,8 @@
 package framework.data.accessories;
 
 import framework.data.accessories.Accessory;
+import framework.logic.AccessoryType;
+import framework.logic.BasicAccessoryType;
 
 import java.util.Random;
 
@@ -46,5 +48,10 @@ public class CardDeck extends Accessory {
             numCards--;
             hidden = true;
         }
+    }
+
+    @Override
+    public AccessoryType getAccessoryType() {
+        return BasicAccessoryType.CardDeck;
     }
 }
