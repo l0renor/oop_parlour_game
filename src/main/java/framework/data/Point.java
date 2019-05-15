@@ -1,5 +1,8 @@
 package framework.data;
 
+/**
+ * Class to represent a point on the game board.
+ */
 public class Point {
     private double x;
     private double y;
