@@ -3,8 +3,8 @@ package framework.logic;
 import java.util.TreeMap;
 
 public enum BasicAccessoryType implements AccessoryType {
-    CardDeck("CardDeck"),
-    Dice("Dice");
+    CARD_DECK("CARD_DECK"),
+    DICE("DICE");
 
     private final String accessoryTypeName;
     private static TreeMap<String, AccessoryType> map = new TreeMap<String, AccessoryType>();

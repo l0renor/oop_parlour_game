@@ -12,12 +12,10 @@ public class Game implements Runnable, Observer {
     private ArrayList<Player> players = new ArrayList<Player>();
     private GameMode gameMode;
     private int turnCounter = 0;
-    private Board board;
     private GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
 
-    public Game(GameMode gameMode, Board board) {
+    public Game(GameMode gameMode) {
         this.gameMode = gameMode;
-        this.board = board;
         this.graphicsEngine.addObserver(this);
         addPlayers();
     }

@@ -6,7 +6,7 @@ import framework.logic.AccessoryType;
 public class Bunny extends Accessory {
 
     enum BunnyColor {
-        Pink, Purple, Cyan, Red
+        PINK, PURPLE, CYAN, RED
     }
 
     private int startPosX;
@@ -18,16 +18,16 @@ public class Bunny extends Accessory {
         this.startPosX = startPosX;
         this.startPosY = startPosY;
         switch (bunnyColor) {
-            case Red:
+            case RED:
                 setPathToImage("file:src/resources/bunny_hop/bunny_red.png");
                 break;
-            case Purple:
+            case PURPLE:
                 setPathToImage("file:src/resources/bunny_hop/bunny_purple.png");
                 break;
-            case Cyan:
+            case CYAN:
                 setPathToImage("file:src/resources/bunny_hop/bunny_cyan.png");
                 break;
-            case Pink:
+            case PINK:
                 setPathToImage("file:src/resources/bunny_hop/bunny_pink.png");
                 break;
         }
@@ -35,7 +35,7 @@ public class Bunny extends Accessory {
 
     @Override
     public AccessoryType getAccessoryType() {
-        return BunnyGameAccessoryType.Bunny;
+        return BunnyGameAccessoryType.BUNNY;
     }
 
     public void resetToStartPos() {

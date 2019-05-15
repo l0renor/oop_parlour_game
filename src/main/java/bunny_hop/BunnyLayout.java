@@ -10,31 +10,31 @@ import java.util.ArrayList;
  */
 public class BunnyLayout implements BoardLayout {
     public Board createLayout() {
-        final Board board = new Board(1200.0, 800.0, 3, "bunny_hop/background.png", "Bunny Hop","bunny_hop/bunny_pink.png");
+        final Board board = new Board(1200.0, 800.0, 3, "bunny_hop/background.png", "BUNNY Hop","bunny_hop/bunny_pink.png");
 
         board.setInfoText("LEON WHY SO MANY CLASSES?!");
 
         board.addAccessory(new Carrot(600, 475));
 
-        board.addAccessory(new Bunny(0, 0, Bunny.BunnyColor.Pink));
-        board.addAccessory(new Bunny(0, 65, Bunny.BunnyColor.Pink));
-        board.addAccessory(new Bunny(0, 130, Bunny.BunnyColor.Pink));
-        board.addAccessory(new Bunny(0, 195, Bunny.BunnyColor.Pink));
+        board.addAccessory(new Bunny(0, 0, Bunny.BunnyColor.PINK));
+        board.addAccessory(new Bunny(0, 65, Bunny.BunnyColor.PINK));
+        board.addAccessory(new Bunny(0, 130, Bunny.BunnyColor.PINK));
+        board.addAccessory(new Bunny(0, 195, Bunny.BunnyColor.PINK));
 
-        board.addAccessory(new Bunny(65, 0, Bunny.BunnyColor.Red));
-        board.addAccessory(new Bunny(65, 65, Bunny.BunnyColor.Red));
-        board.addAccessory(new Bunny(65, 130, Bunny.BunnyColor.Red));
-        board.addAccessory(new Bunny(65, 195, Bunny.BunnyColor.Red));
+        board.addAccessory(new Bunny(65, 0, Bunny.BunnyColor.RED));
+        board.addAccessory(new Bunny(65, 65, Bunny.BunnyColor.RED));
+        board.addAccessory(new Bunny(65, 130, Bunny.BunnyColor.RED));
+        board.addAccessory(new Bunny(65, 195, Bunny.BunnyColor.RED));
 
-        board.addAccessory(new Bunny(130, 0, Bunny.BunnyColor.Purple));
-        board.addAccessory(new Bunny(130, 65, Bunny.BunnyColor.Purple));
-        board.addAccessory(new Bunny(130, 130, Bunny.BunnyColor.Purple));
-        board.addAccessory(new Bunny(130, 195, Bunny.BunnyColor.Purple));
+        board.addAccessory(new Bunny(130, 0, Bunny.BunnyColor.PURPLE));
+        board.addAccessory(new Bunny(130, 65, Bunny.BunnyColor.PURPLE));
+        board.addAccessory(new Bunny(130, 130, Bunny.BunnyColor.PURPLE));
+        board.addAccessory(new Bunny(130, 195, Bunny.BunnyColor.PURPLE));
 
-        board.addAccessory(new Bunny(195, 0, Bunny.BunnyColor.Cyan));
-        board.addAccessory(new Bunny(195, 65, Bunny.BunnyColor.Cyan));
-        board.addAccessory(new Bunny(195, 130, Bunny.BunnyColor.Cyan));
-        board.addAccessory(new Bunny(195, 195, Bunny.BunnyColor.Cyan));
+        board.addAccessory(new Bunny(195, 0, Bunny.BunnyColor.CYAN));
+        board.addAccessory(new Bunny(195, 65, Bunny.BunnyColor.CYAN));
+        board.addAccessory(new Bunny(195, 130, Bunny.BunnyColor.CYAN));
+        board.addAccessory(new Bunny(195, 195, Bunny.BunnyColor.CYAN));
 
         ArrayList<Field> fieldArrayList = new ArrayList<>();
         fieldArrayList.add(new Field(350, 100));

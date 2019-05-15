@@ -11,6 +11,6 @@ public class Carrot extends Accessory {
 
     @Override
     public AccessoryType getAccessoryType() {
-        return BunnyGameAccessoryType.Carrot;
+        return BunnyGameAccessoryType.CARROT;
     }
 }

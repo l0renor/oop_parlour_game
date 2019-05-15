@@ -4,9 +4,9 @@ import framework.logic.AccessoryType;
 import framework.logic.BasicAccessoryType;
 
 public enum BunnyGameAccessoryType implements AccessoryType {
-    Bunny("Bunny"),
-    Field("Field"),
-    Carrot("Carrot");
+    BUNNY("BUNNY"),
+    FIELD("FIELD"),
+    CARROT("CARROT");
 
     private String accessoryTypeName;
 

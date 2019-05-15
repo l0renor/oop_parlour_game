@@ -31,6 +31,6 @@ public class Dice extends Accessory {
     }
 
     public AccessoryType getAccessoryType() {
-        return BasicAccessoryType.Dice;
+        return BasicAccessoryType.DICE;
     }
 }

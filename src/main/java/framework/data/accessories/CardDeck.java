@@ -11,6 +11,7 @@ public class CardDeck extends Accessory {
     private String[] pathToFrontImage;
     private int numCards;
     private boolean hidden;
+    Random randGen;
 
     public CardDeck(int sizeX, int sizeY, int posX, int posY, int layer, String[] pathToFrontImage, String pathToBackImage) {
         super(sizeX, sizeY, posX, posY, layer, pathToBackImage);
@@ -20,14 +21,14 @@ public class CardDeck extends Accessory {
         hidden = true;
         shuffleCards();
         this.setAction(accessory -> pickCard());
+        Random randGen = new Random();
     }
 
     /**
      * Shuffles the card deck before the game starts
      */
-    private void shuffleCards(){
-        Random randGen = new Random();
-        for(int i = 0; i < numCards; i++){
+    private void shuffleCards() {
+        for (int i = 0; i < numCards; i++) {
             int randNum = randGen.nextInt(numCards);
             String temp = pathToFrontImage[i];
             pathToFrontImage[i] = pathToFrontImage[randNum];
@@ -40,10 +41,10 @@ public class CardDeck extends Accessory {
      * Otherwise it will take out the card on top.
      */
     private void pickCard() {
-        if(hidden){
+        if (hidden) {
             this.setPathToImage(pathToFrontImage[numCards - 1]);
             hidden = false;
-        }else{
+        } else {
             this.setPathToImage(pathToBackImage);
             numCards--;
             hidden = true;
@@ -52,6 +53,6 @@ public class CardDeck extends Accessory {
 
     @Override
     public AccessoryType getAccessoryType() {
-        return BasicAccessoryType.CardDeck;
+        return BasicAccessoryType.CARD_DECK;
     }
 }
