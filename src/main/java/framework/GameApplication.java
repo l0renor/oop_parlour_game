@@ -1,44 +1,42 @@
 package framework;
 
 import framework.configuration.Configuration;
-import framework.data.Accessory;
 import framework.data.Board;
 import framework.graphics.GraphicsEngine;
 import javafx.application.Application;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.util.List;
-
-public class GameApplication extends Application {//just ui
-
+/**
+ * Java FX Application Class to run the game.
+ * The configuration is passed in as a String argument.
+ */
+public class GameApplication extends Application {
+    private static String launchArgs; //name of the configuration class
     public static void main(String[] args) {
-        launch(args);
+        if(args.length == 1){
+            launchArgs = args[0];
+            launch(args);
+        } else {
+            throw new IllegalArgumentException("Please provide 1 arguement,the name of the configuration Class");
+        }
     }
 
     @Override
-    public void start(Stage primaryStage) throws IllegalAccessException, InstantiationException {
+    public void start(Stage primaryStage){
+
         Class<Configuration> configuartionClass = null;
+        Configuration conf = null;
         try {
-            configuartionClass = (Class<Configuration>) Class.forName("framework.configuration.TestConfiguration");
-        } catch (ClassNotFoundException e) {
-            //TODO handling 4 real
-            e.printStackTrace();
+            configuartionClass = (Class<Configuration>) Class.forName(launchArgs);
+            conf = configuartionClass.newInstance();
+        } catch (ClassNotFoundException |InstantiationException |IllegalAccessException e) {
+            throw new IllegalArgumentException("The classname " + launchArgs + " was not found. Please provide a valid configuration class");
         }
-        Configuration conf = configuartionClass.newInstance();
         conf.configureBoard();
         Board board = conf.getBoard();
         GraphicsEngine graphicsEngine = new GraphicsEngine();
         primaryStage = graphicsEngine.drawBoard(board, primaryStage);
         primaryStage.show();
-    }
-
-    private void drawShapes(GraphicsContext gc, List<Accessory> accessories) {
-        for (Accessory acc : accessories) {
-            Image accImg = new Image(acc.getPathToBackgground());
-            gc.drawImage(accImg, acc.getPosX(), acc.getPosY(), acc.getSizeX(), acc.getSizeY());
-        }
-
+        //@TODO main loop
     }
 }
