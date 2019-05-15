@@ -5,8 +5,8 @@ import framework.logic.AccessoryType;
 
 public class Carrot extends Accessory {
 
-    public Carrot(int width, int height, int posX, int posY, int layer) {
-        super(width, height, posX, posY, layer, "");
+    public Carrot(int posX, int posY) {
+        super(100, 100, posX, posY, 1, "file:src/resources/bunny_hop/carrot.png");
     }
 
     @Override

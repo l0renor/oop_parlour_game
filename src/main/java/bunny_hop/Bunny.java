@@ -20,12 +20,16 @@ public class Bunny extends Accessory {
         switch (bunnyColor) {
             case Red:
                 setPathToImage("file:src/resources/bunny_hop/bunny_red.png");
+                break;
             case Purple:
                 setPathToImage("file:src/resources/bunny_hop/bunny_purple.png");
+                break;
             case Cyan:
                 setPathToImage("file:src/resources/bunny_hop/bunny_cyan.png");
+                break;
             case Pink:
                 setPathToImage("file:src/resources/bunny_hop/bunny_pink.png");
+                break;
         }
     }
 
