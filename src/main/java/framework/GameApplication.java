@@ -25,7 +25,7 @@ public class GameApplication extends Application {
     @Override
     public void start(Stage primaryStage){
 
-        Class<Configuration> configuartionClass = null;
+        Class<Configuration> configurationClass = null;
         Configuration conf = null;
         try {
             configurationClass = (Class<Configuration>) Class.forName(launchArgs);
