@@ -5,6 +5,7 @@ addons:
     branches:
       - master
       - sprint2_freinold
+      - sprint_1_leon
 script:
   # other script steps might be done before running the actual analysis
   - mvn clean package sonar:sonar
