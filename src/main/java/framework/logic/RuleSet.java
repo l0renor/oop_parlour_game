@@ -1,4 +1,4 @@
-package framework;
+package framework.logic;
 
 public interface RuleSet {
 }
