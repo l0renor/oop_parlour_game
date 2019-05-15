@@ -18,7 +18,6 @@ import java.util.Observable;
 
 public class GraphicsEngine extends Observable {
 
-    private Point lastclick;
     private static GraphicsEngine ourInstance = new GraphicsEngine();
 
     private GraphicsEngine() {}
@@ -62,6 +61,8 @@ public class GraphicsEngine extends Observable {
         border.setTop(root);
         border.setBottom(ta);
         stage.setScene(new Scene(border));
+        stage.setTitle(board.getGameName());
+        stage.getIcons().add(new Image(board.getPathToIcon()));
         return stage;
     }
 

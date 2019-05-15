@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class BunnyLayout implements BoardLayout {
     public Board createLayout() {
-        final Board board = new Board(1200.0, 800.0, 3, "bunny_hop/background.png", "Bunny Hop");
+        final Board board = new Board(1200.0, 800.0, 3, "bunny_hop/background.png", "Bunny Hop","bunny_hop/bunny_pink.png");
 
         board.setInfoText("LEON WHY SO MANY CLASSES?!");
 

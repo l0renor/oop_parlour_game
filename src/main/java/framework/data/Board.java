@@ -12,24 +12,28 @@ public class Board {
     private String infoText;
     private int numLayers; //layer 0 is background
     private String pathToBackground;
+    private String pathToIcon;
     private String gameName;
     private ArrayList<ArrayList<Accessory>> accessoriesByLayer;
 
-      /**
+
+    /**
      * Constructor of a game bord.
-     * @param width of the board
-     * @param height of the board
-     * @param numLayers graphical layers on the board
+     *
+     * @param width            of the board
+     * @param height           of the board
+     * @param numLayers        graphical layers on the board
      * @param pathToBackground path to the backgroundimage e.g. "file:src/resources/board.png"
-     * @param gameName name of the game
+     * @param gameName         name of the game
      */
-    public Board(double width, double height, int numLayers, String pathToBackground, String gameName) {
+    public Board(double width, double height, int numLayers, String pathToBackground, String gameName, String pathToIcon) {
         this.width = width;
         this.height = height;
         this.pathToBackground = pathToBackground;
         this.numLayers = numLayers;
+        this.pathToIcon = pathToIcon;
         this.accessoriesByLayer = new ArrayList<ArrayList<Accessory>>();
-        for (int i = 0; i <= numLayers;i++){
+        for (int i = 0; i <= numLayers; i++) {
             accessoriesByLayer.add(new ArrayList<Accessory>());
         }
         this.gameName = gameName;
@@ -38,6 +42,7 @@ public class Board {
 
     /**
      * Getter for width of the gameboard/canvas.
+     *
      * @return width of the gameboard/canvas.
      */
     public double getWidth() {
@@ -46,6 +51,7 @@ public class Board {
 
     /**
      * Getter for height of the gameboard/canvas.
+     *
      * @return height of the gameboard/canvas.
      */
     public double getHeight() {
@@ -55,6 +61,8 @@ public class Board {
     public String getPathToBackground() {
         return pathToBackground;
     }
+
+    public String getPathToIcon() { return pathToIcon; }
 
     public List<ArrayList<Accessory>> getAccessoriesByLayer() {
         return accessoriesByLayer;
@@ -70,6 +78,7 @@ public class Board {
 
     /**
      * Getter for the infotext displayed below the gameboard; e.g. for instructions
+     *
      * @return the infotext
      */
     public String getInfoText() {
@@ -78,6 +87,7 @@ public class Board {
 
     /**
      * Setter for infotext displayed below the gameboard; e.g. for instructions
+     *
      * @param infoText the new info text; the old one is deleted
      */
     public void setInfoText(String infoText) {
@@ -87,6 +97,7 @@ public class Board {
 
     /**
      * Adds an accessorie to the gameboard.     *
+     *
      * @param a accessorie to add
      * @return boolean  if sucsess
      */
@@ -103,9 +114,10 @@ public class Board {
     /**
      * Number of graphical layers on the canvas.
      * The background is excluded
+     *
      * @return the number of layers
      */
-    public int getNumLayers(){
+    public int getNumLayers() {
         return numLayers;
     }
 
