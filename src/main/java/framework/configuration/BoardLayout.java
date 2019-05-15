@@ -9,7 +9,7 @@ import framework.data.Board;
 public interface BoardLayout {
     /**
      * In this method the application programmer defines the Layout of the board and the accessories.
-     * @return
+     * @return the custom layout
      */
     public abstract Board createLayout();
 }
