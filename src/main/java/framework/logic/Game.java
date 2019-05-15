@@ -1,20 +1,24 @@
 package framework.logic;
 
-import java.util.ArrayList;
+import framework.data.Board;
+import framework.graphics.GraphicsEngine;
 
-public class Game implements Runnable {
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+
+public class Game implements Runnable, Observer {
 
     private ArrayList<Player> players = new ArrayList<Player>();
     private GameMode gameMode;
     private int turnCounter = 0;
-    //TODO add Board....
+    private Board board;
+    private GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
 
-    /**
-     *
-     * @param gameMode
-     */
-    public Game(GameMode gameMode) {
+    public Game(GameMode gameMode, Board board) {
         this.gameMode = gameMode;
+        this.board = board;
+        this.graphicsEngine.addObserver(this);
         addPlayers();
     }
 
@@ -45,10 +49,16 @@ public class Game implements Runnable {
     private void doTurn(Player player) {
         // Print to screen: String.format("It's %s's turn!", player.getName())
         // Notify player about changes
+
+        // Action handling below
         for (RuleSet ruleSet : gameMode.getRuleSets()) {
-            // Action handling in here, ruleSet is given already
+            ArrayList<AccessoryType> validAccessoryTypes = ruleSet.getValidAccessoryTypes();
         }
         //Change of structure after turn actions.
         //TODO, probably use some methods / objects provided by strategy GameMode
+    }
+
+    public void update(Observable o, Object arg) {
+
     }
 }

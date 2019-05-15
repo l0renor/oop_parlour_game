@@ -12,6 +12,7 @@ import javafx.stage.Stage;
  */
 public class GameApplication extends Application {
     private static String launchArgs; //name of the configuration class
+
     public static void main(String[] args) {
         if(args.length == 1){
             launchArgs = args[0];
@@ -27,14 +28,14 @@ public class GameApplication extends Application {
         Class<Configuration> configuartionClass = null;
         Configuration conf = null;
         try {
-            configuartionClass = (Class<Configuration>) Class.forName(launchArgs);
-            conf = configuartionClass.newInstance();
-        } catch (ClassNotFoundException |InstantiationException |IllegalAccessException e) {
+            configurationClass = (Class<Configuration>) Class.forName(launchArgs);
+            conf = configurationClass.newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             throw new IllegalArgumentException("The classname " + launchArgs + " was not found. Please provide a valid configuration class");
         }
         conf.configureBoard();
         Board board = conf.getBoard();
-        GraphicsEngine graphicsEngine = new GraphicsEngine();
+        GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
         primaryStage = graphicsEngine.drawBoard(board, primaryStage);
         primaryStage.show();
         //@TODO main loop

@@ -1,6 +1,7 @@
 package framework.data.accessories;
 
-import framework.data.accessories.Accessory;
+import framework.logic.AccessoryType;
+import framework.logic.BasicAccessoryType;
 
 import java.util.Random;
 
@@ -18,6 +19,7 @@ public class CardDeck extends Accessory {
         this.numCards = pathToFrontImage.length;
         hidden = true;
         shuffleCards();
+        this.setAction(accessory -> pickCard());
     }
 
     /**
@@ -37,7 +39,7 @@ public class CardDeck extends Accessory {
      * If the user clicks on the card deck and the card on top is facing down, it shows the card.
      * Otherwise it will take out the card on top.
      */
-    public void onClick() {
+    private void pickCard() {
         if(hidden){
             this.setPathToImage(pathToFrontImage[numCards - 1]);
             hidden = false;
@@ -46,5 +48,10 @@ public class CardDeck extends Accessory {
             numCards--;
             hidden = true;
         }
+    }
+
+    @Override
+    public AccessoryType getAccessoryType() {
+        return BasicAccessoryType.CardDeck;
     }
 }
