@@ -56,8 +56,8 @@ public class BunnyLayout implements BoardLayout {
         fieldArrayList.add(new Field(650, 660));
         fieldArrayList.add(new Field(550, 680));
         fieldArrayList.add(new Field(450, 700));
-        fieldArrayList.add(new Field(350, 680));
-        fieldArrayList.add(new Field(250, 660));
+        fieldArrayList.add(new Field(350, 700));
+        fieldArrayList.add(new Field(250, 700));
         fieldArrayList.add(new Field(150, 680));
         fieldArrayList.add(new Field(70, 620));
         fieldArrayList.add(new Field(50, 520));
