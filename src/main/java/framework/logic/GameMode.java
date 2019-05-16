@@ -1,5 +1,7 @@
 package framework.logic;
 
+import framework.data.Board;
+
 import java.util.ArrayList;
 
 /**
@@ -21,9 +23,11 @@ public interface GameMode {
 
     /**
      * Returns the list with all ruleset, each corresponding to one Action in a turn.
-     * @return ArrayList with RuleSet.
+     * @return ArrayList with Rule.
      */
-    ArrayList<RuleSet> getRuleSets();
+    ArrayList<Rule> getRuleSets();
+
+    Board getBoard();
 
     //@TODO More strategy methods, for example ruleset.
 

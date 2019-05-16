@@ -33,11 +33,11 @@ public class GameApplication extends Application {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             throw new IllegalArgumentException("The classname " + launchArgs + " was not found. Please provide a valid configuration class");
         }
-        conf.configureBoard();
-        Board board = conf.getBoard();
+        conf.configure();
+        Board board = conf.getStartBoard();
         GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
         primaryStage = graphicsEngine.drawBoard(board, primaryStage);
         primaryStage.show();
-        //@TODO main loop
+        //@TODO  game.start
     }
 }
