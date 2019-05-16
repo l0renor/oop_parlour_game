@@ -32,7 +32,7 @@ public class GraphicsEngine extends Observable {
      * @param stage the stage to draw on
      * @return the stage with the board drawn on it
      */
-    public Stage drawBoard(Board board, Stage stage) {
+    public void drawBoard(Board board, Stage stage) {
         Group root = new Group();
         Canvas background = new Canvas(board.getWidth(), board.getHeight());
         GraphicsContext graphicsContext = background.getGraphicsContext2D();
@@ -63,7 +63,7 @@ public class GraphicsEngine extends Observable {
         stage.setScene(new Scene(border));
         stage.setTitle(board.getGameName());
         stage.getIcons().add(new Image(board.getPathToIcon()));
-        return stage;
+        stage.show();
     }
 
     private void drawShapes(GraphicsContext gc, List<Accessory> accessories) {

@@ -1,10 +1,13 @@
 package framework.logic;
 
+import framework.data.Board;
 import framework.data.Point;
+import framework.data.accessories.Accessory;
 import framework.graphics.GraphicsEngine;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,6 +18,7 @@ public class Game implements Runnable, Observer {
     private int turnCounter = 0;
     private GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
     private final Stage stage;
+    private Rule activeRule;
 
     public Game(GameMode gameMode, Stage stage) {
         this.gameMode = gameMode;
@@ -44,7 +48,6 @@ public class Game implements Runnable, Observer {
     }
 
     /**
-     *
      * @param player
      */
     private void doTurn(Player player) {
@@ -60,9 +63,32 @@ public class Game implements Runnable, Observer {
     }
 
     public void update(Observable o, Object arg) {
+        //TODO automatic actions
         Point point = (Point) arg;
-        //TODO copy and change functionality from graphicsEngine
-        // get accesory from handling
-        // accesory.doAction();
+        Accessory clickedAccessory = getAccessoryByPoint(point);
+        if (clickedAccessory == null || !activeRule.getValidAccessoryTypes().contains(clickedAccessory.getAccessoryType())) {
+            return; // no valid accessory was clicked -> Game remains in the same state
+        }
+        clickedAccessory.doAction();
+
+
+    }
+
+    private void updateGame() {
+        graphicsEngine.drawBoard(gameMode.getBoard(), stage);
+    }
+
+    private Accessory getAccessoryByPoint(Point point) {
+        for (final List<Accessory> currentLayer : gameMode.getBoard().getAccessoriesByLayer()) {
+            for (Accessory accessory : currentLayer) {
+                //IF accessory was clicked call onclick
+                if ((accessory.getPosX() < point.getX() && point.getX() < (accessory.getPosX() + accessory.getWidth()))
+                        && (accessory.getPosY() < point.getY() && point.getY() < (accessory.getPosY() + accessory.getHeight()))) {
+                    return accessory;
+                }
+            }
+        }
+        return null;
     }
 }
+

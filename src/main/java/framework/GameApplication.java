@@ -36,8 +36,8 @@ public class GameApplication extends Application {
         conf.configure();
         Board board = conf.getStartBoard();
         GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
-        primaryStage = graphicsEngine.drawBoard(board, primaryStage);
-        primaryStage.show();
+        graphicsEngine.drawBoard(board, primaryStage);
+
         //@TODO  game.start
     }
 }
