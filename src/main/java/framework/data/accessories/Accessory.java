@@ -72,11 +72,12 @@ public abstract class Accessory implements Comparable<Accessory> {
 
     public abstract AccessoryType getAccessoryType();
 
-    public void setAction(Action action) {
+    public Accessory setAction(Action action) {
         this.action = action;
+        return this;
     }
 
     public void doAction() {
-        this.action.action(this);
+        this.action.action();
     }
 }
