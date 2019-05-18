@@ -5,7 +5,13 @@ import framework.logic.Player;
 
 public class BunnyGameState implements GameState {
 
+    enum CardValue {
+        ONE, TWO, THREE, CARROT
+    }
+
     private Player activePlayer;
+    private CardValue cardValue;
+
     @Override
     public Player getActivePlayer() {
         return activePlayer;
@@ -14,6 +20,14 @@ public class BunnyGameState implements GameState {
     @Override
     public void setActivePlayer(Player activePlayer) {
         this.activePlayer = activePlayer;
+    }
+
+    public CardValue getCardValue() {
+        return cardValue;
+    }
+
+    public void setCardValue(CardValue cardValue) {
+        this.cardValue = cardValue;
     }
 
 }
