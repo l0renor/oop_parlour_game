@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class BunnyConfiguration extends Configuration {
     public void configure() {
-        //setStartBoard( new BunnyLayout().createLayout());
         ArrayList<GameMode> gameModes = new ArrayList<>();
         gameModes.add(new GameMode() {
             @Override
