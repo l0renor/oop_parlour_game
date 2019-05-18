@@ -15,7 +15,6 @@ public class Dice extends Accessory {
         super(sizeX, sizeY, posX, posY, layer, pathToSides[0]);
         this.numSides = pathToSides.length;
         this.pathToSides = pathToSides;
-        this.setAction(accessory -> roll());
     }
 
     /**
@@ -26,10 +25,18 @@ public class Dice extends Accessory {
         this.setPathToImage(pathToSides[currentValue-1]);
     }
 
+    /**
+     * @return current value of the dice
+     */
     public int getCurrentValue() {
         return currentValue;
     }
 
+
+    /**
+     * @return type of the accessory
+     */
+    @Override
     public AccessoryType getAccessoryType() {
         return BasicAccessoryType.DICE;
     }

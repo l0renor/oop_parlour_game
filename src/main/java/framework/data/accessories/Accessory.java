@@ -2,6 +2,7 @@ package framework.data.accessories;
 
 import framework.logic.AccessoryType;
 import framework.logic.Action;
+import framework.logic.Player;
 
 public abstract class Accessory implements Comparable<Accessory> {
 
@@ -10,15 +11,7 @@ public abstract class Accessory implements Comparable<Accessory> {
     private int posX;
     private int posY;
     private Action action;
-
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
-    }
-
+    private Player player;
     private int layer;
     private String pathToImage;
 
@@ -29,8 +22,30 @@ public abstract class Accessory implements Comparable<Accessory> {
         this.posY = posY;
         this.layer = layer;
         this.pathToImage = pathToImage;
+        this.player = null;
     }
 
+
+    /**
+     * @precondition player is not null
+     * @return player assigned to the Accessory
+     *
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player){
+        this.player = player;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
 
     public int getWidth() {
         return width;

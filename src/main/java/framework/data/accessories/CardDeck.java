@@ -20,7 +20,6 @@ public class CardDeck extends Accessory {
         this.numCards = pathToFrontImage.length;
         hidden = true;
         shuffleCards();
-        this.setAction(accessory -> pickCard());
         Random randGen = new Random();
     }
 
@@ -40,7 +39,7 @@ public class CardDeck extends Accessory {
      * If the user clicks on the card deck and the card on top is facing down, it shows the card.
      * Otherwise it will take out the card on top.
      */
-    private void pickCard() {
+    public void pickCard() {
         if (hidden) {
             this.setPathToImage(pathToFrontImage[numCards - 1]);
             hidden = false;
