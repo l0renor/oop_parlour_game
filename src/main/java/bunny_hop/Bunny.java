@@ -11,7 +11,7 @@ public class Bunny extends Accessory {
 
     private int startPosX;
     private int startPosY;
-    private int fieldNumber;
+    private int fieldNumber = 0;
 
     public Bunny(int startPosX, int startPosY, BunnyColor bunnyColor) {
         super(60, 60, startPosX, startPosY, 2, "");
@@ -41,5 +41,13 @@ public class Bunny extends Accessory {
     public void resetToStartPos() {
         setPosX(startPosX);
         setPosY(startPosY);
+    }
+
+    public int getFieldNumber() {
+        return fieldNumber;
+    }
+
+    public void setFieldNumber(int fieldNumber) {
+        this.fieldNumber = fieldNumber;
     }
 }
