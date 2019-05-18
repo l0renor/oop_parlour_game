@@ -33,4 +33,6 @@ public interface GameMode {
 
     String getName();
 
+    String getModeDescription();
+
 }

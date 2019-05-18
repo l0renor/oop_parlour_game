@@ -15,7 +15,7 @@ public class Dice extends Accessory {
         super(sizeX, sizeY, posX, posY, layer, pathToSides[0]);
         this.numSides = pathToSides.length;
         this.pathToSides = pathToSides;
-        this.setAction(accessory -> roll());
+        //this.setAction(accessory -> roll());
     }
 
     /**

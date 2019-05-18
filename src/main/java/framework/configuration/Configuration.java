@@ -6,8 +6,9 @@ import framework.logic.GameMode;
 import java.util.ArrayList;
 
 public abstract class Configuration {
-    private Board startBoard;
+
     private ArrayList<GameMode> gameModes;
+    private String StartScreenbackground;
 
 
 
@@ -22,12 +23,7 @@ public abstract class Configuration {
     public void setGameModes(ArrayList<GameMode> gameModes) {
         this.gameModes = gameModes;
     }
+    public String getStartScreenbackground() { return StartScreenbackground; }
+    public void setStartScreenbackground(String startScreenbackground) { StartScreenbackground = startScreenbackground; }
 
-    public Board getStartBoard() {
-        return startBoard;
-    }
-
-    public void setStartBoard(Board startBoard) {
-        this.startBoard = startBoard;
-    }
 }

@@ -1,10 +1,19 @@
 package framework;
 
 import framework.configuration.Configuration;
-import framework.data.Board;
 import framework.graphics.GraphicsEngine;
+import framework.logic.GameMode;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 /**
  * Java FX Application Class to run the game.
@@ -12,9 +21,10 @@ import javafx.stage.Stage;
  */
 public class GameApplication extends Application {
     private static String launchArgs; //name of the configuration class
+    private static GameMode selectedGameMode;
 
     public static void main(String[] args) {
-        if(args.length == 1){
+        if (args.length == 1) {
             launchArgs = args[0];
             launch(args);
         } else {
@@ -23,7 +33,7 @@ public class GameApplication extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage) throws InterruptedException {
 
         Class<Configuration> configurationClass = null;
         Configuration conf = null;
@@ -34,10 +44,39 @@ public class GameApplication extends Application {
             throw new IllegalArgumentException("The classname " + launchArgs + " was not found. Please provide a valid configuration class");
         }
         conf.configure();
-        Board board = conf.getStartBoard();
-        GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
-        graphicsEngine.drawBoard(board, primaryStage);
+        ArrayList<GameMode> gameModes = conf.getGameModes();
+        runFromStartscreen(gameModes,primaryStage,conf.getStartScreenbackground());
 
-        //@TODO  game.start
+
+
+    }
+
+    private void runFromStartscreen(ArrayList<GameMode> gameModes, Stage s,String pathToBackground) {
+        s.setTitle("creating buttons");
+        VBox vBox = new VBox(gameModes.size());
+        vBox.setPadding(new Insets(120,0,0,15));
+
+        for (GameMode mode : gameModes) {
+            Button b = new Button(mode.getName());
+            b.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    selectedGameMode = mode;
+                    launchGame(mode,s);
+                }
+            });
+            vBox.getChildren().add(b);
+        }
+        Image i = new Image(pathToBackground);
+
+
+        vBox.setBackground(new Background(new BackgroundImage(i,null,null ,null,new BackgroundSize(500,700,false,false,false,false))));
+        Scene sc = new Scene(vBox, 500, 700);
+        s.setScene(sc);
+        s.show();
+    }
+    private void launchGame(GameMode gameMode,Stage s){
+        GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
+        graphicsEngine.drawBoard(gameMode.getBoard(), s);
     }
 }

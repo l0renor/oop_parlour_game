@@ -20,7 +20,7 @@ public class CardDeck extends Accessory {
         this.numCards = pathToFrontImage.length;
         hidden = true;
         shuffleCards();
-        this.setAction(accessory -> pickCard());
+        //this.setAction(accessory -> pickCard());
         Random randGen = new Random();
     }
 
