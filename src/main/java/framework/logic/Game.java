@@ -12,7 +12,7 @@ import java.util.Observer;
 
 public class Game implements Runnable, Observer {
 
-    private ArrayList<Player> players = new ArrayList<Player>();
+    private ArrayList<Player> players = new ArrayList<>();
     private GameMode gameMode;
     private GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
     private final Stage stage;
@@ -80,8 +80,8 @@ public class Game implements Runnable, Observer {
     }
 
     private Accessory getAccessoryByPoint(Point point) {
-        for (final List<Accessory> currentLayer : gameMode.getBoard().getAccessoriesByLayer()) {
-            for (Accessory accessory : currentLayer) {
+        for (final List<Accessory> layer : gameMode.getBoard().getAccessoriesByLayer()) {
+            for (Accessory accessory : layer) {
                 if ((accessory.getPosX() < point.getX() && point.getX() < (accessory.getPosX() + accessory.getWidth()))
                         && (accessory.getPosY() < point.getY() && point.getY() < (accessory.getPosY() + accessory.getHeight()))) {
                     return accessory;

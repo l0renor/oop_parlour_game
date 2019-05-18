@@ -29,6 +29,4 @@ public interface GameMode {
 
     Board getBoard();
 
-    //@TODO More strategy methods, for example ruleset.
-
 }
