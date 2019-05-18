@@ -94,6 +94,9 @@ public class Board {
         this.infoText = infoText;
     }
 
+    public void appendToInfoText(String toAppend) {
+        this.infoText += "\n" + toAppend;
+    }
 
     /**
      * Adds an accessorie to the gameboard.     *

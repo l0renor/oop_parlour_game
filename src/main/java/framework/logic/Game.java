@@ -1,6 +1,5 @@
 package framework.logic;
 
-import framework.data.Board;
 import framework.data.Point;
 import framework.data.accessories.Accessory;
 import framework.graphics.GraphicsEngine;
@@ -15,10 +14,10 @@ public class Game implements Runnable, Observer {
 
     private ArrayList<Player> players = new ArrayList<Player>();
     private GameMode gameMode;
-    private int turnCounter = 0;
     private GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
     private final Stage stage;
-    private Rule activeRule;
+    private int activeRule;
+    private int activePlayer;
 
     public Game(GameMode gameMode, Stage stage) {
         this.gameMode = gameMode;
@@ -40,11 +39,7 @@ public class Game implements Runnable, Observer {
      * Runs the game itself.
      */
     public void run() {
-        while (true) {
-            Player activePlayer = players.get(turnCounter % gameMode.getNumberOfPlayers());
-            doTurn(activePlayer);
-            turnCounter++;
-        }
+
     }
 
     /**
@@ -55,7 +50,7 @@ public class Game implements Runnable, Observer {
         // Notify player about changes
 
         // Action handling below
-        for (Rule rule : gameMode.getRuleSets()) {
+        for (Rule rule : gameMode.getRules()) {
             ArrayList<AccessoryType> validAccessoryTypes = rule.getValidAccessoryTypes();
         }
         //Change of structure after turn actions.
@@ -66,22 +61,27 @@ public class Game implements Runnable, Observer {
         //TODO automatic actions
         Point point = (Point) arg;
         Accessory clickedAccessory = getAccessoryByPoint(point);
-        if (clickedAccessory == null || !activeRule.getValidAccessoryTypes().contains(clickedAccessory.getAccessoryType())) {
+        if (clickedAccessory == null || !gameMode.getRules().get(activeRule).getValidAccessoryTypes().contains(clickedAccessory.getAccessoryType())) {
             return; // no valid accessory was clicked -> Game remains in the same state
         }
         clickedAccessory.doAction();
-
-
+        updateGame();
     }
 
     private void updateGame() {
+        activeRule = activeRule + 1 % gameMode.getRules().size();
+        if (activeRule == 0) {
+            do {
+                activePlayer = activePlayer + 1 % gameMode.getNumberOfPlayers();
+            } while (players.get(activePlayer).isOut());
+            gameMode.getBoard().appendToInfoText(String.format("It's %s's turn!", players.get(activePlayer).getName()));
+        }
         graphicsEngine.drawBoard(gameMode.getBoard(), stage);
     }
 
     private Accessory getAccessoryByPoint(Point point) {
         for (final List<Accessory> currentLayer : gameMode.getBoard().getAccessoriesByLayer()) {
             for (Accessory accessory : currentLayer) {
-                //IF accessory was clicked call onclick
                 if ((accessory.getPosX() < point.getX() && point.getX() < (accessory.getPosX() + accessory.getWidth()))
                         && (accessory.getPosY() < point.getY() && point.getY() < (accessory.getPosY() + accessory.getHeight()))) {
                     return accessory;

@@ -25,7 +25,7 @@ public interface GameMode {
      * Returns the list with all ruleset, each corresponding to one Action in a turn.
      * @return ArrayList with Rule.
      */
-    ArrayList<Rule> getRuleSets();
+    ArrayList<Rule> getRules();
 
     Board getBoard();
 
