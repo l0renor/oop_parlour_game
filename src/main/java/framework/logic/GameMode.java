@@ -29,4 +29,8 @@ public interface GameMode {
 
     Board getBoard();
 
+    GameState getGameState();
+
+    String getName();
+
 }
