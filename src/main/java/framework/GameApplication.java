@@ -54,7 +54,7 @@ public class GameApplication extends Application {
     private void runFromStartscreen(ArrayList<GameMode> gameModes, Stage s,String pathToBackground) {
         s.setTitle("creating buttons");
         VBox vBox = new VBox(gameModes.size());
-        vBox.setPadding(new Insets(120,0,0,15));
+        vBox.setPadding(new Insets(145,0,0,15));
 
         for (GameMode mode : gameModes) {
             Button b = new Button(mode.getName());
@@ -70,8 +70,8 @@ public class GameApplication extends Application {
         Image i = new Image(pathToBackground);
 
 
-        vBox.setBackground(new Background(new BackgroundImage(i,null,null ,null,new BackgroundSize(500,700,false,false,false,false))));
-        Scene sc = new Scene(vBox, 500, 700);
+        vBox.setBackground(new Background(new BackgroundImage(i,null,null ,null,new BackgroundSize(gameModes.get(0).getBoard().getWidth(),gameModes.get(0).getBoard().getHeight(),false,false,false,false))));
+        Scene sc = new Scene(vBox, gameModes.get(0).getBoard().getWidth(), gameModes.get(0).getBoard().getHeight());
         s.setScene(sc);
         s.show();
     }
