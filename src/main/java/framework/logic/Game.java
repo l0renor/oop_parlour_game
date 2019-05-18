@@ -69,10 +69,10 @@ public class Game implements Runnable, Observer {
     }
 
     private void updateGame() {
-        activeRule = activeRule + 1 % gameMode.getRules().size();
+        activeRule = (activeRule + 1) % gameMode.getRules().size();
         if (activeRule == 0) {
             do {
-                activePlayer = activePlayer + 1 % gameMode.getNumberOfPlayers();
+                activePlayer = (activePlayer + 1) % gameMode.getNumberOfPlayers();
             } while (players.get(activePlayer).isOut());
             gameMode.getBoard().appendToInfoText(String.format("It's %s's turn!", players.get(activePlayer).getName()));
         }
