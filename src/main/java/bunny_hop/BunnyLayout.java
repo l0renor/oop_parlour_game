@@ -15,7 +15,6 @@ public class BunnyLayout implements BoardLayout {
         board.setInfoText("LEON WHY SO MANY CLASSES?!");
 
         board.addAccessory(new Carrot(600, 475));
-
         board.addAccessory(new Bunny(0, 0, Bunny.BunnyColor.PINK));
         board.addAccessory(new Bunny(0, 65, Bunny.BunnyColor.PINK));
         board.addAccessory(new Bunny(0, 130, Bunny.BunnyColor.PINK));

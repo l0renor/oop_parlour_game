@@ -2,6 +2,7 @@ package framework;
 
 import framework.configuration.Configuration;
 import framework.graphics.GraphicsEngine;
+import framework.logic.Game;
 import framework.logic.GameMode;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -16,7 +17,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 /**
- * Java FX Application Class to run the game.
+ * Java FX Application Class to start the game.
  * The configuration is passed in as a String argument.
  */
 public class GameApplication extends Application {
@@ -52,7 +53,7 @@ public class GameApplication extends Application {
     }
 
     private void runFromStartscreen(ArrayList<GameMode> gameModes, Stage s,String pathToBackground) {
-        s.setTitle("creating buttons");
+        s.setTitle("Choose Gamemode");
         VBox vBox = new VBox(gameModes.size());
         vBox.setPadding(new Insets(145,0,0,15));
 
@@ -76,7 +77,9 @@ public class GameApplication extends Application {
         s.show();
     }
     private void launchGame(GameMode gameMode,Stage s){
-        GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
-        graphicsEngine.drawBoard(gameMode.getBoard(), s);
+        Game game = new Game(gameMode,s);
+//        GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
+//        graphicsEngine.drawBoard(gameMode.getBoard(), s);
+
     }
 }

@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Game implements Runnable, Observer {
+public class Game implements Observer {
 
-    private ArrayList<Player> players = new ArrayList<>();
+
     private GameMode gameMode;
     private GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
     private final Stage stage;
@@ -23,24 +23,15 @@ public class Game implements Runnable, Observer {
         this.gameMode = gameMode;
         this.stage = stage;
         this.graphicsEngine.addObserver(this);
-        addPlayers();
-    }
+        activeRule = 0;
+        activePlayer = 0;
+        gameMode.getBoard().appendToInfoText(String.format("It's %s's turn!", gameMode.getPlayers().get(activePlayer).getName()));
+        graphicsEngine.drawBoard(gameMode.getBoard(), stage);
 
-    /**
-     * Adds all the players by letting the gameMode construct them.
-     */
-    private void addPlayers() {
-        for (int i = 0; i < gameMode.getNumberOfPlayers(); i++) {
-            players.add(gameMode.constructPlayer());
-        }
-    }
-
-    /**
-     * Runs the game itself.
-     */
-    public void run() {
 
     }
+
+
 
     /**
      * @param player
@@ -58,7 +49,7 @@ public class Game implements Runnable, Observer {
     }
 
     public void update(Observable o, Object arg) {
-        //TODO automatic actions
+        //TODO automatic actions just call update game or add to previous action?
         Point point = (Point) arg;
         Accessory clickedAccessory = getAccessoryByPoint(point);
         if (clickedAccessory == null || !gameMode.getRules().get(activeRule).getValidAccessoryTypes().contains(clickedAccessory.getAccessoryType())) {
@@ -72,9 +63,9 @@ public class Game implements Runnable, Observer {
         activeRule = (activeRule + 1) % gameMode.getRules().size();
         if (activeRule == 0) {
             do {
-                activePlayer = (activePlayer + 1) % gameMode.getNumberOfPlayers();
-            } while (players.get(activePlayer).isOut());
-            gameMode.getBoard().appendToInfoText(String.format("It's %s's turn!", players.get(activePlayer).getName()));
+                activePlayer = (activePlayer + 1) % gameMode.getPlayers().size();
+            } while (gameMode.getPlayers().get(activePlayer).isOut());
+            gameMode.getBoard().appendToInfoText(String.format("It's %s's turn!", gameMode.getPlayers().get(activePlayer).getName()));
         }
         graphicsEngine.drawBoard(gameMode.getBoard(), stage);
     }

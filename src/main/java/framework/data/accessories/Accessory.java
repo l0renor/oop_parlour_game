@@ -35,8 +35,9 @@ public abstract class Accessory implements Comparable<Accessory> {
         return player;
     }
 
-    public void setPlayer(Player player){
+    public Accessory setPlayer(Player player){
         this.player = player;
+        return this;
     }
 
     public void setPosX(int posX) {

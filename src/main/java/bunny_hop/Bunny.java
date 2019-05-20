@@ -12,11 +12,13 @@ public class Bunny extends Accessory {
     private int startPosX;
     private int startPosY;
     private int fieldNumber = 0;
+    private BunnyColor bunnyColor;
 
     public Bunny(int startPosX, int startPosY, BunnyColor bunnyColor) {
         super(60, 60, startPosX, startPosY, 2, "");
         this.startPosX = startPosX;
         this.startPosY = startPosY;
+        this.bunnyColor = bunnyColor;
         switch (bunnyColor) {
             case RED:
                 setPathToImage("file:src/resources/bunny_hop/bunny_red.png");
@@ -49,5 +51,9 @@ public class Bunny extends Accessory {
 
     public void setFieldNumber(int fieldNumber) {
         this.fieldNumber = fieldNumber;
+    }
+
+    public BunnyColor getBunnyColor() {
+        return bunnyColor;
     }
 }

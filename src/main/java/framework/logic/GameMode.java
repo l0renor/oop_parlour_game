@@ -9,20 +9,11 @@ import java.util.ArrayList;
  */
 public interface GameMode {
 
-    /**
-     * Indicates the set number of players for the individual game mode.
-     * @return number of players as 'int'.
-     */
-    int getNumberOfPlayers();
-
-    /**
-     * Constructs a player, can be inheriting class from Player.
-     * @return constructed Player object.
-     */
-    Player constructPlayer();
+    ArrayList<Player> getPlayers();
 
     /**
      * Returns the list with all ruleset, each corresponding to one Action in a turn.
+     *
      * @return ArrayList with Rule.
      */
     ArrayList<Rule> getRules();
@@ -33,6 +24,5 @@ public interface GameMode {
 
     String getName();
 
-    String getModeDescription();
 
 }
