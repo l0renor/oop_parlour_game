@@ -80,7 +80,7 @@ public class CardMoveRule implements Rule {
 
         }
 
-        for(Accessory accessory : board.getAccessoriesByLayer().get(1)){
+        for(Accessory accessory : board.getAccessoriesByLayer().get(2)){
             if(accessory.getAccessoryType() == BasicAccessoryType.CARD_DECK){
                 CardDeck cardDeck = (CardDeck) accessory;
                 cardDeck.pickCard();
