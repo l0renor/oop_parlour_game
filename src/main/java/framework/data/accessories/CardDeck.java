@@ -47,4 +47,5 @@ public class CardDeck extends Accessory {
     public AccessoryType getAccessoryType() {
         return BasicAccessoryType.CARD_DECK;
     }
+
 }
