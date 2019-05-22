@@ -29,7 +29,7 @@ public class GameApplication extends Application {
             launchArgs = args[0];
             launch(args);
         } else {
-            throw new IllegalArgumentException("Please provide 1 arguement,the name of the configuration Class");
+            throw new IllegalArgumentException("Please provide 1 argument: the name of the configuration Class");
         }
     }
 
@@ -76,6 +76,7 @@ public class GameApplication extends Application {
         s.setScene(sc);
         s.show();
     }
+
     private void launchGame(GameMode gameMode,Stage s){
         Game game = new Game(gameMode,s);
 //        GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();

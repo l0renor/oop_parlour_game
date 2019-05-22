@@ -2,6 +2,7 @@ package bunny_hop;
 
 import framework.configuration.BoardLayout;
 import framework.data.Board;
+import framework.data.accessories.CardDeck;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,10 @@ public class BunnyLayout implements BoardLayout {
         board.addAccessory(new Bunny(195, 65, Bunny.BunnyColor.CYAN));
         board.addAccessory(new Bunny(195, 130, Bunny.BunnyColor.CYAN));
         board.addAccessory(new Bunny(195, 195, Bunny.BunnyColor.CYAN));
+
+        String pathToCards[] = new  String[]{"file:scr/resources/bunny_hop/cards/carrot.png", "file:scr/resources/bunny_hop/cards/one.png", "file:scr/resources/bunny_hop/cards/two.png", "file:scr/resources/bunny_hop/cards/three.png"};
+
+        board.addAccessory(new CardDeck(30, 50, 100, 100, 1, pathToCards, "file:scr/resources/bunny_hop/cards/back_of_card.png"));
 
         ArrayList<Field> fieldArrayList = new ArrayList<>();
         fieldArrayList.add(new Field(350, 100));
