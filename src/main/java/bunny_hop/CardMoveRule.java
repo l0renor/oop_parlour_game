@@ -2,7 +2,9 @@ package bunny_hop;
 
 import framework.data.Board;
 import framework.data.accessories.Accessory;
+import framework.data.accessories.CardDeck;
 import framework.logic.AccessoryType;
+import framework.logic.BasicAccessoryType;
 import framework.logic.GameState;
 import framework.logic.Rule;
 
@@ -76,6 +78,13 @@ public class CardMoveRule implements Rule {
                 }
             }
 
+        }
+
+        for(Accessory accessory : board.getAccessoriesByLayer().get(1)){
+            if(accessory.getAccessoryType() == BasicAccessoryType.CARD_DECK){
+                CardDeck cardDeck = (CardDeck) accessory;
+                cardDeck.pickCard();
+            }
         }
 
     }
