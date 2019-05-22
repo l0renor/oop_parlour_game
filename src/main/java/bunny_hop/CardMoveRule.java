@@ -37,17 +37,24 @@ public class CardMoveRule implements Rule {
             for (Accessory accessory : board.getAccessoriesByLayer().get(1)) {
                 if (accessory.getAccessoryType() == BunnyGameAccessoryType.CARROT) {
                     accessory.setAction(() -> {
+                        for (Accessory accLayer1 : board.getAccessoriesByLayer().get(1)) {
+                            if (accLayer1.getAccessoryType() == BunnyGameAccessoryType.FIELD) {
+                                Field field = (Field) accLayer1;
+                                if (field.isOpen()) field.setOpen(false);
+                            }
+                        }
+
                         int firstHole = random.nextInt(board.getAccessoriesByLayer().get(1).size() - 1) + 1;
                         int secHole = random.nextInt(board.getAccessoriesByLayer().get(1).size() - 1) + 1;
                         Field firstField = (Field) board.getAccessoriesByLayer().get(1).get(firstHole);
-                        firstField.setOpen(false);
+                        firstField.setOpen(true);
                         Field secField = (Field) board.getAccessoriesByLayer().get(1).get(secHole);
-                        secField.setOpen(false);
+                        secField.setOpen(true);
 
-                        for(Accessory accLayer2 : board.getAccessoriesByLayer().get(2)){
-                            if(accLayer2.getAccessoryType() == BunnyGameAccessoryType.BUNNY){
+                        for (Accessory accLayer2 : board.getAccessoriesByLayer().get(2)) {
+                            if (accLayer2.getAccessoryType() == BunnyGameAccessoryType.BUNNY) {
                                 Bunny bunny = (Bunny) accLayer2;
-                                if(bunny.getFieldNumber() == firstHole || bunny.getFieldNumber() == secHole){
+                                if (bunny.getFieldNumber() == firstHole || bunny.getFieldNumber() == secHole) {
                                     bunny.resetToStartPos();
                                 }
                             }
@@ -73,10 +80,11 @@ public class CardMoveRule implements Rule {
 
     }
 
-    private void resetActions(Board board){
+    private void resetActions(Board board) {
         for (final List<Accessory> layer : board.getAccessoriesByLayer()) {
             for (Accessory accessory : layer) {
-                accessory.setAction(() -> {});
+                accessory.setAction(() -> {
+                });
             }
         }
     }
