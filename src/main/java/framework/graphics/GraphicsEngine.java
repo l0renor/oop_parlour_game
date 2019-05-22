@@ -46,8 +46,8 @@ public class GraphicsEngine extends Observable {
             if (currentLayernum == board.getNumLayers() + 1) { //only top layer need event handler
                 canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,
                         e -> {
+                            setChanged();
                             notifyObservers(new Point(e.getSceneX(),e.getSceneY()));
-                            System.out.println("Observer was notified");
                         });
             }
             GraphicsContext layerGc = canvas.getGraphicsContext2D();
@@ -75,12 +75,3 @@ public class GraphicsEngine extends Observable {
 
 
 }
-
-   /*
-      @TODO add this to logic
-      for (final List<Accessory> currentLayer : board.getAccessoriesByLayer()) {
-        for (Accessory accessorie : currentLayer) {
-        //IF accessorie was clicked call onclick
-        if ((accessorie.getPosX() < e.getSceneX() && e.getSceneX() < (accessorie.getPosX() + accessorie.getWidth()))
-        && (accessorie.getPosY() < e.getSceneY() && e.getSceneY() < (accessorie.getPosY() + accessorie.getHeight()))) {
-        accessorie.onClick();*/

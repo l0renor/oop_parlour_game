@@ -34,7 +34,7 @@ public class Game implements Observer {
         //TODO PROBABLE ERROR WHEN ACCESSORY OF OTHER PLAYER IS CLICKED.
         if (clickedAccessory == null || !gameMode.getRules().get(activeRule).getValidAccessoryTypes().contains(clickedAccessory.getAccessoryType())) {
             return; // no valid accessory was clicked -> Game remains in the same state
-        } 
+        }
         clickedAccessory.doAction();
         updateGame();
     }

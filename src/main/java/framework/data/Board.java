@@ -62,7 +62,9 @@ public class Board {
         return pathToBackground;
     }
 
-    public String getPathToIcon() { return pathToIcon; }
+    public String getPathToIcon() {
+        return pathToIcon;
+    }
 
     public List<ArrayList<Accessory>> getAccessoriesByLayer() {
         return accessoriesByLayer;
@@ -105,13 +107,23 @@ public class Board {
      * @return boolean  if sucsess
      */
     public boolean addAccessory(Accessory a) {
-        //@TODO check overlapp on one layer -> is not allowed
         if (a.getLayer() > numLayers) {
             return false; //@TODO exception?
         } else if (a.getPosX() + a.getWidth() > width || a.getPosY() + a.getHeight() > height) {
             return false;
         }
-        return accessoriesByLayer.get(a.getLayer()).add(a); //add accessorie to the right layer
+
+        for (Accessory accessorie : accessoriesByLayer.get(a.getLayer())) {
+            if (in(a, new Point(accessorie.getPosX(), accessorie.getPosY())) || in(a, new Point(accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY())) ||
+                    in(a, new Point(accessorie.getPosX(), accessorie.getPosY() + accessorie.getHeight())) || in(a, new Point(accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY() + accessorie.getHeight()))
+            ||in(accessorie, new Point(a.getPosX(), a.getPosY())) || in(accessorie, new Point(a.getPosX() + a.getWidth(), a.getPosY())) ||
+                    in(accessorie, new Point(a.getPosX(), a.getPosY() + a.getHeight())) || in(accessorie, new Point(a.getPosX() + a.getWidth(), a.getPosY() + a.getHeight()))
+            )
+            {
+                return false;
+            }
+        }
+        return accessoriesByLayer.get(a.getLayer()).add(a);
     }
 
     /**
@@ -122,6 +134,13 @@ public class Board {
      */
     public int getNumLayers() {
         return numLayers;
+    }
+
+    private boolean in(Accessory a, Point p) {
+        if (p.getX() > a.getPosX() && p.getX() < a.getPosX() + a.getWidth() && p.getY() > a.getPosY() && p.getY() < a.getPosY() + a.getHeight()) {
+            return true;
+        }
+        return false;
     }
 
 }
