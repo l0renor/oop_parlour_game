@@ -11,7 +11,7 @@ public class CardDeck extends Accessory {
     private String[] pathToFrontImage;
     private int numCards;
     private boolean hidden;
-    Random randGen;
+    private Random random;
 
     public CardDeck(int sizeX, int sizeY, int posX, int posY, int layer, String[] pathToFrontImage, String pathToBackImage) {
         super(sizeX, sizeY, posX, posY, layer, pathToBackImage);
@@ -19,8 +19,8 @@ public class CardDeck extends Accessory {
         this.pathToFrontImage = pathToFrontImage;
         this.numCards = pathToFrontImage.length;
         hidden = true;
+        random = new Random();
         shuffleCards();
-        Random randGen = new Random();
     }
 
     /**
@@ -28,7 +28,7 @@ public class CardDeck extends Accessory {
      */
     private void shuffleCards() {
         for (int i = 0; i < numCards; i++) {
-            int randNum = randGen.nextInt(numCards);
+            int randNum = random.nextInt(numCards);
             String temp = pathToFrontImage[i];
             pathToFrontImage[i] = pathToFrontImage[randNum];
             pathToFrontImage[randNum] = temp;
