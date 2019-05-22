@@ -38,7 +38,7 @@ public class BunnyLayout implements BoardLayout {
 
         String pathToCards[] = new  String[]{"file:scr/resources/bunny_hop/cards/carrot.png", "file:scr/resources/bunny_hop/cards/one.png", "file:scr/resources/bunny_hop/cards/two.png", "file:scr/resources/bunny_hop/cards/three.png"};
 
-        board.addAccessory(new CardDeck(30, 50, 100, 100, 1, pathToCards, "file:scr/resources/bunny_hop/cards/back_of_card.png"));
+        board.addAccessory(new CardDeck(30, 50, 100, 100, 1, 300, pathToCards, "file:scr/resources/bunny_hop/cards/back_of_card.png"));
 
         ArrayList<Field> fieldArrayList = new ArrayList<>();
         fieldArrayList.add(new Field(350, 100));

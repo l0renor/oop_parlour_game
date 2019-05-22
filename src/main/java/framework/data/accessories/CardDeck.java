@@ -3,50 +3,43 @@ package framework.data.accessories;
 import framework.logic.AccessoryType;
 import framework.logic.BasicAccessoryType;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
+import java.util.Stack;
 
 public class CardDeck extends Accessory {
 
     private String pathToBackImage;
     private String[] pathToFrontImage;
-    private int numCards;
+    private Stack<Integer> cardOrder = new Stack<>();
     private boolean hidden;
-    private Random random;
 
-    public CardDeck(int sizeX, int sizeY, int posX, int posY, int layer, String[] pathToFrontImage, String pathToBackImage) {
+    public CardDeck(int sizeX, int sizeY, int posX, int posY, int layer, int numberOfCards, String[] pathToFrontImage, String pathToBackImage) {
         super(sizeX, sizeY, posX, posY, layer, pathToBackImage);
         this.pathToBackImage = pathToBackImage;
         this.pathToFrontImage = pathToFrontImage;
-        this.numCards = pathToFrontImage.length;
-        hidden = true;
-        random = new Random();
-        shuffleCards();
-    }
-
-    /**
-     * Shuffles the card deck before the game starts
-     */
-    private void shuffleCards() {
-        for (int i = 0; i < numCards; i++) {
-            int randNum = random.nextInt(numCards);
-            String temp = pathToFrontImage[i];
-            pathToFrontImage[i] = pathToFrontImage[randNum];
-            pathToFrontImage[randNum] = temp;
+        this.hidden = true;
+        for (int i = 0; i < numberOfCards; i++) {
+            cardOrder.add(i % (pathToFrontImage.length - 1));
         }
+        Collections.shuffle(cardOrder);
     }
 
     /**
      * If the user clicks on the card deck and the card on top is facing down, it shows the card.
      * Otherwise it will take out the card on top.
      */
-    public void pickCard() {
+    public int pickCard() {
         if (hidden) {
-            this.setPathToImage(pathToFrontImage[numCards - 1]);
             hidden = false;
+            int cardValue = cardOrder.pop();
+            this.setPathToImage(pathToFrontImage[cardValue]);
+            return cardValue;
         } else {
-            this.setPathToImage(pathToBackImage);
-            numCards--;
             hidden = true;
+            this.setPathToImage(pathToBackImage);
+            return -1;
         }
     }
 

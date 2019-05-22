@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DrawCardRule implements Rule {
 
-    ArrayList<AccessoryType> validAccessoryTypes;
+    private ArrayList<AccessoryType> validAccessoryTypes;
 
     public DrawCardRule(){
         validAccessoryTypes = new ArrayList<>();
@@ -28,11 +28,18 @@ public class DrawCardRule implements Rule {
     @Override
     public void setValidActions(GameState state, Board board) {
         resetActions(board);
+        BunnyGameState bunnyGameState = (BunnyGameState) state;
         for(Accessory accessory : board.getAccessoriesByLayer().get(2)){
             if(accessory.getAccessoryType() == BasicAccessoryType.CARD_DECK){
                 CardDeck cardDeck = (CardDeck) accessory;
                 cardDeck.setAction(() -> {
-                    cardDeck.pickCard();
+                    int cardValueNumber = cardDeck.pickCard();
+                    for (BunnyGameState.CardValue cardValue : BunnyGameState.CardValue.values()) {
+                        if (cardValue.getNumber() == cardValueNumber) {
+                            bunnyGameState.setCardValue(cardValue);
+                            break;
+                        }
+                    }
                 });
             }
         }

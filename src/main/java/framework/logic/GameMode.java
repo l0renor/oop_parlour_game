@@ -18,10 +18,22 @@ public interface GameMode {
      */
     ArrayList<Rule> getRules();
 
+    /**
+     *
+     * @return
+     */
     Board getBoard();
 
+    /**
+     *
+     * @return
+     */
     GameState getGameState();
 
+    /**
+     *
+     * @return
+     */
     String getName();
 
 
