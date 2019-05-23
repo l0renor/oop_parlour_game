@@ -71,6 +71,7 @@ public class CardMoveRule implements Rule {
 
         } else {
             //TODO this has to work, Bunny has to move
+            //TODO bunny has to skip occupied fields
             for (Accessory accessory : board.getAccessoriesByLayer().get(2)) {
                 if (accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY
                         && accessory.getPlayer() == gameState.getActivePlayer()) {
