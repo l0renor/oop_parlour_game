@@ -1,6 +1,9 @@
-package framework.logic;
+package framework.configuration;
 
 import framework.data.Board;
+import framework.logic.GameState;
+import framework.logic.Player;
+import framework.logic.Rule;
 
 import java.util.ArrayList;
 

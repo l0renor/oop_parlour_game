@@ -1,9 +1,8 @@
 package framework;
 
 import framework.configuration.Configuration;
-import framework.graphics.GraphicsEngine;
 import framework.logic.Game;
-import framework.logic.GameMode;
+import framework.configuration.GameMode;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

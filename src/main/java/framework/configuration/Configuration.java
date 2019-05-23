@@ -1,8 +1,5 @@
 package framework.configuration;
 
-import framework.data.Board;
-import framework.logic.GameMode;
-
 import java.util.ArrayList;
 
 public abstract class Configuration {

@@ -1,5 +1,6 @@
 package framework.logic;
 
+import framework.configuration.GameMode;
 import framework.data.Point;
 import framework.data.accessories.Accessory;
 import framework.graphics.GraphicsEngine;
@@ -31,8 +32,7 @@ public class Game implements Observer {
     public void update(Observable o, Object arg) {
         Point point = (Point) arg;
         Accessory clickedAccessory = getAccessoryByPoint(point);
-        //TODO PROBABLE ERROR WHEN ACCESSORY OF OTHER PLAYER IS CLICKED.
-        if (clickedAccessory == null || !gameMode.getRules().get(activeRule).getValidAccessoryTypes().contains(clickedAccessory.getAccessoryType())) {
+        if (clickedAccessory == null || !gameMode.getRules().get(activeRule).isAccessoryValid(gameMode.getGameState(), clickedAccessory)) {
             return; // no valid accessory was clicked -> Game remains in the same state
         }
         clickedAccessory.doAction();

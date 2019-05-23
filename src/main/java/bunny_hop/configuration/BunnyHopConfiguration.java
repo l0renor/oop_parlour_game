@@ -1,8 +1,8 @@
 package bunny_hop.configuration;
 
-import bunny_hop.logic.gamemode.fourPlayerGameMode;
+import bunny_hop.configuration.fourPlayers.fourPlayerGameMode;
 import framework.configuration.Configuration;
-import framework.logic.GameMode;
+import framework.configuration.GameMode;
 
 import java.util.ArrayList;
 
