@@ -1,7 +1,7 @@
 package framework.logic;
 
 /**
- * Functional interface to easily define actions for accessories using lambda statements
+ * Functional interface to easily define actions for accessories using lambda statements.
  */
 public interface Action {
 
