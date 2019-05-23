@@ -36,7 +36,7 @@ public class BunnyLayout implements BoardLayout {
         board.addAccessory(new Bunny(195, 130, Bunny.BunnyColor.CYAN));
         board.addAccessory(new Bunny(195, 195, Bunny.BunnyColor.CYAN));
 
-        String pathToCards[] = new  String[]{"file:src/resources/bunny_hop/cards/carrot.png", "file:src/resources/bunny_hop/cards/one.png", "file:src/resources/bunny_hop/cards/two.png", "file:src/resources/bunny_hop/cards/three.png"};
+        String[] pathToCards = new String[]{"file:src/resources/bunny_hop/cards/carrot.png", "file:src/resources/bunny_hop/cards/one.png", "file:src/resources/bunny_hop/cards/two.png", "file:src/resources/bunny_hop/cards/three.png"};
 
         board.addAccessory(new CardDeck(130, 230, 240, 420, 2, 300, pathToCards, "file:src/resources/bunny_hop/cards/back_of_card.png"));
 
