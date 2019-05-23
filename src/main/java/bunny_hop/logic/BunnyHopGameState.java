@@ -1,11 +1,11 @@
-package bunny_hop;
+package bunny_hop.logic;
 
 import framework.logic.GameState;
 import framework.logic.Player;
 
-public class BunnyGameState implements GameState {
+public class BunnyHopGameState implements GameState {
 
-    enum CardValue {
+    public enum CardValue {
 
         ONE(1), TWO(2), THREE(3), CARROT(0);
 

@@ -1,15 +1,12 @@
-package bunny_hop;
+package bunny_hop.configuration;
 
+import bunny_hop.logic.gamemode.fourPlayerGameMode;
 import framework.configuration.Configuration;
-import framework.data.Board;
 import framework.logic.GameMode;
-import framework.logic.GameState;
-import framework.logic.Player;
-import framework.logic.Rule;
 
 import java.util.ArrayList;
 
-public class BunnyConfiguration extends Configuration {
+public class BunnyHopConfiguration extends Configuration {
     public void configure() {
 
         ArrayList<GameMode> gameModes = new ArrayList<>();

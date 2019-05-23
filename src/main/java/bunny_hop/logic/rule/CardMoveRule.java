@@ -1,5 +1,9 @@
-package bunny_hop;
+package bunny_hop.logic.rule;
 
+import bunny_hop.accessories.Field;
+import bunny_hop.accessories.Bunny;
+import bunny_hop.logic.BunnyHopAccessoryType;
+import bunny_hop.logic.BunnyHopGameState;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
 import framework.data.accessories.CardDeck;
@@ -19,8 +23,8 @@ public class CardMoveRule implements Rule {
 
     public CardMoveRule() {
         validAccessoryTypes = new ArrayList<>();
-        validAccessoryTypes.add(BunnyGameAccessoryType.BUNNY);
-        validAccessoryTypes.add(BunnyGameAccessoryType.CARROT);
+        validAccessoryTypes.add(BunnyHopAccessoryType.BUNNY);
+        validAccessoryTypes.add(BunnyHopAccessoryType.CARROT);
         random = new Random();
     }
 
@@ -33,14 +37,14 @@ public class CardMoveRule implements Rule {
     public void setValidActions(GameState state, Board board) {
         resetActions(board);
 
-        BunnyGameState gameState = (BunnyGameState) state;
+        BunnyHopGameState gameState = (BunnyHopGameState) state;
 
-        if (gameState.getCardValue() == BunnyGameState.CardValue.CARROT) {
+        if (gameState.getCardValue() == BunnyHopGameState.CardValue.CARROT) {
             for (Accessory accessory : board.getAccessoriesByLayer().get(1)) {
-                if (accessory.getAccessoryType() == BunnyGameAccessoryType.CARROT) {
+                if (accessory.getAccessoryType() == BunnyHopAccessoryType.CARROT) {
                     accessory.setAction(() -> {
                         for (Accessory accLayer1 : board.getAccessoriesByLayer().get(1)) {
-                            if (accLayer1.getAccessoryType() == BunnyGameAccessoryType.FIELD) {
+                            if (accLayer1.getAccessoryType() == BunnyHopAccessoryType.FIELD) {
                                 Field field = (Field) accLayer1;
                                 if (field.isOpen()) field.setOpen(false);
                             }
@@ -54,7 +58,7 @@ public class CardMoveRule implements Rule {
                         secField.setOpen(true);
 
                         for (Accessory accLayer2 : board.getAccessoriesByLayer().get(2)) {
-                            if (accLayer2.getAccessoryType() == BunnyGameAccessoryType.BUNNY) {
+                            if (accLayer2.getAccessoryType() == BunnyHopAccessoryType.BUNNY) {
                                 Bunny bunny = (Bunny) accLayer2;
                                 if (bunny.getFieldNumber() == firstHole || bunny.getFieldNumber() == secHole) {
                                     bunny.resetToStartPos();
@@ -66,8 +70,9 @@ public class CardMoveRule implements Rule {
             }
 
         } else {
+            //TODO this has to work, Bunny has to move
             for (Accessory accessory : board.getAccessoriesByLayer().get(2)) {
-                if (accessory.getAccessoryType() == BunnyGameAccessoryType.BUNNY
+                if (accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY
                         && accessory.getPlayer() == gameState.getActivePlayer()) {
                     accessory.setAction(() -> {
                         Bunny bunny = (Bunny) accessory;

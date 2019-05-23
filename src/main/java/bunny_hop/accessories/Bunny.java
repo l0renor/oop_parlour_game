@@ -1,12 +1,13 @@
-package bunny_hop;
+package bunny_hop.accessories;
 
+import bunny_hop.logic.BunnyHopAccessoryType;
 import framework.data.accessories.Accessory;
 import framework.logic.AccessoryType;
 
 public class Bunny extends Accessory {
 
-    enum BunnyColor {
-        PINK, PURPLE, CYAN, RED
+    public enum BunnyColor {
+        CYAN, PINK, PURPLE, RED
     }
 
     private int startPosX;
@@ -37,7 +38,7 @@ public class Bunny extends Accessory {
 
     @Override
     public AccessoryType getAccessoryType() {
-        return BunnyGameAccessoryType.BUNNY;
+        return BunnyHopAccessoryType.BUNNY;
     }
 
     public void resetToStartPos() {

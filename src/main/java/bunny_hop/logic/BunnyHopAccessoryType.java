@@ -1,16 +1,16 @@
-package bunny_hop;
+package bunny_hop.logic;
 
 import framework.logic.AccessoryType;
 import framework.logic.BasicAccessoryType;
 
-public enum BunnyGameAccessoryType implements AccessoryType {
+public enum BunnyHopAccessoryType implements AccessoryType {
     BUNNY("BUNNY"),
     FIELD("FIELD"),
     CARROT("CARROT");
 
     private String accessoryTypeName;
 
-    BunnyGameAccessoryType(String accessoryTypeName) {
+    BunnyHopAccessoryType(String accessoryTypeName) {
         this.accessoryTypeName = accessoryTypeName;
         BasicAccessoryType.addNewAccessoryType(this);
     }

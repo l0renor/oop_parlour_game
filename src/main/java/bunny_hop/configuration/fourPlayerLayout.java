@@ -1,15 +1,16 @@
-package bunny_hop;
+package bunny_hop.configuration;
 
+import bunny_hop.accessories.Bunny;
+import bunny_hop.accessories.Carrot;
+import bunny_hop.accessories.Field;
 import framework.configuration.BoardLayout;
 import framework.data.Board;
 import framework.data.accessories.CardDeck;
 
-import java.util.ArrayList;
-
 /**
  * Layout for the bunny game
  */
-public class BunnyLayout implements BoardLayout {
+public class fourPlayerLayout implements BoardLayout {
     public Board createLayout() {
         final Board board = new Board(1200.0, 800.0, 3, "file:src/resources/bunny_hop/background.png", "BUNNY Hop","file:src/resources/bunny_hop/bunny_pink.png");
 

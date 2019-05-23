@@ -1,5 +1,11 @@
-package bunny_hop;
+package bunny_hop.logic.gamemode;
 
+import bunny_hop.accessories.Bunny;
+import bunny_hop.configuration.fourPlayerLayout;
+import bunny_hop.logic.BunnyHopAccessoryType;
+import bunny_hop.logic.BunnyHopGameState;
+import bunny_hop.logic.rule.CardMoveRule;
+import bunny_hop.logic.rule.DrawCardRule;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
 import framework.logic.GameMode;
@@ -13,8 +19,8 @@ public class fourPlayerGameMode implements GameMode {
 
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Rule> rules = new ArrayList<>();
-    private Board board = new BunnyLayout().createLayout();
-    private GameState gameState = new BunnyGameState();
+    private Board board = new fourPlayerLayout().createLayout();
+    private GameState gameState = new BunnyHopGameState();
 
 
     public fourPlayerGameMode() {
@@ -60,7 +66,7 @@ public class fourPlayerGameMode implements GameMode {
 
     private void assignBunnyToPlayer(Bunny.BunnyColor type, Player player) {
         for(Accessory accessory : board.getAccessoriesByLayer().get(2)){//bunny are always on layer 2
-            if(accessory.getAccessoryType() == BunnyGameAccessoryType.BUNNY){//sehr krass
+            if(accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY){//sehr krass
                 Bunny bunny = (Bunny) accessory;
                 if (bunny.getBunnyColor() == type){
                     bunny.setPlayer(player);
