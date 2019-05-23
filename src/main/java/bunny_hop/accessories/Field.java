@@ -1,5 +1,6 @@
-package bunny_hop;
+package bunny_hop.accessories;
 
+import bunny_hop.logic.BunnyHopAccessoryType;
 import framework.data.accessories.Accessory;
 import framework.logic.AccessoryType;
 
@@ -16,7 +17,7 @@ public class Field extends Accessory {
 
     @Override
     public AccessoryType getAccessoryType() {
-        return BunnyGameAccessoryType.FIELD;
+        return BunnyHopAccessoryType.FIELD;
     }
 
     public boolean isOpen() {
