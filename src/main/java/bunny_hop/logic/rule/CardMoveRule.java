@@ -18,28 +18,26 @@ import java.util.Random;
 
 public class CardMoveRule implements Rule {
 
-    private ArrayList<AccessoryType> validAccessoryTypes;
     private Random random;
 
     public CardMoveRule() {
-        validAccessoryTypes = new ArrayList<>();
-        validAccessoryTypes.add(BunnyHopAccessoryType.BUNNY);
-        validAccessoryTypes.add(BunnyHopAccessoryType.CARROT);
         random = new Random();
     }
 
     @Override
-    public ArrayList<AccessoryType> getValidAccessoryTypes() {
-        return validAccessoryTypes;
+    public boolean isAccessoryValid(GameState gameState, Accessory accessory) {
+        if (accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY) {
+            return accessory.getPlayer() == gameState.getActivePlayer();
+        } else return accessory.getAccessoryType() == BunnyHopAccessoryType.CARROT;
     }
 
     @Override
-    public void setValidActions(GameState state, Board board) {
+    public void setValidActions(GameState gameState, Board board) {
         resetActions(board);
 
-        BunnyHopGameState gameState = (BunnyHopGameState) state;
+        BunnyHopGameState state = (BunnyHopGameState) gameState;
 
-        if (gameState.getCardValue() == BunnyHopGameState.CardValue.CARROT) {
+        if (state.getCardValue() == BunnyHopGameState.CardValue.CARROT) {
             for (Accessory accessory : board.getAccessoriesByLayer().get(1)) {
                 if (accessory.getAccessoryType() == BunnyHopAccessoryType.CARROT) {
                     accessory.setAction(() -> {
@@ -77,7 +75,7 @@ public class CardMoveRule implements Rule {
                         && accessory.getPlayer() == gameState.getActivePlayer()) {
                     accessory.setAction(() -> {
                         Bunny bunny = (Bunny) accessory;
-                        bunny.setFieldNumber(bunny.getFieldNumber() + gameState.getCardValue().getNumber());
+                        bunny.setFieldNumber(bunny.getFieldNumber() + state.getCardValue().getNumber());
                         bunny.setPosX(board.getAccessoriesByLayer().get(1).get(bunny.getFieldNumber()).getPosX());
                         bunny.setPosY(board.getAccessoriesByLayer().get(1).get(bunny.getFieldNumber()).getPosY());
                     });
@@ -86,8 +84,8 @@ public class CardMoveRule implements Rule {
 
         }
 
-        for(Accessory accessory : board.getAccessoriesByLayer().get(2)){
-            if(accessory.getAccessoryType() == BasicAccessoryType.CARD_DECK){
+        for (Accessory accessory : board.getAccessoriesByLayer().get(2)) {
+            if (accessory.getAccessoryType() == BasicAccessoryType.CARD_DECK) {
                 CardDeck cardDeck = (CardDeck) accessory;
                 cardDeck.pickCard();
             }
