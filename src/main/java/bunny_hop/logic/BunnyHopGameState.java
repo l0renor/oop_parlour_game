@@ -1,5 +1,6 @@
 package bunny_hop.logic;
 
+import bunny_hop.accessories.Field;
 import framework.logic.GameState;
 import framework.logic.Player;
 
@@ -25,7 +26,7 @@ public class BunnyHopGameState implements GameState {
 
     private Player activePlayer;
     private CardValue cardValue;
-    private ArrayList<Integer> occupiedFields = new ArrayList<>();
+    private ArrayList<Field> occupiedFields = new ArrayList<>();
 
     @Override
     public Player getActivePlayer() {
@@ -45,17 +46,17 @@ public class BunnyHopGameState implements GameState {
         this.cardValue = cardValue;
     }
 
-    public boolean occupyField(int fieldNumber) {
-        if (occupiedFields.contains(fieldNumber)) {
+    public boolean occupyField(Field field) {
+        if (occupiedFields.contains(field)) {
             return false;
         } else {
-            occupiedFields.add(fieldNumber);
+            occupiedFields.add(field);
             return true;
         }
     }
 
-    public void freeField(int fieldNumber) {
-        occupiedFields.remove(new Integer(fieldNumber));
+    public void freeField(Field field) {
+        occupiedFields.remove(field);
     }
 
 }

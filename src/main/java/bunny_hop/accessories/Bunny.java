@@ -42,8 +42,9 @@ public class Bunny extends Accessory {
     }
 
     public void resetToStartPos() {
-        setPosX(startPosX);
-        setPosY(startPosY);
+        this.setPosX(startPosX);
+        this.setPosY(startPosY);
+        this.fieldNumber = 0;
     }
 
     public int getFieldNumber() {
