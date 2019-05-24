@@ -21,7 +21,9 @@ public class ChoosePawnRule implements Rule {
 
         for(Accessory acc : board.getAccessories(2, LudoAccessoryType.PAWN, gameState.getActivePlayer())){
             Pawn pawn = (Pawn) acc;
-            pawn.setAction(() -> pawn.move(ludoGameState.getDiceValue()));
+            if(pawn.getFieldNumber() != -1 || (pawn.getFieldNumber() == -1 && ludoGameState.getDiceValue() == 6)){
+                pawn.setAction(() -> pawn.move(ludoGameState.getDiceValue()));
+            }
         }
     }
 }

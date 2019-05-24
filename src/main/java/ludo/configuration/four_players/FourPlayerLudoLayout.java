@@ -1,11 +1,11 @@
-package ludo.configuration;
+package ludo.configuration.four_players;
 
 import framework.configuration.BoardLayout;
 import framework.data.Board;
 import framework.data.accessories.SixSideDice;
 import ludo.accessories.Pawn;
 
-public class LudoLayout implements BoardLayout {
+public class FourPlayerLudoLayout implements BoardLayout {
     @Override
     public Board createLayout() {
         final Board board = new Board(600, 600, 2, "file:src/resources/ludo/board.png", "Ludo", "file:src/resources/ludo/icon.jpg");
