@@ -21,7 +21,6 @@ public class FourPlayerGameMode implements GameMode {
     private Board board = new FourPlayerLayout().createLayout();
     private GameState gameState = new BunnyHopGameState();
 
-
     public FourPlayerGameMode() {
         players.add(new Player("Pink"));
         players.add(new Player("Red"));
@@ -30,10 +29,10 @@ public class FourPlayerGameMode implements GameMode {
         rules.add(new DrawCardRule());
         rules.add(new CardMoveRule());
         gameState.setActivePlayer(players.get(0));
-        assignBunnyToPlayer(Bunny.BunnyColor.PINK,players.get(0));
-        assignBunnyToPlayer(Bunny.BunnyColor.RED,players.get(1));
-        assignBunnyToPlayer(Bunny.BunnyColor.PURPLE,players.get(2));
-        assignBunnyToPlayer(Bunny.BunnyColor.CYAN,players.get(3));
+        assignBunnyToPlayer(Bunny.BunnyColor.PINK, players.get(0));
+        assignBunnyToPlayer(Bunny.BunnyColor.RED, players.get(1));
+        assignBunnyToPlayer(Bunny.BunnyColor.PURPLE, players.get(2));
+        assignBunnyToPlayer(Bunny.BunnyColor.CYAN, players.get(3));
     }
 
     @Override
@@ -62,15 +61,12 @@ public class FourPlayerGameMode implements GameMode {
     }
 
     private void assignBunnyToPlayer(Bunny.BunnyColor bunnyColor, Player player) {
-        for(Accessory accessory : board.getAccessoriesByLayer().get(2)){//bunny are always on layer 2
-            if(accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY){//sehr krass
-                Bunny bunny = (Bunny) accessory;
-                if (bunny.getBunnyColor() == bunnyColor){
-                    bunny.setPlayer(player);
-                }
+        for (Accessory accessory : board.getAccessories(2, BunnyHopAccessoryType.BUNNY)) {
+            Bunny bunny = (Bunny) accessory;
+            if (bunny.getBunnyColor() == bunnyColor) {
+                bunny.setPlayer(player);
             }
         }
     }
-
 
 }

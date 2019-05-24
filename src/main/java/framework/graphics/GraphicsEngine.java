@@ -39,11 +39,12 @@ public class GraphicsEngine extends Observable {
         Image backgroundImg = new Image(board.getPathToBackground());
         graphicsContext.drawImage(backgroundImg, 0, 0, board.getWidth(), board.getHeight());
         root.getChildren().add(background);
-        int currentLayernum = 1;
+        int currentLayer = 1;
         //@TODO layers are haveoffset
-        for (final List<Accessory> layer : board.getAccessoriesByLayer()) {
+        for (final List<Accessory> layer : board.getAccessories()) {
             Canvas canvas = new Canvas(board.getWidth(), board.getHeight());
-            if (currentLayernum == board.getNumLayers() + 1) { //only top layer need event handler
+            if (currentLayer == board.getNumLayers() + 1) {
+                // Only the top layer needs an event handler
                 canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,
                         e -> {
                             setChanged();
@@ -53,7 +54,7 @@ public class GraphicsEngine extends Observable {
             GraphicsContext layerGc = canvas.getGraphicsContext2D();
             drawShapes(layerGc, layer);
             root.getChildren().add(canvas);
-            currentLayernum++;
+            currentLayer++;
         }
         BorderPane border = new BorderPane();
         TextArea ta = new TextArea(board.getInfoText());

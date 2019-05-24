@@ -14,7 +14,7 @@ public class FourPlayerLayout implements BoardLayout {
     public Board createLayout() {
         final Board board = new Board(1200.0, 800.0, 3, "file:src/resources/bunny_hop/background.png", "BUNNY Hop","file:src/resources/bunny_hop/bunny_pink.png");
 
-        board.setInfoText("LEON WHY SO MANY CLASSES?!");
+        board.setInfoText("WELCOME TO BUNNY HOP, YOU ARE PLAYING WITH 4 PLAYERS!");
 
         board.addAccessory(new Carrot(600, 475));
         board.addAccessory(new Bunny(0, 0, Bunny.BunnyColor.PINK));

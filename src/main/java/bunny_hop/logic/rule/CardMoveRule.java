@@ -7,12 +7,10 @@ import bunny_hop.logic.BunnyHopGameState;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
 import framework.data.accessories.CardDeck;
-import framework.logic.AccessoryType;
 import framework.logic.BasicAccessoryType;
 import framework.logic.GameState;
 import framework.logic.Rule;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -26,79 +24,59 @@ public class CardMoveRule implements Rule {
 
     @Override
     public boolean isAccessoryValid(GameState gameState, Accessory accessory) {
-        if (accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY) {
-            return accessory.getPlayer() == gameState.getActivePlayer();
-        } else return accessory.getAccessoryType() == BunnyHopAccessoryType.CARROT;
+        BunnyHopGameState bunnyHopGameState = (BunnyHopGameState) gameState;
+        if (bunnyHopGameState.getCardValue() == BunnyHopGameState.CardValue.CARROT && accessory.getAccessoryType() == BunnyHopAccessoryType.CARROT) {
+            return true;
+        } else if (bunnyHopGameState.getCardValue() != BunnyHopGameState.CardValue.CARROT && accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY && accessory.getPlayer() == bunnyHopGameState.getActivePlayer()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void setValidActions(GameState gameState, Board board) {
-        resetActions(board);
-
+        board.resetAllActions();
         BunnyHopGameState state = (BunnyHopGameState) gameState;
 
         if (state.getCardValue() == BunnyHopGameState.CardValue.CARROT) {
-            for (Accessory accessory : board.getAccessoriesByLayer().get(1)) {
-                if (accessory.getAccessoryType() == BunnyHopAccessoryType.CARROT) {
-                    accessory.setAction(() -> {
-                        for (Accessory accLayer1 : board.getAccessoriesByLayer().get(1)) {
-                            if (accLayer1.getAccessoryType() == BunnyHopAccessoryType.FIELD) {
-                                Field field = (Field) accLayer1;
-                                if (field.isOpen()) field.setOpen(false);
-                            }
-                        }
-
-                        int firstHole = random.nextInt(board.getAccessoriesByLayer().get(1).size() - 1) + 1;
-                        int secHole = random.nextInt(board.getAccessoriesByLayer().get(1).size() - 1) + 1;
-                        Field firstField = (Field) board.getAccessoriesByLayer().get(1).get(firstHole);
-                        firstField.setOpen(true);
-                        Field secField = (Field) board.getAccessoriesByLayer().get(1).get(secHole);
-                        secField.setOpen(true);
-
-                        for (Accessory accLayer2 : board.getAccessoriesByLayer().get(2)) {
-                            if (accLayer2.getAccessoryType() == BunnyHopAccessoryType.BUNNY) {
-                                Bunny bunny = (Bunny) accLayer2;
-                                if (bunny.getFieldNumber() == firstHole || bunny.getFieldNumber() == secHole) {
-                                    bunny.resetToStartPos();
-                                }
-                            }
-                        }
-                    });
-                }
-            }
-
-        } else {
-            //TODO bunny has to skip occupied fields
-            for (Accessory accessory : board.getAccessoriesByLayer().get(2)) {
-                if (accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY
-                        && accessory.getPlayer() == gameState.getActivePlayer()) {
-                    accessory.setAction(() -> {
-                        Bunny bunny = (Bunny) accessory;
-                        bunny.setFieldNumber(bunny.getFieldNumber() + state.getCardValue().getNumber());
-
-                        bunny.setPosX(board.getAccessoriesByLayer().get(1).get(bunny.getFieldNumber()).getPosX());
-                        bunny.setPosY(board.getAccessoriesByLayer().get(1).get(bunny.getFieldNumber()).getPosY());
-                    });
-                }
-            }
-
-        }
-
-        for (Accessory accessory : board.getAccessoriesByLayer().get(2)) {
-            if (accessory.getAccessoryType() == BasicAccessoryType.CARD_DECK) {
-                CardDeck cardDeck = (CardDeck) accessory;
-                cardDeck.pickCard();
-            }
-        }
-
-    }
-
-    private void resetActions(Board board) {
-        for (final List<Accessory> layer : board.getAccessoriesByLayer()) {
-            for (Accessory accessory : layer) {
+            for (Accessory accessory : board.getAccessories(1, BunnyHopAccessoryType.CARROT)) {
                 accessory.setAction(() -> {
+                    for (Accessory accessoryLayer1 : board.getAccessories(1, BunnyHopAccessoryType.FIELD)) {
+                        Field field = (Field) accessoryLayer1;
+                        if (field.isOpen()) field.setOpen(false);
+
+                    }
+                    int firstHole = random.nextInt(board.getAccessories(1).size() - 1) + 1;
+                    int secHole = random.nextInt(board.getAccessories(1).size() - 1) + 1;
+                    Field firstField = (Field) board.getAccessories(1).get(firstHole);
+                    firstField.setOpen(true);
+                    Field secField = (Field) board.getAccessories(1).get(secHole);
+                    secField.setOpen(true);
+                    for (Accessory accessoryLayer2 : board.getAccessories(2, BunnyHopAccessoryType.BUNNY)) {
+                        Bunny bunny = (Bunny) accessoryLayer2;
+                        if (bunny.getFieldNumber() == firstHole || bunny.getFieldNumber() == secHole) {
+                            bunny.resetToStartPos();
+                        }
+                    }
                 });
             }
+        } else {
+            //TODO bunny has to skip occupied fields
+            for (Accessory accessory : board.getAccessories(2, BunnyHopAccessoryType.BUNNY, gameState.getActivePlayer())) {
+                accessory.setAction(() -> {
+                    Bunny bunny = (Bunny) accessory;
+                    bunny.setFieldNumber(bunny.getFieldNumber() + state.getCardValue().getNumber());
+
+                    bunny.setPosX(board.getAccessories(1).get(bunny.getFieldNumber()).getPosX());
+                    bunny.setPosY(board.getAccessories(1).get(bunny.getFieldNumber()).getPosY());
+                });
+            }
+        }
+
+        for (Accessory accessory : board.getAccessories(2, BasicAccessoryType.CARD_DECK)) {
+            CardDeck cardDeck = (CardDeck) accessory;
+            cardDeck.pickCard();
         }
     }
 }

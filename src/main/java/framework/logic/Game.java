@@ -53,7 +53,7 @@ public class Game implements Observer {
     }
 
     private Accessory getAccessoryByPoint(Point point) {
-        for (final List<Accessory> layer : gameMode.getBoard().getAccessoriesByLayer()) {
+        for (final List<Accessory> layer : gameMode.getBoard().getAccessories()) {
             for (Accessory accessory : layer) {
                 if ((accessory.getPosX() < point.getX() && point.getX() < (accessory.getPosX() + accessory.getWidth()))
                         && (accessory.getPosY() < point.getY() && point.getY() < (accessory.getPosY() + accessory.getHeight()))) {

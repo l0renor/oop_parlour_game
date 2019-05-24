@@ -1,9 +1,12 @@
 package framework.data;
 
 import framework.data.accessories.Accessory;
+import framework.logic.AccessoryType;
+import framework.logic.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Board {
 
@@ -66,8 +69,20 @@ public class Board {
         return pathToIcon;
     }
 
-    public List<ArrayList<Accessory>> getAccessoriesByLayer() {
+    public List<ArrayList<Accessory>> getAccessories() {
         return accessoriesByLayer;
+    }
+
+    public List<Accessory> getAccessories(int layer) {
+        return ((layer > numLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer);
+    }
+
+    public List<Accessory> getAccessories(int layer, AccessoryType accessoryType) {
+        return ((layer > numLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType).collect(Collectors.toList());
+    }
+
+    public List<Accessory> getAccessories(int layer, AccessoryType accessoryType, Player player) {
+        return ((layer > numLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType && accessory.getPlayer() == player).collect(Collectors.toList());
     }
 
     public String getGameName() {
@@ -133,6 +148,18 @@ public class Board {
      */
     public int getNumLayers() {
         return numLayers;
+    }
+
+    /**
+     * Sets the action value of all accessories on the board to nothing.
+     */
+    public void resetAllActions() {
+        for (final List<Accessory> layer : getAccessories()) {
+            for (Accessory accessory : layer) {
+                accessory.setAction(() -> {
+                });
+            }
+        }
     }
 
     private boolean in(Accessory a, int x, int y) {

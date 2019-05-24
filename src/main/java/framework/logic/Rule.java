@@ -5,6 +5,8 @@ import framework.data.accessories.Accessory;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+import java.util.List;
+
 /**
  * Interface to specify different rules for the actions in one turn.
  */
@@ -34,5 +36,4 @@ public interface Rule {
         MediaPlayer player = new MediaPlayer(sound);
         player.play();
     }
-
 }
