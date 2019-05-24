@@ -3,6 +3,7 @@ package bunny_hop.logic;
 import bunny_hop.accessories.Field;
 import framework.logic.GameState;
 import framework.logic.Player;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 
@@ -36,6 +37,15 @@ public class BunnyHopGameState implements GameState {
     @Override
     public void setActivePlayer(Player activePlayer) {
         this.activePlayer = activePlayer;
+    }
+
+    @Override
+    public boolean isTurnRepeated() {
+        return false;
+    }
+
+    @Override
+    public void setTurnRepeated(boolean repeated) {
     }
 
     public CardValue getCardValue() {

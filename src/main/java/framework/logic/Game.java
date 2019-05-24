@@ -6,7 +6,6 @@ import framework.data.accessories.Accessory;
 import framework.graphics.GraphicsEngine;
 import javafx.stage.Stage;
 
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -40,8 +39,10 @@ public class Game implements Observer {
     }
 
     private void updateGame() {
-        activeRule = (activeRule + 1) % gameMode.getRules().size();
-        if (activeRule == 0) {
+        if(!gameMode.getGameState().isTurnRepeated()){
+            activeRule = (activeRule + 1) % gameMode.getRules().size();
+        }
+        if (activeRule == 0 && !gameMode.getGameState().isTurnRepeated()) {
             do {
                 activePlayer = (activePlayer + 1) % gameMode.getPlayers().size();
             } while (gameMode.getPlayers().get(activePlayer).isOut());

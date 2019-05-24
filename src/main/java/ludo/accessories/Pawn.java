@@ -18,7 +18,7 @@ public class Pawn extends Accessory {
     private Fields fields;
 
     public Pawn(int posX, int posY, PawnColor pawnColor) {
-        super(45, 45, posX, posY, 2, "");
+        super(40, 40, posX, posY, 2, "");
 
         this.pawnColor = pawnColor;
         this.fieldNumber = -1;

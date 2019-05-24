@@ -17,4 +17,16 @@ public interface GameState {
      */
     void setActivePlayer(Player activePlayer);
 
+    /**
+     * Tells whether the next rule should be repeated
+     * @return whether the next Turn should be repeated(same Player)
+     */
+    boolean isTurnRepeated();
+
+    /**
+     * Set if  the next rule sould be repeated
+     * @param repeated flag if  the next Turn sould be repeated(by the same Player)
+     */
+    void setTurnRepeated(boolean repeated);
+
 }
