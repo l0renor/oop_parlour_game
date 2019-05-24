@@ -3,6 +3,8 @@ package bunny_hop.logic;
 import framework.logic.GameState;
 import framework.logic.Player;
 
+import java.util.ArrayList;
+
 public class BunnyHopGameState implements GameState {
 
     public enum CardValue {
@@ -23,6 +25,7 @@ public class BunnyHopGameState implements GameState {
 
     private Player activePlayer;
     private CardValue cardValue;
+    private ArrayList<Integer> occupiedFields = new ArrayList<>();
 
     @Override
     public Player getActivePlayer() {
@@ -40,6 +43,19 @@ public class BunnyHopGameState implements GameState {
 
     public void setCardValue(CardValue cardValue) {
         this.cardValue = cardValue;
+    }
+
+    public boolean occupyField(int fieldNumber) {
+        if (occupiedFields.contains(fieldNumber)) {
+            return false;
+        } else {
+            occupiedFields.add(fieldNumber);
+            return true;
+        }
+    }
+
+    public void freeField(int fieldNumber) {
+        occupiedFields.remove(new Integer(fieldNumber));
     }
 
 }
