@@ -4,26 +4,17 @@ import bunny_hop.logic.BunnyHopGameState;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
 import framework.data.accessories.CardDeck;
-import framework.logic.AccessoryType;
 import framework.logic.GameState;
 import framework.logic.Rule;
 import framework.logic.BasicAccessoryType;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DrawCardRule implements Rule {
 
-    private ArrayList<AccessoryType> validAccessoryTypes;
-
-    public DrawCardRule(){
-        validAccessoryTypes = new ArrayList<>();
-        validAccessoryTypes.add(BasicAccessoryType.CARD_DECK);
-    }
-
     @Override
-    public ArrayList<AccessoryType> getValidAccessoryTypes() {
-        return validAccessoryTypes;
+    public boolean isAccessoryValid(GameState gameState, Accessory accessory) {
+        return accessory.getAccessoryType() == BasicAccessoryType.CARD_DECK;
     }
 
     @Override

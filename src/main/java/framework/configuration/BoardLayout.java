@@ -13,4 +13,5 @@ public interface BoardLayout {
      * @return the custom layout
      */
     Board createLayout();
+
 }

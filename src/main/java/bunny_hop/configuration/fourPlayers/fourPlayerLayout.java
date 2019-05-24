@@ -1,4 +1,4 @@
-package bunny_hop.configuration;
+package bunny_hop.configuration.fourPlayers;
 
 import bunny_hop.accessories.Bunny;
 import bunny_hop.accessories.Carrot;
