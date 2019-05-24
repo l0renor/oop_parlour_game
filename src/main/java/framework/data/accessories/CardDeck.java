@@ -15,8 +15,8 @@ public class CardDeck extends Accessory {
     private Stack<Integer> cardOrder = new Stack<>();
     private boolean hidden;
 
-    public CardDeck(int sizeX, int sizeY, int posX, int posY, int layer, int numberOfCards, String[] pathToFrontImage, String pathToBackImage) {
-        super(sizeX, sizeY, posX, posY, layer, pathToBackImage);
+    public CardDeck(int width, int height, int posX, int posY, int layer, int numberOfCards, String[] pathToFrontImage, String pathToBackImage) {
+        super(width, height, posX, posY, layer, pathToBackImage);
         this.pathToBackImage = pathToBackImage;
         this.pathToFrontImage = pathToFrontImage;
         this.hidden = true;
