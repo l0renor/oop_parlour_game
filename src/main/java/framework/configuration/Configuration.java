@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class Configuration {
 
     private ArrayList<GameMode> gameModes;
-    private String StartScreenbackground;
+    private String startScreenbackground;
 
 
 
@@ -20,7 +20,7 @@ public abstract class Configuration {
     public void setGameModes(ArrayList<GameMode> gameModes) {
         this.gameModes = gameModes;
     }
-    public String getStartScreenbackground() { return StartScreenbackground; }
-    public void setStartScreenbackground(String startScreenbackground) { StartScreenbackground = startScreenbackground; }
+    public String getStartScreenbackground() { return startScreenbackground; }
+    public void setStartScreenbackground(String startScreenbackground) { this.startScreenbackground = startScreenbackground; }
 
 }

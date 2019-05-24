@@ -114,10 +114,10 @@ public class Board {
         }
 
         for (Accessory accessorie : accessoriesByLayer.get(a.getLayer())) {
-            if (in(a, new Point(accessorie.getPosX(), accessorie.getPosY())) || in(a, new Point(accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY())) ||
-                    in(a, new Point(accessorie.getPosX(), accessorie.getPosY() + accessorie.getHeight())) || in(a, new Point(accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY() + accessorie.getHeight()))
-            ||in(accessorie, new Point(a.getPosX(), a.getPosY())) || in(accessorie, new Point(a.getPosX() + a.getWidth(), a.getPosY())) ||
-                    in(accessorie, new Point(a.getPosX(), a.getPosY() + a.getHeight())) || in(accessorie, new Point(a.getPosX() + a.getWidth(), a.getPosY() + a.getHeight()))
+            if (in(a, accessorie.getPosX(), accessorie.getPosY()) || in(a, accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY()) ||
+                    in(a, accessorie.getPosX(), accessorie.getPosY() + accessorie.getHeight()) || in(a, accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY() + accessorie.getHeight())
+            ||in(accessorie, a.getPosX(), a.getPosY()) || in(accessorie, a.getPosX() + a.getWidth(), a.getPosY()) ||
+                    in(accessorie, a.getPosX(), a.getPosY() + a.getHeight()) || in(accessorie, a.getPosX() + a.getWidth(), a.getPosY() + a.getHeight())
             )
             {
                 return false;
@@ -136,8 +136,8 @@ public class Board {
         return numLayers;
     }
 
-    private boolean in(Accessory a, Point p) {
-        if (p.getX() > a.getPosX() && p.getX() < a.getPosX() + a.getWidth() && p.getY() > a.getPosY() && p.getY() < a.getPosY() + a.getHeight()) {
+    private boolean in(Accessory a, int x, int y) {
+        if (x > a.getPosX() && x < a.getPosX() + a.getWidth() && y > a.getPosY() && y < a.getPosY() + a.getHeight()) {
             return true;
         }
         return false;

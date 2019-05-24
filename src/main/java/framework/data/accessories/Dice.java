@@ -11,8 +11,8 @@ public class Dice extends Accessory {
     private int currentValue;
     private String[] pathToSides;
 
-    public Dice(int sizeX, int sizeY, int posX, int posY, int layer, String[] pathToSides) {
-        super(sizeX, sizeY, posX, posY, layer, pathToSides[0]);
+    public Dice(int width, int height, int posX, int posY, int layer, String[] pathToSides) {
+        super(width, height, posX, posY, layer, pathToSides[0]);
         this.numSides = pathToSides.length;
         this.pathToSides = pathToSides;
     }

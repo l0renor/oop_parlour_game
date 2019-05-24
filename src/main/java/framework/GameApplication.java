@@ -24,7 +24,6 @@ import java.util.ArrayList;
  */
 public class GameApplication extends Application {
     private static String launchArgs; //name of the configuration class
-    private static GameMode selectedGameMode;
 
     public static void main(String[] args) {
         if (args.length == 1) {
@@ -48,41 +47,31 @@ public class GameApplication extends Application {
         }
         conf.configure();
         ArrayList<GameMode> gameModes = conf.getGameModes();
-        runFromStartscreen(gameModes,primaryStage,conf.getStartScreenbackground());
-
+        runFromStartscreen(gameModes, primaryStage, conf.getStartScreenbackground());
 
 
     }
 
-    private void runFromStartscreen(ArrayList<GameMode> gameModes, Stage s,String pathToBackground) {
+    private void runFromStartscreen(ArrayList<GameMode> gameModes, Stage s, String pathToBackground) {
         s.setTitle("Choose Gamemode");
         VBox vBox = new VBox(gameModes.size());
-        vBox.setPadding(new Insets(145,0,0,15));
+        vBox.setPadding(new Insets(145, 0, 0, 15));
 
         for (GameMode mode : gameModes) {
             Button b = new Button(mode.getName());
-            b.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    selectedGameMode = mode;
-                    launchGame(mode,s);
-                }
-            });
+            b.setOnAction(event -> launchGame(mode, s));
             vBox.getChildren().add(b);
         }
         Image i = new Image(pathToBackground);
 
 
-        vBox.setBackground(new Background(new BackgroundImage(i,null,null ,null,new BackgroundSize(gameModes.get(0).getBoard().getWidth(),gameModes.get(0).getBoard().getHeight(),false,false,false,false))));
+        vBox.setBackground(new Background(new BackgroundImage(i, null, null, null, new BackgroundSize(gameModes.get(0).getBoard().getWidth(), gameModes.get(0).getBoard().getHeight(), false, false, false, false))));
         Scene sc = new Scene(vBox, gameModes.get(0).getBoard().getWidth(), gameModes.get(0).getBoard().getHeight());
         s.setScene(sc);
         s.show();
     }
 
-    private void launchGame(GameMode gameMode,Stage s){
-        Game game = new Game(gameMode,s);
-//        GraphicsEngine graphicsEngine = GraphicsEngine.getInstance();
-//        graphicsEngine.drawBoard(gameMode.getBoard(), s);
-
+    private void launchGame(GameMode gameMode, Stage s) {
+        new Game(gameMode, s);
     }
 }
