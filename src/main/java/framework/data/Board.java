@@ -13,7 +13,7 @@ public class Board {
     private double width;
     private double height;
     private String infoText;
-    private int numLayers;
+    private int numberOfLayers; // Layer 0 is background
     private String pathToBackground;
     private String pathToIcon;
     private String gameName;
@@ -25,18 +25,18 @@ public class Board {
      *
      * @param width            of the board
      * @param height           of the board
-     * @param numLayers        graphical layers on the board
+     * @param numberOfLayers        graphical layers on the board
      * @param pathToBackground path to the backgroundimage e.g. "file:src/resources/board.png"
      * @param gameName         name of the game
      */
-    public Board(double width, double height, int numLayers, String pathToBackground, String gameName, String pathToIcon) {
+    public Board(double width, double height, int numberOfLayers, String pathToBackground, String gameName, String pathToIcon) {
         this.width = width;
         this.height = height;
         this.pathToBackground = pathToBackground;
-        this.numLayers = numLayers;
+        this.numberOfLayers = numberOfLayers;
         this.pathToIcon = pathToIcon;
         this.accessoriesByLayer = new ArrayList<>();
-        for (int i = 0; i <= numLayers; i++) {
+        for (int i = 0; i <= numberOfLayers; i++) {
             accessoriesByLayer.add(new ArrayList<Accessory>());
         }
         this.gameName = gameName;
@@ -74,15 +74,15 @@ public class Board {
     }
 
     public List<Accessory> getAccessories(int layer) {
-        return ((layer > numLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer);
+        return ((layer > numberOfLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer);
     }
 
     public List<Accessory> getAccessories(int layer, AccessoryType accessoryType) {
-        return ((layer > numLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType).collect(Collectors.toList());
+        return ((layer > numberOfLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType).collect(Collectors.toList());
     }
 
     public List<Accessory> getAccessories(int layer, AccessoryType accessoryType, Player player) {
-        return ((layer > numLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType && accessory.getPlayer() == player).collect(Collectors.toList());
+        return ((layer > numberOfLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType && accessory.getPlayer() == player).collect(Collectors.toList());
     }
 
     public String getGameName() {
@@ -116,13 +116,13 @@ public class Board {
     }
 
     /**
-     * Adds an accessorie to the gameboard.     *
+     * Adds an accessory to the board.     *
      *
-     * @param a accessorie to add
-     * @return whether the adding was successful
+     * @param a accessory to add
+     * @return whether the adding  was successful
      */
     public boolean addAccessory(Accessory a) {
-        if (a.getLayer() > numLayers) {
+        if (a.getLayer() > numberOfLayers) {
             return false;
         } else if (a.getPosX() + a.getWidth() > width || a.getPosY() + a.getHeight() > height) {
             return false;
@@ -146,8 +146,8 @@ public class Board {
      *
      * @return the number of layers
      */
-    public int getNumLayers() {
-        return numLayers;
+    public int getNumberOfLayers() {
+        return numberOfLayers;
     }
 
     /**
