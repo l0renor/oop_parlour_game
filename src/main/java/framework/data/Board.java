@@ -166,5 +166,6 @@ public class Board {
         return x > a.getPosX() && x < a.getPosX() + a.getWidth() && y > a.getPosY() && y < a.getPosY() + a.getHeight();
     }
 
+
 }
 

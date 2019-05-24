@@ -6,7 +6,6 @@ import framework.data.accessories.Accessory;
 import framework.graphics.GraphicsEngine;
 import javafx.stage.Stage;
 
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -46,7 +45,7 @@ public class Game implements Observer {
                 activePlayer = (activePlayer + 1) % gameMode.getPlayers().size();
             } while (gameMode.getPlayers().get(activePlayer).isOut());
             gameMode.getGameState().setActivePlayer(gameMode.getPlayers().get(activePlayer));
-            gameMode.getBoard().appendToInfoText(String.format("It's %s's turn!", gameMode.getPlayers().get(activePlayer).getName()));
+            gameMode.getBoard().setInfoText(String.format("It's %s's turn!", gameMode.getPlayers().get(activePlayer).getName()));
         }
         graphicsEngine.drawBoard(gameMode.getBoard(), stage);
         gameMode.getRules().get(activeRule).setValidActions(gameMode.getGameState(), gameMode.getBoard());
