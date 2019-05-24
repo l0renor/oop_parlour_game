@@ -13,7 +13,7 @@ public class Board {
     private double width;
     private double height;
     private String infoText;
-    private int numLayers; //layer 0 is background
+    private int numLayers;
     private String pathToBackground;
     private String pathToIcon;
     private String gameName;
