@@ -4,7 +4,7 @@ import framework.logic.AccessoryType;
 import framework.logic.Action;
 import framework.logic.Player;
 
-public abstract class Accessory implements Comparable<Accessory> {
+public abstract class Accessory {
 
     private int width;
     private int height;
@@ -27,15 +27,14 @@ public abstract class Accessory implements Comparable<Accessory> {
 
 
     /**
-     * @precondition player is not null
      * @return player assigned to the Accessory
-     *
+     * @precondition player is not null
      */
     public Player getPlayer() {
         return player;
     }
 
-    public Accessory setPlayer(Player player){
+    public Accessory setPlayer(Player player) {
         this.player = player;
         return this;
     }
@@ -68,7 +67,7 @@ public abstract class Accessory implements Comparable<Accessory> {
         return pathToImage;
     }
 
-    public void setPathToImage(String newPath){
+    public void setPathToImage(String newPath) {
         this.pathToImage = newPath;
     }
 
@@ -76,15 +75,6 @@ public abstract class Accessory implements Comparable<Accessory> {
         return layer;
     }
 
-    /**
-     * Compare based on layer; high to low
-     * @param other other Accessory to be compared to
-     * @return int to indicate relation between the objects
-     */
-
-    public int compareTo(Accessory other) {
-        return this.layer - other.layer;
-    }
 
     public abstract AccessoryType getAccessoryType();
 

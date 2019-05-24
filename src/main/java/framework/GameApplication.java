@@ -4,8 +4,6 @@ import framework.configuration.Configuration;
 import framework.logic.Game;
 import framework.configuration.GameMode;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Java FX Application Class to start the game.
@@ -43,13 +41,13 @@ public class GameApplication extends Application {
             throw new IllegalArgumentException("The classname " + launchArgs + " was not found. Please provide a valid configuration class");
         }
         conf.configure();
-        ArrayList<GameMode> gameModes = conf.getGameModes();
+        List<GameMode> gameModes = conf.getGameModes();
         runFromStartscreen(gameModes, primaryStage, conf.getStartScreenbackground());
 
 
     }
 
-    private void runFromStartscreen(ArrayList<GameMode> gameModes, Stage s, String pathToBackground) {
+    private void runFromStartscreen(List<GameMode> gameModes, Stage s, String pathToBackground) {
         s.setTitle("Choose Gamemode");
         VBox vBox = new VBox(gameModes.size());
         vBox.setPadding(new Insets(145, 0, 0, 15));

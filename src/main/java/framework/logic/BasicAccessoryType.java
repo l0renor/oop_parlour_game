@@ -7,7 +7,7 @@ public enum BasicAccessoryType implements AccessoryType {
     DICE("DICE");
 
     private final String accessoryTypeName;
-    private static TreeMap<String, AccessoryType> map = new TreeMap<String, AccessoryType>();
+    private static TreeMap<String, AccessoryType> map = new TreeMap<>();
 
     BasicAccessoryType(String accessoryTypeName) {
         this.accessoryTypeName = accessoryTypeName;

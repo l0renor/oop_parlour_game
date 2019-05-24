@@ -1,10 +1,11 @@
 package framework.configuration;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Configuration {
 
-    private ArrayList<GameMode> gameModes;
+    private List<GameMode> gameModes;
     private String startScreenbackground;
 
 
@@ -14,10 +15,10 @@ public abstract class Configuration {
      */
     public abstract void configure();
 
-    public ArrayList<GameMode> getGameModes() {
+    public List<GameMode> getGameModes() {
         return gameModes;
     }
-    public void setGameModes(ArrayList<GameMode> gameModes) {
+    public void setGameModes(List<GameMode> gameModes) {
         this.gameModes = gameModes;
     }
     public String getStartScreenbackground() { return startScreenbackground; }

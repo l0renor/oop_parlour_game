@@ -32,7 +32,7 @@ public class Board {
         this.pathToBackground = pathToBackground;
         this.numLayers = numLayers;
         this.pathToIcon = pathToIcon;
-        this.accessoriesByLayer = new ArrayList<ArrayList<Accessory>>();
+        this.accessoriesByLayer = new ArrayList<>();
         for (int i = 0; i <= numLayers; i++) {
             accessoriesByLayer.add(new ArrayList<Accessory>());
         }
@@ -104,11 +104,11 @@ public class Board {
      * Adds an accessorie to the gameboard.     *
      *
      * @param a accessorie to add
-     * @return boolean  if sucsess
+     * @return whether the adding was successful
      */
     public boolean addAccessory(Accessory a) {
         if (a.getLayer() > numLayers) {
-            return false; //@TODO exception?
+            return false;
         } else if (a.getPosX() + a.getWidth() > width || a.getPosY() + a.getHeight() > height) {
             return false;
         }
@@ -116,10 +116,9 @@ public class Board {
         for (Accessory accessorie : accessoriesByLayer.get(a.getLayer())) {
             if (in(a, accessorie.getPosX(), accessorie.getPosY()) || in(a, accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY()) ||
                     in(a, accessorie.getPosX(), accessorie.getPosY() + accessorie.getHeight()) || in(a, accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY() + accessorie.getHeight())
-            ||in(accessorie, a.getPosX(), a.getPosY()) || in(accessorie, a.getPosX() + a.getWidth(), a.getPosY()) ||
+                    || in(accessorie, a.getPosX(), a.getPosY()) || in(accessorie, a.getPosX() + a.getWidth(), a.getPosY()) ||
                     in(accessorie, a.getPosX(), a.getPosY() + a.getHeight()) || in(accessorie, a.getPosX() + a.getWidth(), a.getPosY() + a.getHeight())
-            )
-            {
+            ) {
                 return false;
             }
         }
@@ -137,11 +136,9 @@ public class Board {
     }
 
     private boolean in(Accessory a, int x, int y) {
-        if (x > a.getPosX() && x < a.getPosX() + a.getWidth() && y > a.getPosY() && y < a.getPosY() + a.getHeight()) {
-            return true;
-        }
-        return false;
+        return x > a.getPosX() && x < a.getPosX() + a.getWidth() && y > a.getPosY() && y < a.getPosY() + a.getHeight();
     }
+
 
 }
 

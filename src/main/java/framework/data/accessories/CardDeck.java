@@ -3,9 +3,7 @@ package framework.data.accessories;
 import framework.logic.AccessoryType;
 import framework.logic.BasicAccessoryType;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 import java.util.Stack;
 
 public class CardDeck extends Accessory {
