@@ -1,4 +1,4 @@
-package bunny_hop.configuration.fourPlayers;
+package bunny_hop.configuration.four_players;
 
 import bunny_hop.accessories.Bunny;
 import bunny_hop.accessories.Carrot;
@@ -10,7 +10,7 @@ import framework.data.accessories.CardDeck;
 /**
  * Layout for the bunny game
  */
-public class fourPlayerLayout implements BoardLayout {
+public class FourPlayerLayout implements BoardLayout {
     public Board createLayout() {
         final Board board = new Board(1200.0, 800.0, 3, "file:src/resources/bunny_hop/background.png", "BUNNY Hop","file:src/resources/bunny_hop/bunny_pink.png");
 

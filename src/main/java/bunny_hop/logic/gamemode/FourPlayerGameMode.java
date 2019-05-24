@@ -1,28 +1,29 @@
-package bunny_hop.configuration.fourPlayers;
+package bunny_hop.logic.gamemode;
 
 import bunny_hop.accessories.Bunny;
+import bunny_hop.configuration.four_players.FourPlayerLayout;
 import bunny_hop.logic.BunnyHopAccessoryType;
 import bunny_hop.logic.BunnyHopGameState;
 import bunny_hop.logic.rule.CardMoveRule;
 import bunny_hop.logic.rule.DrawCardRule;
+import framework.configuration.GameMode;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
-import framework.configuration.GameMode;
 import framework.logic.GameState;
 import framework.logic.Player;
 import framework.logic.Rule;
 
 import java.util.ArrayList;
 
-public class fourPlayerGameMode implements GameMode {
+public class FourPlayerGameMode implements GameMode {
 
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Rule> rules = new ArrayList<>();
-    private Board board = new fourPlayerLayout().createLayout();
+    private Board board = new FourPlayerLayout().createLayout();
     private GameState gameState = new BunnyHopGameState();
 
 
-    public fourPlayerGameMode() {
+    public FourPlayerGameMode() {
         players.add(new Player("Leon"));
         players.add(new Player("Fabi"));
         players.add(new Player("Marina"));
@@ -34,6 +35,8 @@ public class fourPlayerGameMode implements GameMode {
         assignBunnyToPlayer(Bunny.BunnyColor.RED,players.get(1));
         assignBunnyToPlayer(Bunny.BunnyColor.PURPLE,players.get(2));
         assignBunnyToPlayer(Bunny.BunnyColor.CYAN,players.get(3));
+
+
     }
 
     @Override
