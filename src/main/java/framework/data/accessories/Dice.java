@@ -20,7 +20,7 @@ public class Dice extends Accessory {
     /**
      * Simulates rolling the dice
      */
-    private void roll(){
+    public void roll(){
         currentValue = (new Random().nextInt(numSides)) + 1;
         this.setPathToImage(pathToSides[currentValue-1]);
     }
