@@ -1,14 +1,14 @@
 package bunny_hop.logic.gamemode;
 
 import bunny_hop.accessories.Bunny;
-import bunny_hop.configuration.fourPlayerLayout;
+import bunny_hop.configuration.fourPlayers.fourPlayerLayout;
 import bunny_hop.logic.BunnyHopAccessoryType;
 import bunny_hop.logic.BunnyHopGameState;
 import bunny_hop.logic.rule.CardMoveRule;
 import bunny_hop.logic.rule.DrawCardRule;
+import framework.configuration.GameMode;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
-import framework.logic.GameMode;
 import framework.logic.GameState;
 import framework.logic.Player;
 import framework.logic.Rule;
