@@ -34,7 +34,12 @@ public abstract class Accessory {
         return player;
     }
 
-    public Accessory setPlayer(Player player) {
+    /**
+     *
+     * @param player
+     * @return
+     */
+    public Accessory setPlayer(Player player){
         this.player = player;
         return this;
     }

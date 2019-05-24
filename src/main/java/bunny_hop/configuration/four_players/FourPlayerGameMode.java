@@ -23,10 +23,10 @@ public class FourPlayerGameMode implements GameMode {
 
 
     public FourPlayerGameMode() {
-        players.add(new Player("Leon"));
-        players.add(new Player("Fabi"));
-        players.add(new Player("Marina"));
-        players.add(new Player("Waagna"));
+        players.add(new Player("Pink"));
+        players.add(new Player("Red"));
+        players.add(new Player("Purple"));
+        players.add(new Player("Cyan"));
         rules.add(new DrawCardRule());
         rules.add(new CardMoveRule());
         gameState.setActivePlayer(players.get(0));
@@ -61,11 +61,11 @@ public class FourPlayerGameMode implements GameMode {
         return "Bunny Hop | 4 Players";
     }
 
-    private void assignBunnyToPlayer(Bunny.BunnyColor type, Player player) {
+    private void assignBunnyToPlayer(Bunny.BunnyColor bunnyColor, Player player) {
         for(Accessory accessory : board.getAccessoriesByLayer().get(2)){//bunny are always on layer 2
             if(accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY){//sehr krass
                 Bunny bunny = (Bunny) accessory;
-                if (bunny.getBunnyColor() == type){
+                if (bunny.getBunnyColor() == bunnyColor){
                     bunny.setPlayer(player);
                 }
             }
