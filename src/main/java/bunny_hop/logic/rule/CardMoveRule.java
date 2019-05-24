@@ -68,7 +68,6 @@ public class CardMoveRule implements Rule {
             }
 
         } else {
-            //TODO this has to work, Bunny has to move
             //TODO bunny has to skip occupied fields
             for (Accessory accessory : board.getAccessoriesByLayer().get(2)) {
                 if (accessory.getAccessoryType() == BunnyHopAccessoryType.BUNNY
@@ -76,6 +75,7 @@ public class CardMoveRule implements Rule {
                     accessory.setAction(() -> {
                         Bunny bunny = (Bunny) accessory;
                         bunny.setFieldNumber(bunny.getFieldNumber() + state.getCardValue().getNumber());
+
                         bunny.setPosX(board.getAccessoriesByLayer().get(1).get(bunny.getFieldNumber()).getPosX());
                         bunny.setPosY(board.getAccessoriesByLayer().get(1).get(bunny.getFieldNumber()).getPosY());
                     });
