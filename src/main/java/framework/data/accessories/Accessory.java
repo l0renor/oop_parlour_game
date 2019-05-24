@@ -23,6 +23,7 @@ public abstract class Accessory {
         this.layer = layer;
         this.pathToImage = pathToImage;
         this.player = null;
+        this.action = () -> {};
     }
 
 
@@ -83,9 +84,8 @@ public abstract class Accessory {
 
     public abstract AccessoryType getAccessoryType();
 
-    public Accessory setAction(Action action) {
+    public void setAction(Action action) {
         this.action = action;
-        return this;
     }
 
     public void doAction() {

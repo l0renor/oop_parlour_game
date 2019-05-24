@@ -43,7 +43,7 @@ public class GraphicsEngine extends Observable {
         //@TODO layers are haveoffset
         for (final List<Accessory> layer : board.getAccessories()) {
             Canvas canvas = new Canvas(board.getWidth(), board.getHeight());
-            if (currentLayer == board.getNumLayers() + 1) {
+            if (currentLayer == board.getNumberOfLayers() + 1) {
                 // Only the top layer needs an event handler
                 canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,
                         e -> {
