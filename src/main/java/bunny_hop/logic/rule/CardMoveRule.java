@@ -48,10 +48,13 @@ public class CardMoveRule implements Rule {
                 }
                 int firstHole = random.nextInt(board.getAccessories(1).size() - 1) + 1;
                 int secHole = random.nextInt(board.getAccessories(1).size() - 1) + 1;
+                bunnyHopGameState.setHoles(new int []{firstHole,secHole});
                 Field firstField = (Field) board.getAccessories(1).get(firstHole);
                 firstField.setOpen(true);
                 Field secField = (Field) board.getAccessories(1).get(secHole);
                 secField.setOpen(true);
+                bunnyHopGameState.freeField((Field) board.getAccessories(1).get(firstHole));
+                bunnyHopGameState.freeField((Field) board.getAccessories(1).get(secHole));
                 for (Accessory accessoryLayer2 : board.getAccessories(2, BunnyHopAccessoryType.BUNNY)) {
                     Bunny bunny = (Bunny) accessoryLayer2;
                     if (bunny.getFieldNumber() == firstHole || bunny.getFieldNumber() == secHole) {
@@ -72,9 +75,15 @@ public class CardMoveRule implements Rule {
                 while (!bunnyHopGameState.occupyField((Field) board.getAccessories(1).get(newFieldNumber))) {
                     newFieldNumber++;
                 }
-                bunny.setPosX(board.getAccessories(1).get(newFieldNumber).getPosX());
-                bunny.setPosY(board.getAccessories(1).get(newFieldNumber).getPosY());
-                bunny.setFieldNumber(newFieldNumber);
+                if(bunnyHopGameState.isHole(newFieldNumber)){
+                    bunny.resetToStartPos();
+                    bunny.setFieldNumber(0);
+                }else {
+                    bunny.setPosX(board.getAccessories(1).get(newFieldNumber).getPosX());
+                    bunny.setPosY(board.getAccessories(1).get(newFieldNumber).getPosY());
+                    bunny.setFieldNumber(newFieldNumber);
+                }
+
             });
         }
 
