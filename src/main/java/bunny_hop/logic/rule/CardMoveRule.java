@@ -77,6 +77,7 @@ public class CardMoveRule implements Rule {
                 if(bunnyHopGameState.isHole(newFieldNumber)){
                     bunny.resetToStartPos();
                     bunny.setFieldNumber(0);
+                    bunnyHopGameState.freeField((Field) board.getAccessories(1).get(newFieldNumber));
                 }else {
                     bunny.setPosX(board.getAccessories(1).get(newFieldNumber).getPosX());
                     bunny.setPosY(board.getAccessories(1).get(newFieldNumber).getPosY());
