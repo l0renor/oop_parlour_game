@@ -43,8 +43,7 @@ public class CardMoveRule implements Rule {
             accessory.setAction(() -> {
                 for (Accessory accessoryLayer1 : board.getAccessories(1, BunnyHopAccessoryType.FIELD)) {
                     Field field = (Field) accessoryLayer1;
-                    if (field.isOpen()) field.setOpen(false);
-
+                    field.setOpen(false);
                 }
                 int firstHole = random.nextInt(board.getAccessories(1).size() - 1) + 1;
                 int secHole = random.nextInt(board.getAccessories(1).size() - 1) + 1;
