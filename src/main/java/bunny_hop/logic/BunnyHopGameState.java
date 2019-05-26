@@ -29,8 +29,6 @@ public class BunnyHopGameState extends GameState {
 
     private CardValue cardValue;
     private ArrayList<Field> occupiedFields = new ArrayList<>();
-    private int[] holes = new int [2];
-
 
     @Override
     public boolean isTurnRepeated() {
@@ -39,6 +37,7 @@ public class BunnyHopGameState extends GameState {
 
     @Override
     public void setTurnRepeated(boolean repeated) {
+        // SWYM
     }
 
     public CardValue getCardValue() {
@@ -57,27 +56,9 @@ public class BunnyHopGameState extends GameState {
             return true;
         }
     }
+
     public void freeField(Field field) {
         occupiedFields.remove(field);
     }
-
-    /**
-     * Sets teh fields where the player is reset to the starting position.
-     * @param fieldNumbers the new fieldnumbers
-     */
-    public void setHoles(int[] fieldNumbers){
-        holes = fieldNumbers;
-    }
-
-    /**
-     * Checks if a field is carrot blocked
-     * @param fieldnumber the field to be checked
-     * @return whether the field is blocked
-     */
-    public boolean isHole(int fieldnumber){
-        return IntStream.of(holes).anyMatch(x -> x == fieldnumber);
-    }
-
-
 
 }

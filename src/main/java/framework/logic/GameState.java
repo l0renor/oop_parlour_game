@@ -7,9 +7,9 @@ public abstract class GameState {
 
     private Player activePlayer;
 
-
     /**
      * Returns the currently active Player.
+     *
      * @return Object of type player, can be specialised subclass.
      */
     public Player getActivePlayer() {
@@ -19,6 +19,7 @@ public abstract class GameState {
 
     /**
      * Saves the given player as currently active one.
+     *
      * @param activePlayer Object of type player, can be specialised subclass.
      */
     public void setActivePlayer(Player activePlayer) {
@@ -26,14 +27,16 @@ public abstract class GameState {
     }
 
     /**
-     * Tells whether the next rule should be repeated
-     * @return whether the next Turn should be repeated(same Player)
+     * Tells whether the current rule should be repeated
+     *
+     * @return boolean representing the repetition.
      */
     public abstract boolean isTurnRepeated();
 
     /**
-     * Set if  the next rule sould be repeated
-     * @param repeated flag if  the next Turn sould be repeated(by the same Player)
+     * Set repetition of the current rule.
+     *
+     * @param repeated boolean indicating if the current action should be repeated.
      */
     public abstract void setTurnRepeated(boolean repeated);
 

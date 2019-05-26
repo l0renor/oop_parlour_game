@@ -39,22 +39,25 @@ public class Game implements Observer {
     }
 
     private void updateGame() {
-        if(!gameMode.getGameState().isTurnRepeated()){
+        if (gameMode.getGameState().isTurnRepeated()) {
+            gameMode.getGameState().setTurnRepeated(false);
+        } else {
             activeRule = (activeRule + 1) % gameMode.getRules().size();
-        }
-        if (activeRule == 0 && !gameMode.getGameState().isTurnRepeated()) {
-            do {
-                activePlayer = (activePlayer + 1) % gameMode.getPlayers().size();
-            } while (gameMode.getPlayers().get(activePlayer).isOut());
-            gameMode.getGameState().setActivePlayer(gameMode.getPlayers().get(activePlayer));
-            gameMode.getBoard().setInfoText(String.format("It's %s's turn!", gameMode.getPlayers().get(activePlayer).getName()));
+            if (activeRule == 0) {
+                // New players turn starts
+                do {
+                    activePlayer = (activePlayer + 1) % gameMode.getPlayers().size();
+                } while (gameMode.getPlayers().get(activePlayer).isOut());
+                gameMode.getGameState().setActivePlayer(gameMode.getPlayers().get(activePlayer));
+                gameMode.getBoard().setInfoText(String.format("It's %s's turn!", gameMode.getPlayers().get(activePlayer).getName()));
+            }
         }
         graphicsEngine.drawBoard(gameMode.getBoard(), stage);
         gameMode.getRules().get(activeRule).setValidActions(gameMode.getGameState(), gameMode.getBoard());
     }
 
     private Accessory getAccessoryByPoint(Point point) {
-        for (int i = gameMode.getBoard().getNumberOfLayers() -1; i > 0; i--) {
+        for (int i = gameMode.getBoard().getNumberOfLayers() - 1; i > 0; i--) {
             for (Accessory accessory : gameMode.getBoard().getAccessories(i)) {
                 if ((accessory.getPosX() < point.getX() && point.getX() < (accessory.getPosX() + accessory.getWidth()))
                         && (accessory.getPosY() < point.getY() && point.getY() < (accessory.getPosY() + accessory.getHeight()))) {

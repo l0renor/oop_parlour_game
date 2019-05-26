@@ -44,19 +44,19 @@ public class CardMoveRule implements Rule {
                     Field field = (Field) accessoryLayer1;
                     field.setOpen(false);
                 }
+
                 int firstHole = random.nextInt(board.getAccessories(1).size() - 1) + 1;
                 int secHole = random.nextInt(board.getAccessories(1).size() - 1) + 1;
-                bunnyHopGameState.setHoles(new int []{firstHole,secHole});
                 Field firstField = (Field) board.getAccessories(1).get(firstHole);
-                firstField.setOpen(true);
                 Field secField = (Field) board.getAccessories(1).get(secHole);
+                firstField.setOpen(true);
                 secField.setOpen(true);
-                bunnyHopGameState.freeField((Field) board.getAccessories(1).get(firstHole));
-                bunnyHopGameState.freeField((Field) board.getAccessories(1).get(secHole));
+
                 for (Accessory accessoryLayer2 : board.getAccessories(2, BunnyHopAccessoryType.BUNNY)) {
                     Bunny bunny = (Bunny) accessoryLayer2;
                     if (bunny.getFieldNumber() == firstHole || bunny.getFieldNumber() == secHole) {
                         bunny.resetToStartPos();
+                        bunnyHopGameState.freeField((Field) board.getAccessories(1).get(bunny.getFieldNumber()));
                     }
                 }
             });
@@ -73,16 +73,15 @@ public class CardMoveRule implements Rule {
                 while (!bunnyHopGameState.occupyField((Field) board.getAccessories(1).get(newFieldNumber))) {
                     newFieldNumber++;
                 }
-                if(bunnyHopGameState.isHole(newFieldNumber)){
+                Field field = (Field) board.getAccessories(1).get(newFieldNumber);
+                if (field.isOpen()) {
                     bunny.resetToStartPos();
-                    bunny.setFieldNumber(0);
-                    bunnyHopGameState.freeField((Field) board.getAccessories(1).get(newFieldNumber));
-                }else {
-                    bunny.setPosX(board.getAccessories(1).get(newFieldNumber).getPosX());
-                    bunny.setPosY(board.getAccessories(1).get(newFieldNumber).getPosY());
+                    bunnyHopGameState.freeField(field);
+                } else {
+                    bunny.setPosX(field.getPosX());
+                    bunny.setPosY(field.getPosY());
                     bunny.setFieldNumber(newFieldNumber);
                 }
-
             });
         }
 
