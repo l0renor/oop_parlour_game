@@ -1,6 +1,6 @@
 package framework.data.accessories;
 
-import framework.logic.AccessoryType;
+import framework.data.AccessoryType;
 import framework.logic.BasicAccessoryType;
 
 import java.util.Random;

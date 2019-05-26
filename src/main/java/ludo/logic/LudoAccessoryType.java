@@ -1,6 +1,6 @@
 package ludo.logic;
 
-import framework.logic.AccessoryType;
+import framework.data.AccessoryType;
 import framework.logic.BasicAccessoryType;
 
 public enum LudoAccessoryType implements AccessoryType {

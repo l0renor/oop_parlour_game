@@ -2,7 +2,7 @@ package bunny_hop.accessories;
 
 import bunny_hop.logic.BunnyHopAccessoryType;
 import framework.data.accessories.Accessory;
-import framework.logic.AccessoryType;
+import framework.data.AccessoryType;
 
 public class Field extends Accessory {
 

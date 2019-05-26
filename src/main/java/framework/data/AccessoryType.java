@@ -1,4 +1,4 @@
-package framework.logic;
+package framework.data;
 
 /**
  * Interface to be implemented by game-specific enums, should work together with the already provided BasicAccessoryType enum.

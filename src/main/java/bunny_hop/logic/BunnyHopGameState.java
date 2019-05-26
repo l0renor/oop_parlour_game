@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-public class BunnyHopGameState implements GameState {
+public class BunnyHopGameState extends GameState {
 
     public enum CardValue {
 
@@ -27,21 +27,10 @@ public class BunnyHopGameState implements GameState {
 
     }
 
-    private Player activePlayer;
     private CardValue cardValue;
     private ArrayList<Field> occupiedFields = new ArrayList<>();
     private int[] holes = new int [2];
 
-
-    @Override
-    public Player getActivePlayer() {
-        return activePlayer;
-    }
-
-    @Override
-    public void setActivePlayer(Player activePlayer) {
-        this.activePlayer = activePlayer;
-    }
 
     @Override
     public boolean isTurnRepeated() {

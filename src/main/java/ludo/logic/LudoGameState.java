@@ -3,7 +3,7 @@ package ludo.logic;
 import framework.logic.GameState;
 import framework.logic.Player;
 
-public class LudoGameState implements GameState {
+public class LudoGameState extends GameState {
 
     private Player activePlayer;
     private int diceValue;

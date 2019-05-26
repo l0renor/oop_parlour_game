@@ -1,7 +1,6 @@
 package framework.data;
 
 import framework.data.accessories.Accessory;
-import framework.logic.AccessoryType;
 import framework.logic.Player;
 
 import java.util.ArrayList;

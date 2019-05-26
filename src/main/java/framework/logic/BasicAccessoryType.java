@@ -1,5 +1,7 @@
 package framework.logic;
 
+import framework.data.AccessoryType;
+
 import java.util.TreeMap;
 
 public enum BasicAccessoryType implements AccessoryType {

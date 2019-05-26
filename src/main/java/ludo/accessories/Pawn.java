@@ -2,7 +2,7 @@ package ludo.accessories;
 
 import framework.data.Point;
 import framework.data.accessories.Accessory;
-import framework.logic.AccessoryType;
+import framework.data.AccessoryType;
 import ludo.logic.Fields;
 import ludo.logic.LudoAccessoryType;
 

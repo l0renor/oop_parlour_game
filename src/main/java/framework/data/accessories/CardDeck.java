@@ -1,10 +1,9 @@
 package framework.data.accessories;
 
-import framework.logic.AccessoryType;
+import framework.data.AccessoryType;
 import framework.logic.BasicAccessoryType;
 
 import java.util.Collections;
-import java.util.Deque;
 import java.util.Stack;
 
 public class CardDeck extends Accessory {
