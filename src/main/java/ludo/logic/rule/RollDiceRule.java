@@ -3,7 +3,7 @@ package ludo.logic.rule;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
 import framework.data.accessories.SixSideDice;
-import framework.logic.BasicAccessoryType;
+import framework.data.BasicAccessoryType;
 import framework.logic.GameState;
 import framework.logic.Rule;
 import ludo.logic.LudoGameState;

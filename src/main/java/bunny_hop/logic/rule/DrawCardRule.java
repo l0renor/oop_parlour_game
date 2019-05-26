@@ -6,7 +6,7 @@ import framework.data.accessories.Accessory;
 import framework.data.accessories.CardDeck;
 import framework.logic.GameState;
 import framework.logic.Rule;
-import framework.logic.BasicAccessoryType;
+import framework.data.BasicAccessoryType;
 
 public class DrawCardRule implements Rule {
 

@@ -1,7 +1,7 @@
 package ludo.logic;
 
 import framework.data.AccessoryType;
-import framework.logic.BasicAccessoryType;
+import framework.data.BasicAccessoryType;
 
 public enum LudoAccessoryType implements AccessoryType {
     PAWN("PAWN");

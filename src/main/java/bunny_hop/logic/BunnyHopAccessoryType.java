@@ -1,7 +1,7 @@
 package bunny_hop.logic;
 
 import framework.data.AccessoryType;
-import framework.logic.BasicAccessoryType;
+import framework.data.BasicAccessoryType;
 
 public enum BunnyHopAccessoryType implements AccessoryType {
     BUNNY("BUNNY"),

@@ -1,4 +1,4 @@
-package framework.logic;
+package framework.data;
 
 import framework.data.AccessoryType;
 

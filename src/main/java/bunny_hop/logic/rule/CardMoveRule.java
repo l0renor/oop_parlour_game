@@ -7,11 +7,10 @@ import bunny_hop.logic.BunnyHopGameState;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
 import framework.data.accessories.CardDeck;
-import framework.logic.BasicAccessoryType;
+import framework.data.BasicAccessoryType;
 import framework.logic.GameState;
 import framework.logic.Rule;
 
-import java.util.List;
 import java.util.Random;
 
 public class CardMoveRule implements Rule {
