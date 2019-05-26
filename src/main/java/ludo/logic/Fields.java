@@ -3,13 +3,23 @@ package ludo.logic;
 import framework.data.Point;
 import ludo.accessories.Pawn;
 
+import java.util.ArrayList;
+
 public class Fields {
 
 
     private CircularList<Point> whiteFields;
+    private ArrayList<Point> greenFields;
+    private ArrayList<Point> blueFields;
+    private ArrayList<Point> yellowFields;
+    private ArrayList<Point> redFields;
 
     public Fields(){
         whiteFields = new CircularList<>();
+        blueFields = new ArrayList<>();
+        greenFields = new ArrayList<>();
+        yellowFields = new ArrayList<>();
+        redFields = new ArrayList<>();
 
         for(int i = 0; i < 6; i++) whiteFields.add(new Point(20 + (i*40), 240));
 
@@ -35,45 +45,29 @@ public class Fields {
 
         whiteFields.add(new Point(20, 280));
 
+        for(int i = 0; i < 6; i++) greenFields.add(new Point(50 + (i*40), 280));
+        for(int i = 0; i < 6; i++) yellowFields.add(new Point(280, 50 + (i*40)));
+        for(int i = 0; i < 6; i++) blueFields.add(new Point(505 - (i*40), 280));
+        for(int i = 0; i < 6; i++) redFields.add(new Point(280, 505 - (i*40)));
+
     }
 
-    public Point getStartField(Pawn.PawnColor color){
+
+    public ArrayList<Point> getCorridor(Pawn.PawnColor color){
         switch (color){
             case YELLOW:
-                return new Point(320, 60);
-            case GREEN:
-                return new Point(240, 50);
+                return yellowFields;
             case BLUE:
-                return new Point(505,320);
+                return blueFields;
             case RED:
-                return new Point(240, 500);
+                return redFields;
+            case GREEN:
+                return greenFields;
         }
 
         return null;
     }
 
-    public boolean isEntryField(Pawn.PawnColor color, Point point){
-        switch (color){
-            case YELLOW:
-                if(point.getX() == 280 && point.getY() == 20)
-                    return true;
-                else return false;
-            case BLUE:
-                if(point.getX() == 545 && point.getY() == 280)
-                    return true;
-                else return false;
-            case RED:
-                if(point.getX() == 280 && point.getY() == 540)
-                    return true;
-                else return false;
-            case GREEN:
-                if(point.getX() == 20 && point.getY() == 280)
-                    return true;
-                else return false;
-        }
-
-        return false;
-    }
 
     public CircularList<Point> getWhiteFields(){
         return whiteFields;

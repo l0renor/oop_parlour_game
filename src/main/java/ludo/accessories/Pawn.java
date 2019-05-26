@@ -6,6 +6,8 @@ import framework.logic.AccessoryType;
 import ludo.logic.Fields;
 import ludo.logic.LudoAccessoryType;
 
+import java.util.ArrayList;
+
 public class Pawn extends Accessory {
 
     public enum PawnColor{
@@ -16,12 +18,14 @@ public class Pawn extends Accessory {
     private int fieldNumber;
     private int corridorField;
     private Fields fields;
+    private Integer index;
 
     public Pawn(int posX, int posY, PawnColor pawnColor) {
         super(40, 40, posX, posY, 2, "");
 
         this.pawnColor = pawnColor;
         this.fieldNumber = -1;
+        this.index = 0;
 
         switch(pawnColor){
             case RED:
@@ -57,11 +61,24 @@ public class Pawn extends Accessory {
     }
 
     public void move(int value){
-        if(this.fieldNumber == -1 && value == 6) start();
-        else{
-
+        Point point = null;
+        if(this.fieldNumber == -1 && value == 6){
+            index = 1;
+            start();
+            point = fields.getWhiteFields().get(this.fieldNumber);
         }
-        Point point = fields.getWhiteFields().get(this.fieldNumber);
+        else{
+            index += value;
+            if(index > 51){
+                //Pawn goes to corridor
+                ArrayList<Point> corridor = fields.getCorridor(this.pawnColor);
+                point = corridor.get(index - 51 - 1);
+            }else{
+                //Pawn walks the usual path
+                this.fieldNumber += value;
+                point = fields.getWhiteFields().get(this.fieldNumber);
+            }
+        }
         this.setPosX((int) point.getX());
         this.setPosY((int) point.getY());
     }

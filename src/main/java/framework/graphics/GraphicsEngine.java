@@ -30,7 +30,6 @@ public class GraphicsEngine extends Observable {
      * Draws the board on the given stage
      * @param board the board to be drawn
      * @param stage the stage to draw on
-     * @return the stage with the board drawn on it
      */
     public void drawBoard(Board board, Stage stage) {
         Group root = new Group();
