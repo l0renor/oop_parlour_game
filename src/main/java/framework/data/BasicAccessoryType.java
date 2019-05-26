@@ -1,7 +1,5 @@
 package framework.data;
 
-import framework.data.AccessoryType;
-
 import java.util.TreeMap;
 
 public enum BasicAccessoryType implements AccessoryType {
