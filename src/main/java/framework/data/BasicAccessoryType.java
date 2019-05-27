@@ -13,6 +13,7 @@ public enum BasicAccessoryType implements AccessoryType {
         this.accessoryTypeName = accessoryTypeName;
     }
 
+    @Override
     public String getAccessoryTypeName() {
         return accessoryTypeName;
     }
