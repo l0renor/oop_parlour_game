@@ -74,7 +74,7 @@ public class CardMoveRule implements Rule {
                 while (!bunnyHopGameState.occupyField((Field) board.getAccessories(1).get(newFieldNumber))) {
                     newFieldNumber++;
                 }
-                if (newFieldNumber >= BunnyHopGameState.NUMBER_OF_FIELDS) { // the Bunny reached the carrot
+                if (newFieldNumber >= BunnyHopGameState.FINISH_FIELD_NUMBER) { // the Bunny reached the carrot
                     board.getAccessories(2).remove(bunny);
                     BunnyHopPlayer player = (BunnyHopPlayer)bunny.getPlayer();
                     player.finishBunny();
