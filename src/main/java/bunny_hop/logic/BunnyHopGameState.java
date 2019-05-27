@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class BunnyHopGameState extends GameState {
 
-    public static int FINISH_FIELD_NUMBER = 27;
+    public static int FINISH_FIELD_NUMBER = 3;
 
     public enum CardValue {
 

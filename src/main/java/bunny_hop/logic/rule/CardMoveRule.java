@@ -56,8 +56,8 @@ public class CardMoveRule implements Rule {
                 for (Accessory accessoryLayer2 : board.getAccessories(2, BunnyHopAccessoryType.BUNNY)) {
                     Bunny bunny = (Bunny) accessoryLayer2;
                     if (bunny.getFieldNumber() == firstHole || bunny.getFieldNumber() == secHole) {
-                        bunny.resetToStartPos();
                         bunnyHopGameState.freeField((Field) board.getAccessories(1).get(bunny.getFieldNumber()));
+                        bunny.resetToStartPos();
                     }
                 }
             });
