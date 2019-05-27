@@ -5,7 +5,7 @@ import framework.data.accessories.Accessory;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.util.List;
+import java.io.File;
 
 /**
  * Interface to specify different rules for the actions in one turn.
@@ -32,7 +32,7 @@ public interface Rule {
      * @param path path to the sound file as String.
      */
     default void playSound(String path) {
-        Media sound = new Media(path);
+        Media sound = new Media(new File(path).toURI().toString());
         MediaPlayer player = new MediaPlayer(sound);
         player.play();
     }

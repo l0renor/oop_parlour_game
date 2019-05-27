@@ -22,6 +22,7 @@ public class DrawCardRule implements Rule {
         for (Accessory accessory : board.getAccessories(2, BasicAccessoryType.CARD_DECK)) {
             CardDeck cardDeck = (CardDeck) accessory;
             cardDeck.setAction(() -> {
+                playSound("src/resources/bunny_hop/sounds/shuffle.wav");
                 int cardValueNumber = cardDeck.pickCard();
                 for (BunnyHopGameState.CardValue cardValue : BunnyHopGameState.CardValue.values()) {
                     if (cardValue.getNumber() == cardValueNumber) {

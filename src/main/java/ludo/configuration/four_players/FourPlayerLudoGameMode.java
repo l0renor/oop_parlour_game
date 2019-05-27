@@ -1,7 +1,5 @@
 package ludo.configuration.four_players;
 
-import bunny_hop.configuration.four_players.FourPlayerLayout;
-import bunny_hop.logic.BunnyHopGameState;
 import framework.configuration.GameMode;
 import framework.data.Board;
 import framework.logic.GameState;

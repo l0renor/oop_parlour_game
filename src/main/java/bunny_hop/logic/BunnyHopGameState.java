@@ -2,12 +2,8 @@ package bunny_hop.logic;
 
 import bunny_hop.accessories.Field;
 import framework.logic.GameState;
-import framework.logic.Player;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.IntStream;
 
 public class BunnyHopGameState extends GameState {
 

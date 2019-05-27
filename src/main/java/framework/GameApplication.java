@@ -54,6 +54,7 @@ public class GameApplication extends Application {
         s.setTitle("Choose Gamemode");
         VBox vBox = new VBox(gameModes.size());
         vBox.setPadding(new Insets(145, 0, 0, 15));
+        vBox.setSpacing(10);//between butons
 
         for (GameMode mode : gameModes) {
             Button b = new Button(mode.getName());
