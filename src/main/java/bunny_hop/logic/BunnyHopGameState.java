@@ -2,10 +2,14 @@ package bunny_hop.logic;
 
 import bunny_hop.accessories.Field;
 import framework.logic.GameState;
+import framework.logic.Player;
 
 import java.util.ArrayList;
 
+
 public class BunnyHopGameState extends GameState {
+
+    public static int NUMBER_OF_FIELDS = 3;
 
     public enum CardValue {
 
@@ -26,6 +30,14 @@ public class BunnyHopGameState extends GameState {
     private CardValue cardValue;
     private ArrayList<Field> occupiedFields = new ArrayList<>();
 
+
+    private ArrayList<Player> leaderboard = new ArrayList<>();
+
+    public ArrayList<Player> getLeaderboard() {
+        return leaderboard;
+    }
+
+
     @Override
     public boolean isTurnRepeated() {
         return false;
@@ -34,6 +46,16 @@ public class BunnyHopGameState extends GameState {
     @Override
     public void setTurnRepeated(boolean repeated) {
         // SWYM
+    }
+
+    @Override
+    public String getScore() {
+        String result = "Leaderboard:";
+        for (Player p: leaderboard){
+            result += "\n" + p.getName();
+        }
+
+        return result;
     }
 
     public CardValue getCardValue() {

@@ -51,4 +51,9 @@ public class FourPlayerLudoGameMode implements GameMode {
     public String getName() {
         return "Ludo";
     }
+
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }

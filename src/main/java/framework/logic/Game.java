@@ -39,6 +39,11 @@ public class Game implements Observer {
     }
 
     private void updateGame() {
+        if(gameMode.isFinished()){
+            gameMode.getBoard().setInfoText(gameMode.getGameState().getScore());
+            graphicsEngine.drawBoard(gameMode.getBoard(), stage);
+            return;
+        }
         if (gameMode.getGameState().isTurnRepeated()) {
             gameMode.getGameState().setTurnRepeated(false);
         } else {

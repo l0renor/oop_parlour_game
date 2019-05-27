@@ -30,6 +30,11 @@ public class LudoGameState extends GameState {
 
     }
 
+    @Override
+    public String getScore() {
+        return null;
+    }
+
     public void setDiceValue(int diceValue){
         this.diceValue = diceValue;
     }

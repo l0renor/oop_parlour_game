@@ -4,6 +4,7 @@ import bunny_hop.accessories.Field;
 import bunny_hop.accessories.Bunny;
 import bunny_hop.logic.BunnyHopAccessoryType;
 import bunny_hop.logic.BunnyHopGameState;
+import bunny_hop.logic.BunnyHopPlayer;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
 import framework.data.accessories.CardDeck;
@@ -73,14 +74,20 @@ public class CardMoveRule implements Rule {
                 while (!bunnyHopGameState.occupyField((Field) board.getAccessories(1).get(newFieldNumber))) {
                     newFieldNumber++;
                 }
-                Field field = (Field) board.getAccessories(1).get(newFieldNumber);
-                if (field.isOpen()) {
-                    bunny.resetToStartPos();
-                    bunnyHopGameState.freeField(field);
+                if (newFieldNumber >= BunnyHopGameState.NUMBER_OF_FIELDS) { // the Bunny reached the carrot
+                    board.getAccessories(2).remove(bunny);
+                    BunnyHopPlayer player = (BunnyHopPlayer)bunny.getPlayer();
+                    player.finishBunny();
                 } else {
-                    bunny.setPosX(field.getPosX());
-                    bunny.setPosY(field.getPosY());
-                    bunny.setFieldNumber(newFieldNumber);
+                    Field field = (Field) board.getAccessories(1).get(newFieldNumber);
+                    if (field.isOpen()) {
+                        bunny.resetToStartPos();
+                        bunnyHopGameState.freeField(field);
+                    } else {
+                        bunny.setPosX(field.getPosX());
+                        bunny.setPosY(field.getPosY());
+                        bunny.setFieldNumber(newFieldNumber);
+                    }
                 }
             });
         }

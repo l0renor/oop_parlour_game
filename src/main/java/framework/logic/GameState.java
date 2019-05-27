@@ -40,4 +40,17 @@ public abstract class GameState {
      */
     public abstract void setTurnRepeated(boolean repeated);
 
+    /**
+     * Indicates whether the game ended.
+     * @return whether the game ended
+     */
+
+    /**
+     * Only called if the game is finished to get the score as a String.
+     * This text will be displayed in the text box below the game.
+     * @return the score as a string
+     */
+    public abstract String getScore();
+
+
 }

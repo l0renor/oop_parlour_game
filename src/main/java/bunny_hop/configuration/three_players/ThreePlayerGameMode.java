@@ -3,6 +3,7 @@ package bunny_hop.configuration.three_players;
 import bunny_hop.accessories.Bunny;
 import bunny_hop.logic.BunnyHopAccessoryType;
 import bunny_hop.logic.BunnyHopGameState;
+import bunny_hop.logic.BunnyHopPlayer;
 import bunny_hop.logic.rule.CardMoveRule;
 import bunny_hop.logic.rule.DrawCardRule;
 import framework.configuration.GameMode;
@@ -19,12 +20,12 @@ public class ThreePlayerGameMode implements GameMode {
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Rule> rules = new ArrayList<>();
     private Board board = new ThreePlayerLayout().createLayout();
-    private GameState gameState = new BunnyHopGameState();
+    private BunnyHopGameState gameState = new BunnyHopGameState();
 
     public ThreePlayerGameMode() {
-        players.add(new Player("Pink"));
-        players.add(new Player("Red"));
-        players.add(new Player("Purple"));
+        players.add(new BunnyHopPlayer("Pink"));
+        players.add(new BunnyHopPlayer("Red"));
+        players.add(new BunnyHopPlayer("Purple"));
         rules.add(new DrawCardRule());
         rules.add(new CardMoveRule());
         gameState.setActivePlayer(players.get(0));
@@ -56,6 +57,20 @@ public class ThreePlayerGameMode implements GameMode {
     @Override
     public String getName() {
         return "Bunny Hop | 3 Players";
+    }
+
+    @Override
+    public boolean isFinished() {
+        boolean result = true;
+        for (Player p : players) {
+            result = result && p.isOut();
+            if (p.isOut()) {
+                if (!gameState.getLeaderboard().contains(p)) {
+                    gameState.getLeaderboard().add(p);
+                }
+            }
+        }
+        return result;
     }
 
     private void assignBunnyToPlayer(Bunny.BunnyColor bunnyColor, Player player) {
