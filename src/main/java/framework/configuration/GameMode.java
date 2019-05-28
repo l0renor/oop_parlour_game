@@ -53,6 +53,4 @@ public interface GameMode {
      */
     boolean isFinished();
 
-
-
 }

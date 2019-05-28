@@ -18,12 +18,15 @@ import java.util.Observable;
 
 public class GraphicsEngine extends Observable {
 
-    private static GraphicsEngine ourInstance = new GraphicsEngine();
+    private static GraphicsEngine ourInstance = null;
 
     private GraphicsEngine() {
     }
 
     public static GraphicsEngine getInstance() {
+        if (ourInstance == null) {
+            ourInstance = new GraphicsEngine();
+        }
         return ourInstance;
     }
 
