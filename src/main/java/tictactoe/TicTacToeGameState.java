@@ -27,7 +27,7 @@ public class TicTacToeGameState extends GameState {
 
     @Override
     public String getScore() {
-        return winner;
+        return winner + " won, congratulations!";
     }
 
     public boolean occupyField(Field field, char player) {

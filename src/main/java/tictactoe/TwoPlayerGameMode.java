@@ -49,6 +49,11 @@ public class TwoPlayerGameMode implements GameMode {
 
     @Override
     public boolean isFinished() {
-        return gameState.isOver();
+        if (gameState.isOver()) {
+            board.resetAllActions();
+            return true;
+        } else {
+            return false;
+        }
     }
 }
