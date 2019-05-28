@@ -12,12 +12,12 @@ public class FourPlayerLudoLayout implements BoardLayout {
 
         board.setInfoText("Hello");
 
-        boolean result = board.addAccessory(new SixSideDice(20, 20, 0, 480, 1));
+        board.addAccessory(new SixSideDice(20, 20, 0, 480, 1));
 
-        result = board.addAccessory(new Pawn(110, 70, Pawn.PawnColor.GREEN));
-        result =board.addAccessory(new Pawn(70, 110, Pawn.PawnColor.GREEN));
-        result =board.addAccessory(new Pawn(150, 110, Pawn.PawnColor.GREEN));
-        result =board.addAccessory(new Pawn(110, 150, Pawn.PawnColor.GREEN));
+        board.addAccessory(new Pawn(110, 70, Pawn.PawnColor.GREEN));
+        board.addAccessory(new Pawn(70, 110, Pawn.PawnColor.GREEN));
+        board.addAccessory(new Pawn(150, 110, Pawn.PawnColor.GREEN));
+        board.addAccessory(new Pawn(110, 150, Pawn.PawnColor.GREEN));
 
         board.addAccessory(new Pawn(450, 70, Pawn.PawnColor.YELLOW));
         board.addAccessory(new Pawn(410, 110, Pawn.PawnColor.YELLOW));

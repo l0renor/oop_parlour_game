@@ -1,4 +1,4 @@
-package bunny_hop.configuration.four_players;
+package bunny_hop.configuration.three_players;
 
 import bunny_hop.accessories.Bunny;
 import bunny_hop.logic.BunnyHopAccessoryType;
@@ -6,36 +6,32 @@ import bunny_hop.logic.BunnyHopGameState;
 import bunny_hop.logic.BunnyHopPlayer;
 import bunny_hop.logic.rule.CardMoveRule;
 import bunny_hop.logic.rule.DrawCardRule;
+import framework.configuration.GameMode;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
-import framework.configuration.GameMode;
 import framework.logic.GameState;
 import framework.logic.Player;
 import framework.logic.Rule;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
 
-public class FourPlayerGameMode implements GameMode {
+public class ThreePlayerGameMode implements GameMode {
 
     private ArrayList<Player> players = new ArrayList<>();
     private ArrayList<Rule> rules = new ArrayList<>();
-    private Board board = new FourPlayerLayout().createLayout();
+    private Board board = new ThreePlayerLayout().createLayout();
     private BunnyHopGameState gameState = new BunnyHopGameState();
 
-
-    public FourPlayerGameMode() {
+    public ThreePlayerGameMode() {
         players.add(new BunnyHopPlayer("Pink"));
         players.add(new BunnyHopPlayer("Red"));
         players.add(new BunnyHopPlayer("Purple"));
-        players.add(new BunnyHopPlayer("Cyan"));
         rules.add(new DrawCardRule());
         rules.add(new CardMoveRule());
         gameState.setActivePlayer(players.get(0));
         assignBunnyToPlayer(Bunny.BunnyColor.PINK, players.get(0));
         assignBunnyToPlayer(Bunny.BunnyColor.RED, players.get(1));
         assignBunnyToPlayer(Bunny.BunnyColor.PURPLE, players.get(2));
-        assignBunnyToPlayer(Bunny.BunnyColor.CYAN, players.get(3));
     }
 
     @Override
@@ -60,7 +56,7 @@ public class FourPlayerGameMode implements GameMode {
 
     @Override
     public String getName() {
-        return "Bunny Hop | 4 Players";
+        return "Bunny Hop | 3 Players";
     }
 
     @Override

@@ -18,16 +18,21 @@ import java.util.Observable;
 
 public class GraphicsEngine extends Observable {
 
-    private static GraphicsEngine ourInstance = new GraphicsEngine();
+    private static GraphicsEngine ourInstance = null;
 
-    private GraphicsEngine() {}
+    private GraphicsEngine() {
+    }
 
     public static GraphicsEngine getInstance() {
+        if (ourInstance == null) {
+            ourInstance = new GraphicsEngine();
+        }
         return ourInstance;
     }
 
     /**
      * Draws the board on the given stage
+     *
      * @param board the board to be drawn
      * @param stage the stage to draw on
      */
@@ -47,7 +52,7 @@ public class GraphicsEngine extends Observable {
                 canvas.addEventHandler(MouseEvent.MOUSE_CLICKED,
                         e -> {
                             setChanged();
-                            notifyObservers(new Point(e.getSceneX(),e.getSceneY()));
+                            notifyObservers(new Point(e.getSceneX(), e.getSceneY()));
                         });
             }
             GraphicsContext layerGc = canvas.getGraphicsContext2D();

@@ -47,4 +47,10 @@ public interface GameMode {
      */
     String getName();
 
+    /**
+     * checks if the game is finished
+     * @return if the game is finished
+     */
+    boolean isFinished();
+
 }

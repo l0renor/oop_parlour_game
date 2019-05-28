@@ -4,6 +4,7 @@ import framework.data.Point;
 import ludo.accessories.Pawn;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Fields {
 
@@ -53,7 +54,7 @@ public class Fields {
     }
 
 
-    public ArrayList<Point> getCorridor(Pawn.PawnColor color){
+    public List<Point> getCorridor(Pawn.PawnColor color){
         switch (color){
             case YELLOW:
                 return yellowFields;
@@ -65,7 +66,7 @@ public class Fields {
                 return greenFields;
         }
 
-        return null;
+        return new ArrayList<>();
     }
 
 

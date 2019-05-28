@@ -3,13 +3,13 @@ package bunny_hop.logic;
 import bunny_hop.accessories.Field;
 import framework.logic.GameState;
 import framework.logic.Player;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.IntStream;
+
 
 public class BunnyHopGameState extends GameState {
+
+    public static int FINISH_FIELD_NUMBER = 27;
 
     public enum CardValue {
 
@@ -29,7 +29,13 @@ public class BunnyHopGameState extends GameState {
 
     private CardValue cardValue;
     private ArrayList<Field> occupiedFields = new ArrayList<>();
-    private int[] holes = new int [2];
+
+
+    private ArrayList<Player> leaderboard = new ArrayList<>();
+
+    public ArrayList<Player> getLeaderboard() {
+        return leaderboard;
+    }
 
 
     @Override
@@ -39,6 +45,17 @@ public class BunnyHopGameState extends GameState {
 
     @Override
     public void setTurnRepeated(boolean repeated) {
+        // SWYM
+    }
+
+    @Override
+    public String getScore() {
+        String result = "Leaderboard:";
+        for (Player p: leaderboard){
+            result += "\n" + p.getName();
+        }
+
+        return result;
     }
 
     public CardValue getCardValue() {
@@ -57,27 +74,9 @@ public class BunnyHopGameState extends GameState {
             return true;
         }
     }
+
     public void freeField(Field field) {
         occupiedFields.remove(field);
     }
-
-    /**
-     * Sets teh fields where the player is reset to the starting position.
-     * @param fieldNumbers the new fieldnumbers
-     */
-    public void setHoles(int[] fieldNumbers){
-        holes = fieldNumbers;
-    }
-
-    /**
-     * Checks if a field is carrot blocked
-     * @param fieldnumber the field to be checked
-     * @return whether the field is blocked
-     */
-    public boolean isHole(int fieldnumber){
-        return IntStream.of(holes).anyMatch(x -> x == fieldnumber);
-    }
-
-
 
 }
