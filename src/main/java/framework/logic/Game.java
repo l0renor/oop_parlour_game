@@ -26,6 +26,7 @@ public class Game implements Observer {
         gameMode.getBoard().appendToInfoText(String.format("It's %s's turn!", gameMode.getPlayers().get(activePlayer).getName()));
         graphicsEngine.drawBoard(gameMode.getBoard(), stage);
         gameMode.getRules().get(activeRule).setValidActions(gameMode.getGameState(), gameMode.getBoard());
+        gameMode.getGameState().setActivePlayer(gameMode.getPlayers().get(0));
     }
 
     public void update(Observable o, Object arg) {

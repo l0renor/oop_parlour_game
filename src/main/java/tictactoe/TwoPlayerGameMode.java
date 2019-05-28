@@ -7,6 +7,7 @@ import framework.logic.Player;
 import framework.logic.Rule;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TwoPlayerGameMode implements GameMode {
 
@@ -18,8 +19,8 @@ public class TwoPlayerGameMode implements GameMode {
     public TwoPlayerGameMode() {
         players.add(new Player("X"));
         players.add(new Player("O"));
+        Collections.shuffle(players);
         rules.add(new SetMarkRule());
-        gameState.setActivePlayer(players.get(0));
     }
 
     @Override
