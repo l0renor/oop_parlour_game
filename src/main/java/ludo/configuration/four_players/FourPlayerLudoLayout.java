@@ -8,11 +8,11 @@ import ludo.accessories.Pawn;
 public class FourPlayerLudoLayout implements BoardLayout {
     @Override
     public Board createLayout() {
-        final Board board = new Board(600, 600, 2, "file:src/resources/ludo/board.png", "Ludo", "file:src/resources/ludo/icon.jpg");
+        final Board board = new Board(600, 600, 3, "file:src/resources/ludo/board.png", "Ludo", "file:src/resources/ludo/icon.jpg");
 
         board.setInfoText("Hello");
 
-        board.addAccessory(new SixSideDice(20, 20, 0, 480, 1));
+        board.addAccessory(new SixSideDice(40, 40, 10, 500, 1));
 
         board.addAccessory(new Pawn(110, 70, Pawn.PawnColor.GREEN));
         board.addAccessory(new Pawn(70, 110, Pawn.PawnColor.GREEN));

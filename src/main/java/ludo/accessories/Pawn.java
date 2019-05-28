@@ -19,7 +19,7 @@ public class Pawn extends Accessory {
     private int corridorField;
     private Fields fields;
     private Integer index;
-
+    //@TODO fields is null -> exception
     public Pawn(int posX, int posY, PawnColor pawnColor) {
         super(40, 40, posX, posY, 2, "");
 

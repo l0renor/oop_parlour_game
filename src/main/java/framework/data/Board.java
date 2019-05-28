@@ -12,7 +12,7 @@ public class Board {
     private double width;
     private double height;
     private String infoText;
-    private int numberOfLayers; // Layer 0 is background
+    private int numberOfLayers;
     private String pathToBackground;
     private String pathToIcon;
     private String gameName;
@@ -73,15 +73,15 @@ public class Board {
     }
 
     public List<Accessory> getAccessories(int layer) {
-        return ((layer > numberOfLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer);
+        return ((layer > numberOfLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer - 1);
     }
 
     public List<Accessory> getAccessories(int layer, AccessoryType accessoryType) {
-        return ((layer > numberOfLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType).collect(Collectors.toList());
+        return ((layer > numberOfLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer - 1).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType).collect(Collectors.toList());
     }
 
     public List<Accessory> getAccessories(int layer, AccessoryType accessoryType, Player player) {
-        return ((layer > numberOfLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType && accessory.getPlayer() == player).collect(Collectors.toList());
+        return ((layer > numberOfLayers) || (layer < 1)) ? null : accessoriesByLayer.get(layer - 1).stream().filter(accessory -> accessory.getAccessoryType() == accessoryType && accessory.getPlayer() == player).collect(Collectors.toList());
     }
 
     public String getGameName() {
@@ -127,7 +127,7 @@ public class Board {
             return false;
         }
 
-        for (Accessory accessorie : accessoriesByLayer.get(a.getLayer())) {
+        for (Accessory accessorie : accessoriesByLayer.get(a.getLayer() - 1 )) {
             if (in(a, accessorie.getPosX(), accessorie.getPosY()) || in(a, accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY()) ||
                     in(a, accessorie.getPosX(), accessorie.getPosY() + accessorie.getHeight()) || in(a, accessorie.getPosX() + accessorie.getWidth(), accessorie.getPosY() + accessorie.getHeight())
                     || in(accessorie, a.getPosX(), a.getPosY()) || in(accessorie, a.getPosX() + a.getWidth(), a.getPosY()) ||
@@ -136,7 +136,7 @@ public class Board {
                 return false;
             }
         }
-        return accessoriesByLayer.get(a.getLayer()).add(a);
+        return accessoriesByLayer.get(a.getLayer() - 1).add(a);
     }
 
     /**
