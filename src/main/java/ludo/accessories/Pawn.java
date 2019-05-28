@@ -22,7 +22,7 @@ public class Pawn extends Accessory {
     //@TODO fields is null -> exception
     public Pawn(int posX, int posY, PawnColor pawnColor) {
         super(40, 40, posX, posY, 2, "");
-
+        this.fields = new Fields();
         this.pawnColor = pawnColor;
         this.fieldNumber = -1;
         this.index = 0;
