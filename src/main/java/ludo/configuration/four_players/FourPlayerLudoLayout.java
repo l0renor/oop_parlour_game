@@ -8,7 +8,7 @@ import ludo.accessories.Pawn;
 public class FourPlayerLudoLayout implements BoardLayout {
     @Override
     public Board createLayout() {
-        final Board board = new Board(600, 600, 3, "file:src/resources/ludo/board.png", "Ludo", "file:src/resources/ludo/icon.jpg");
+        final Board board = new Board(600, 600, 2, "file:src/resources/ludo/board.png", "Ludo", "file:src/resources/ludo/icon.jpg");
 
         board.setInfoText("Hello");
 
