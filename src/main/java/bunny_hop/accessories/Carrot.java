@@ -14,4 +14,5 @@ public class Carrot extends Accessory {
     public AccessoryType getAccessoryType() {
         return BunnyHopAccessoryType.CARROT;
     }
+
 }

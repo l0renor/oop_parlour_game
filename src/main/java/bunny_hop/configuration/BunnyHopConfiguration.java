@@ -9,8 +9,8 @@ import framework.configuration.GameMode;
 import java.util.ArrayList;
 
 public class BunnyHopConfiguration extends Configuration {
-    public void configure() {
 
+    public void configure() {
         ArrayList<GameMode> gameModes = new ArrayList<>();
         gameModes.add(new FourPlayerGameMode());
         gameModes.add(new ThreePlayerGameMode());
@@ -18,4 +18,5 @@ public class BunnyHopConfiguration extends Configuration {
         setGameModes(gameModes);
         setStartScreenbackground("file:src/resources/bunny_hop/start_screen_background.png");
     }
+
 }

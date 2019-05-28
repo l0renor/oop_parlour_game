@@ -33,5 +33,4 @@ public enum BasicAccessoryType implements AccessoryType {
             map.put(accessoryType.getAccessoryTypeName(), accessoryType);
         }
     }
-
 }
