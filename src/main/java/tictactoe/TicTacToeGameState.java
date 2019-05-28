@@ -27,7 +27,7 @@ public class TicTacToeGameState extends GameState {
 
     @Override
     public String getScore() {
-        return winner + " won, congratulations!";
+        return winner.isEmpty() ? "It's a tie..." : winner + " won, congratulations!";
     }
 
     public boolean occupyField(Field field, char player) {
@@ -56,6 +56,10 @@ public class TicTacToeGameState extends GameState {
                 winner = String.valueOf(player);
                 return true;
             }
+        }
+        if (fields[0][0] != ' ' && fields[0][1] != ' ' && fields[0][2] != ' ' && fields[1][0] != ' ' && fields[1][1] != ' ' && fields[1][2] != ' ' && fields[2][0] != ' ' && fields[2][1] != ' ' && fields[2][2] != ' ') {
+            winner = "";
+            return true;
         }
         return false;
     }
