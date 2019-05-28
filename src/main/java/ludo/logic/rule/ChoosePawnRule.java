@@ -12,7 +12,9 @@ public class ChoosePawnRule implements Rule {
 
     @Override
     public boolean isAccessoryValid(GameState gameState, Accessory accessory) {
-        return false;
+        if(accessory.getAccessoryType() == LudoAccessoryType.PAWN && accessory.getPlayer() == gameState.getActivePlayer())
+            return true;
+        else return false;
     }
 
     @Override
