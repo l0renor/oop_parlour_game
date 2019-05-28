@@ -5,19 +5,8 @@ import framework.logic.Player;
 
 public class LudoGameState extends GameState {
 
-    private Player activePlayer;
     private int diceValue;
     private boolean isTurnRepeated;
-
-    @Override
-    public Player getActivePlayer() {
-        return activePlayer;
-    }
-
-    @Override
-    public void setActivePlayer(Player activePlayer) {
-        activePlayer = activePlayer;
-    }
 
     @Override
     public boolean isTurnRepeated() {
