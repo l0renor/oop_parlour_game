@@ -19,4 +19,5 @@ public enum BunnyHopAccessoryType implements AccessoryType {
     public String getAccessoryTypeName() {
         return accessoryTypeName;
     }
+
 }

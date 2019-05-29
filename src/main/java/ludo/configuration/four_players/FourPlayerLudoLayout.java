@@ -12,7 +12,7 @@ public class FourPlayerLudoLayout implements BoardLayout {
 
         board.setInfoText("Hello");
 
-        board.addAccessory(new SixSideDice(20, 20, 0, 480, 1));
+        board.addAccessory(new SixSideDice(40, 40, 10, 500, 1));
 
         board.addAccessory(new Pawn(110, 70, Pawn.PawnColor.GREEN));
         board.addAccessory(new Pawn(70, 110, Pawn.PawnColor.GREEN));
@@ -36,5 +36,8 @@ public class FourPlayerLudoLayout implements BoardLayout {
 
 
         return board;
+
     }
+
+
 }

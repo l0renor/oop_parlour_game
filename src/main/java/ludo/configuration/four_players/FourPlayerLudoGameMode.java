@@ -27,10 +27,6 @@ public class FourPlayerLudoGameMode implements GameMode {
         players.add(new Player("Yellow"));
         rules.add(new RollDiceRule());
         rules.add(new ChoosePawnRule());
-        assignPawnToPlayer(Pawn.PawnColor.GREEN, players.get(0));
-        assignPawnToPlayer(Pawn.PawnColor.RED, players.get(1));
-        assignPawnToPlayer(Pawn.PawnColor.BLUE, players.get(2));
-        assignPawnToPlayer(Pawn.PawnColor.YELLOW, players.get(3));
 
     }
 

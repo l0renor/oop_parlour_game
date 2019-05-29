@@ -19,13 +19,17 @@ public class ChoosePawnRule implements Rule {
 
     @Override
     public void setValidActions(GameState gameState, Board board) {
+        board.resetAllActions();
         LudoGameState ludoGameState = (LudoGameState) gameState;
-
+        boolean movePossible = false;
         for(Accessory acc : board.getAccessories(2, LudoAccessoryType.PAWN, gameState.getActivePlayer())){
             Pawn pawn = (Pawn) acc;
+
             if(pawn.getFieldNumber() != -1 || (pawn.getFieldNumber() == -1 && ludoGameState.getDiceValue() == 6)){
                 pawn.setAction(() -> pawn.move(ludoGameState.getDiceValue()));
             }
         }
+
+
     }
 }
