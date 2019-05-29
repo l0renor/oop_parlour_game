@@ -34,7 +34,7 @@ public class Fields {
 
         whiteFields.add(new Point(545, 280));
 
-        for(int i = 0; i < 6; i++) whiteFields.add(new Point(545, 320 - (i*40)));
+        for(int i = 0; i < 6; i++) whiteFields.add(new Point(545 - (i*40), 320));
 
         for(int i = 0; i< 6; i++) whiteFields.add(new Point(320, 350 + (i*40)));
 
