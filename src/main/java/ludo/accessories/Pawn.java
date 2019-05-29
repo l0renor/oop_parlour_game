@@ -26,6 +26,7 @@ public class Pawn extends Accessory {
         this.pawnColor = pawnColor;
         this.fieldNumber = -1;
         this.index = 0;
+        fields = new Fields();
 
         switch(pawnColor){
             case RED:

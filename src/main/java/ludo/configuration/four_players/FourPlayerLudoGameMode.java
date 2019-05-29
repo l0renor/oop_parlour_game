@@ -2,9 +2,12 @@ package ludo.configuration.four_players;
 
 import framework.configuration.GameMode;
 import framework.data.Board;
+import framework.data.accessories.Accessory;
 import framework.logic.GameState;
 import framework.logic.Player;
 import framework.logic.Rule;
+import ludo.accessories.Pawn;
+import ludo.logic.LudoAccessoryType;
 import ludo.logic.LudoGameState;
 import ludo.logic.rule.ChoosePawnRule;
 import ludo.logic.rule.RollDiceRule;
@@ -24,6 +27,10 @@ public class FourPlayerLudoGameMode implements GameMode {
         players.add(new Player("Yellow"));
         rules.add(new RollDiceRule());
         rules.add(new ChoosePawnRule());
+        assignPawnToPlayer(Pawn.PawnColor.GREEN, players.get(0));
+        assignPawnToPlayer(Pawn.PawnColor.RED, players.get(1));
+        assignPawnToPlayer(Pawn.PawnColor.BLUE, players.get(2));
+        assignPawnToPlayer(Pawn.PawnColor.YELLOW, players.get(3));
 
     }
 
@@ -55,5 +62,14 @@ public class FourPlayerLudoGameMode implements GameMode {
     @Override
     public boolean isFinished() {
         return false;
+    }
+
+    private void assignPawnToPlayer(Pawn.PawnColor color, Player player) {
+        for (Accessory accessory : board.getAccessories(2, LudoAccessoryType.PAWN)) {
+            Pawn pawn = (Pawn) accessory;
+            if (pawn.getPawnColor() == color) {
+                pawn.setPlayer(player);
+            }
+        }
     }
 }
