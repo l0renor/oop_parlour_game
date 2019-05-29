@@ -15,6 +15,16 @@ public abstract class Accessory {
     private int layer;
     private String pathToImage;
 
+    /**
+     * Constructor of Accessory
+     *
+     * @param width     width of the accessory
+     * @param height    height of the accessory
+     * @param posX      position x of the accessory
+     * @param posY      position y of the accessory
+     * @param layer     layer which the accessory is positioned
+     * @param pathToImage   path to the image of the accessory
+     */
     public Accessory(int width, int height, int posX, int posY, int layer, String pathToImage) {
         this.width = width;
         this.height = height;
@@ -36,9 +46,9 @@ public abstract class Accessory {
     }
 
     /**
-     *
+     * Sets a player to an accessory
      * @param player
-     * @return
+     * @return this Accessory
      */
     public Accessory setPlayer(Player player){
         this.player = player;

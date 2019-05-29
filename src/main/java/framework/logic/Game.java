@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ *
+ */
 public class Game implements Observer {
 
     private GameMode gameMode;
@@ -29,6 +32,11 @@ public class Game implements Observer {
         gameMode.getGameState().setActivePlayer(gameMode.getPlayers().get(0));
     }
 
+    /**
+     * Gets notified when a change occurs on the Observable class and updates the game board
+     * @param o
+     * @param arg
+     */
     public void update(Observable o, Object arg) {
         Point point = (Point) arg;
         Accessory clickedAccessory = getAccessoryByPoint(point);
@@ -38,6 +46,7 @@ public class Game implements Observer {
         clickedAccessory.doAction();
         updateGame();
     }
+
 
     private void updateGame() {
         if(gameMode.isFinished()){
@@ -62,6 +71,11 @@ public class Game implements Observer {
         gameMode.getRules().get(activeRule).setValidActions(gameMode.getGameState(), gameMode.getBoard());
     }
 
+    /**
+     * Finds what accessory was clicked in given point
+     * @param point
+     * @return Accessory in the point given
+     */
     private Accessory getAccessoryByPoint(Point point) {
         for (int i = gameMode.getBoard().getNumberOfLayers() ; i > 0; i--) {
             for (Accessory accessory : gameMode.getBoard().getAccessories(i)) {

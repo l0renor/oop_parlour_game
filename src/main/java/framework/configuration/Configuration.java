@@ -15,18 +15,30 @@ public abstract class Configuration {
      */
     public abstract void configure();
 
+    /**
+     * @return list of the gameModes
+     */
     public List<GameMode> getGameModes() {
         return gameModes;
     }
 
+    /**
+     * @param gameModes
+     */
     public void setGameModes(List<GameMode> gameModes) {
         this.gameModes = gameModes;
     }
 
+    /**
+     * @return String that indicates the path to the start screen
+     */
     public String getStartScreenbackground() {
         return startScreenbackground;
     }
 
+    /**
+     * @param startScreenbackground
+     */
     public void setStartScreenbackground(String startScreenbackground) {
         this.startScreenbackground = startScreenbackground;
     }
