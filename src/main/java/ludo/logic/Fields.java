@@ -24,7 +24,7 @@ public class Fields {
 
         for (int i = 0; i < 6; i++) whiteFields.add(new Point((double) 20 + (i * 40), 240));
 
-        for (int i = 0; i < 6; i++) whiteFields.add(new Point((double) 240, 210 - (i * 40)));
+        for (int i = 0; i < 6; i++) whiteFields.add(new Point( 240, (double) 210 - (i * 40)));
 
         whiteFields.add(new Point(280, 20));
 
@@ -36,7 +36,7 @@ public class Fields {
 
         for (int i = 0; i < 6; i++) whiteFields.add(new Point((double) 545 - (i * 40), 320));
 
-        for (int i = 0; i < 6; i++) whiteFields.add(new Point((double) 320, 350 + (i * 40)));
+        for (int i = 0; i < 6; i++) whiteFields.add(new Point( 320, (double) 350 + (i * 40)));
 
         whiteFields.add(new Point(280, 540));
 
