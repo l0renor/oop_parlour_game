@@ -6,15 +6,14 @@ import bunny_hop.logic.BunnyHopGameState;
 import bunny_hop.logic.BunnyHopPlayer;
 import bunny_hop.logic.rule.CardMoveRule;
 import bunny_hop.logic.rule.DrawCardRule;
+import framework.configuration.GameMode;
 import framework.data.Board;
 import framework.data.accessories.Accessory;
-import framework.configuration.GameMode;
 import framework.logic.GameState;
 import framework.logic.Player;
 import framework.logic.Rule;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class FourPlayerGameMode implements GameMode {
 
@@ -68,10 +67,8 @@ public class FourPlayerGameMode implements GameMode {
         boolean result = true;
         for (Player p : players) {
             result = result && p.isOut();
-            if (p.isOut()) {
-                if (!gameState.getLeaderboard().contains(p)) {
-                    gameState.getLeaderboard().add(p);
-                }
+            if (p.isOut() && !gameState.getLeaderboard().contains(p)) {
+                gameState.getLeaderboard().add(p);
             }
         }
         return result;

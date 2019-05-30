@@ -5,11 +5,12 @@ import framework.logic.GameState;
 import framework.logic.Player;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class BunnyHopGameState extends GameState {
 
-    public static int FINISH_FIELD_NUMBER = 27;
+    public static final int FINISH_FIELD_NUMBER = 27;
 
     public enum CardValue {
 
@@ -33,7 +34,7 @@ public class BunnyHopGameState extends GameState {
 
     private ArrayList<Player> leaderboard = new ArrayList<>();
 
-    public ArrayList<Player> getLeaderboard() {
+    public List<Player> getLeaderboard() {
         return leaderboard;
     }
 
