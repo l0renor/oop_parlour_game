@@ -28,9 +28,12 @@ public enum BasicAccessoryType implements AccessoryType {
         return map.get(accessoryTypeName);
     }
 
-    public static void addNewAccessoryType(AccessoryType accessoryType) {
-        if (!map.containsKey(accessoryType.getAccessoryTypeName())) {
+    public static boolean addNewAccessoryType(AccessoryType accessoryType) {
+        if (map.containsKey(accessoryType.getAccessoryTypeName())) {
+            return false;
+        } else {
             map.put(accessoryType.getAccessoryTypeName(), accessoryType);
+            return true;
         }
     }
 }
