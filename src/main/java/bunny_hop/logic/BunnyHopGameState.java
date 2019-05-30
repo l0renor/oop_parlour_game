@@ -51,12 +51,11 @@ public class BunnyHopGameState extends GameState {
 
     @Override
     public String getScore() {
-        String result = "Leaderboard:";
+        StringBuilder stringBuilder = new StringBuilder("Leaderboard:");
         for (Player p: leaderboard){
-            result += "\n" + p.getName();
+            stringBuilder.append("\n").append(p.getName());
         }
-
-        return result;
+        return stringBuilder.toString();
     }
 
     public CardValue getCardValue() {
