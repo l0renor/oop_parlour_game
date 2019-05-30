@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Pawn extends Accessory {
 
-    public enum PawnColor{
+    public enum PawnColor {
         BLUE, GREEN, YELLOW, RED;
     }
 
@@ -20,7 +20,6 @@ public class Pawn extends Accessory {
     private Integer index;
     private boolean isFinished;
 
-    //@TODO fields is null -> exception
     public Pawn(int posX, int posY, PawnColor pawnColor) {
         super(40, 40, posX, posY, 2, "");
         this.fields = new Fields();
@@ -29,7 +28,7 @@ public class Pawn extends Accessory {
         this.index = 0;
         this.isFinished = false;
 
-        switch(pawnColor){
+        switch (pawnColor) {
             case RED:
                 this.setPathToImage("file:src/resources/ludo/redpawn.png");
                 break;
@@ -50,33 +49,32 @@ public class Pawn extends Accessory {
         return LudoAccessoryType.PAWN;
     }
 
-    public PawnColor getPawnColor(){
+    public PawnColor getPawnColor() {
         return pawnColor;
     }
 
-    public int getFieldNumber(){
+    public int getFieldNumber() {
         return this.fieldNumber;
     }
 
-    public void move(int value){
+    public void move(int value) {
         Point point;
-        if(this.fieldNumber == -1 && value == 6){
+        if (this.fieldNumber == -1 && value == 6) {
             index = 1;
             isFinished = true;
             start();
             point = fields.getWhiteFields().get(this.fieldNumber);
-        }
-        else{
+        } else {
             index += value;
-            if(index > 51){
+            if (index > 51) {
                 //Pawn goes to corridor
-                if(index > 57){
+                if (index > 57) {
                     isFinished = true;
                     return;
                 }
                 List<Point> corridor = fields.getCorridor(this.pawnColor);
                 point = corridor.get(index - 51 - 1);
-            }else{
+            } else {
                 //Pawn walks the usual path
                 this.fieldNumber += value;
                 point = fields.getWhiteFields().get(this.fieldNumber);
@@ -86,12 +84,12 @@ public class Pawn extends Accessory {
         this.setPosY((int) point.getY());
     }
 
-    public boolean isFinished(){
+    public boolean isFinished() {
         return isFinished;
     }
 
-    private void start(){
-        switch (this.pawnColor){
+    private void start() {
+        switch (this.pawnColor) {
             case GREEN:
                 this.fieldNumber = 1;
                 break;

@@ -62,10 +62,8 @@ public class TwoPlayerGameMode implements GameMode {
         boolean result = true;
         for (Player p : players) {
             result = result && p.isOut();
-            if (p.isOut()) {
-                if (!gameState.getLeaderboard().contains(p)) {
-                    gameState.getLeaderboard().add(p);
-                }
+            if (!gameState.getLeaderboard().contains(p) && p.isOut()) {
+                gameState.getLeaderboard().add(p);
             }
         }
         return result;

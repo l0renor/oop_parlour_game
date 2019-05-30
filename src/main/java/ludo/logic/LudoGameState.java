@@ -1,7 +1,6 @@
 package ludo.logic;
 
 import framework.logic.GameState;
-import framework.logic.Player;
 
 public class LudoGameState extends GameState {
 
