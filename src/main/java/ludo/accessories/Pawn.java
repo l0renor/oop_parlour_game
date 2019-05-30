@@ -16,9 +16,10 @@ public class Pawn extends Accessory {
 
     private PawnColor pawnColor;
     private int fieldNumber;
-    private int corridorField;
     private Fields fields;
     private Integer index;
+    private boolean isFinished;
+
     //@TODO fields is null -> exception
     public Pawn(int posX, int posY, PawnColor pawnColor) {
         super(40, 40, posX, posY, 2, "");
@@ -26,23 +27,20 @@ public class Pawn extends Accessory {
         this.pawnColor = pawnColor;
         this.fieldNumber = -1;
         this.index = 0;
+        this.isFinished = false;
 
         switch(pawnColor){
             case RED:
                 this.setPathToImage("file:src/resources/ludo/redpawn.png");
-                this.corridorField = 38;
                 break;
             case BLUE:
                 this.setPathToImage("file:src/resources/ludo/bluepawn.png");
-                this.corridorField = 25;
                 break;
             case GREEN:
                 this.setPathToImage("file:src/resources/ludo/greenpawn.png");
-                this.corridorField = 51;
                 break;
             case YELLOW:
                 this.setPathToImage("file:src/resources/ludo/yellowpawn.png");
-                this.corridorField = 12;
                 break;
         }
     }
@@ -64,6 +62,7 @@ public class Pawn extends Accessory {
         Point point;
         if(this.fieldNumber == -1 && value == 6){
             index = 1;
+            isFinished = true;
             start();
             point = fields.getWhiteFields().get(this.fieldNumber);
         }
@@ -71,6 +70,10 @@ public class Pawn extends Accessory {
             index += value;
             if(index > 51){
                 //Pawn goes to corridor
+                if(index > 57){
+                    isFinished = true;
+                    return;
+                }
                 List<Point> corridor = fields.getCorridor(this.pawnColor);
                 point = corridor.get(index - 51 - 1);
             }else{
@@ -81,6 +84,10 @@ public class Pawn extends Accessory {
         }
         this.setPosX((int) point.getX());
         this.setPosY((int) point.getY());
+    }
+
+    public boolean isFinished(){
+        return isFinished;
     }
 
     private void start(){
