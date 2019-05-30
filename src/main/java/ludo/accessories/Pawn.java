@@ -62,7 +62,6 @@ public class Pawn extends Accessory {
         Point point;
         if(this.fieldNumber == -1 && value == 6){
             index = 1;
-            isFinished = true;
             start();
             point = fields.getWhiteFields().get(this.fieldNumber);
         }
