@@ -12,16 +12,13 @@ public class ChoosePawnRule implements Rule {
 
     @Override
     public boolean isAccessoryValid(GameState gameState, Accessory accessory) {
-        if(accessory.getAccessoryType() == LudoAccessoryType.PAWN && accessory.getPlayer() == gameState.getActivePlayer())
-            return true;
-        else return false;
+        return accessory.getAccessoryType() == LudoAccessoryType.PAWN && accessory.getPlayer() == gameState.getActivePlayer();
     }
 
     @Override
     public void setValidActions(GameState gameState, Board board) {
         board.resetAllActions();
         LudoGameState ludoGameState = (LudoGameState) gameState;
-        boolean movePossible = false;
         for(Accessory acc : board.getAccessories(2, LudoAccessoryType.PAWN, gameState.getActivePlayer())){
             Pawn pawn = (Pawn) acc;
 

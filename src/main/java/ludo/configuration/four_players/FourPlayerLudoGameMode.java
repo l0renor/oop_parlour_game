@@ -60,6 +60,18 @@ public class FourPlayerLudoGameMode implements GameMode {
 
     @Override
     public boolean isFinished() {
+       for(Player player : players) {
+            int count = 0;
+            for (Accessory acc : board.getAccessories(2, LudoAccessoryType.PAWN, player)) {
+                Pawn pawn = (Pawn) acc;
+                if(pawn.isFinished()) count++;
+            }
+            if(count == 4){
+                board.setInfoText("Game Over!");
+                return true;
+            }
+        }
+
         return false;
     }
 

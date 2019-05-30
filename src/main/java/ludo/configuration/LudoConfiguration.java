@@ -12,6 +12,6 @@ public class LudoConfiguration extends Configuration {
         ArrayList<GameMode> gameModes = new ArrayList<>();
         gameModes.add(new FourPlayerLudoGameMode());
         setGameModes(gameModes);
-        setStartScreenbackground("file:src/resources/bunny_hop/start_screen_background.png");
+        setStartScreenbackground("file:src/resources/ludo/ludostart.png");
     }
 }

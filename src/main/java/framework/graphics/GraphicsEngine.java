@@ -44,7 +44,6 @@ public class GraphicsEngine extends Observable {
         graphicsContext.drawImage(backgroundImg, 0, 0, board.getWidth(), board.getHeight());
         root.getChildren().add(background);
         int currentLayer = 1;
-        //@TODO layers are haveoffset
         for (final List<Accessory> layer : board.getAccessories()) {
             Canvas canvas = new Canvas(board.getWidth(), board.getHeight());
             if (currentLayer == board.getNumberOfLayers() + 1) {

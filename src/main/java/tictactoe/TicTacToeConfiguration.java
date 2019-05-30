@@ -12,7 +12,7 @@ public class TicTacToeConfiguration extends Configuration {
         ArrayList<GameMode> gameModes = new ArrayList<>();
         gameModes.add(new TwoPlayerGameMode());
         setGameModes(gameModes);
-        setStartScreenbackground("file:src/resources/tictactoe/background.png");
+        setStartScreenbackground("file:src/resources/tictactoe/tictactoestart.png");
     }
 
 }
